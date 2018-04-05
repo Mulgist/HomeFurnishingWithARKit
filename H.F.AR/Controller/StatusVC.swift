@@ -8,9 +8,9 @@ import ARKit
  Displayed at the top of the main interface of the app that allows users to see
  the status of the AR experience, as well as the ability to control restarting
  the experience altogether.
- - Tag: StatusViewController
+ - Tag: StatusVC
 */
-class StatusViewController: UIViewController {
+class StatusVC: UIViewController {
     // MARK: - Types
 
     enum MessageType {

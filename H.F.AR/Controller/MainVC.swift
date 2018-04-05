@@ -22,8 +22,8 @@ class MainVC: UIViewController {
     var focusSquare = FocusSquare()
     
     /// The view controller that displays the status and "restart experience" UI.
-    lazy var statusViewController: StatusViewController = {
-        return childViewControllers.lazy.flatMap({ $0 as? StatusViewController }).first!
+    lazy var statusViewController: StatusVC = {
+        return childViewControllers.lazy.flatMap({ $0 as? StatusVC }).first!
     }()
 	
 	/// The view controller that displays the virtual object selection menu.
