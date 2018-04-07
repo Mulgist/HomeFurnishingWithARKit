@@ -16,7 +16,7 @@ extension MainVC: VirtualObjectSelectionViewControllerDelegate {
         guard let cameraTransform = session.currentFrame?.camera.transform,
 			let focusSquareAlignment = focusSquare.recentFocusSquareAlignments.last,
 			focusSquare.state != .initializing else {
-            	statusViewController.showMessage("CANNOT PLACE OBJECT\nTry moving left or right.")
+            	statusViewController.showMessage("CANNOT PLACE OBJECT\nTry moving left or right.".localized(using: "MainVCStrings"))
 				if let controller = objectsViewController {
 					virtualObjectSelectionViewController(controller, didDeselectObject: virtualObject)
 				}

@@ -4,6 +4,7 @@
 import ARKit
 import SceneKit
 import UIKit
+import Localize_Swift
 
 class MainVC: UIViewController {
     
@@ -12,6 +13,8 @@ class MainVC: UIViewController {
     @IBOutlet var sceneView: VirtualObjectARView!
     
     @IBOutlet weak var addObjectButton: UIButton!
+    
+    @IBOutlet weak var settingsButton: UIButton!
     
     @IBOutlet weak var blurView: UIVisualEffectView!
     
@@ -81,10 +84,14 @@ class MainVC: UIViewController {
             self.restartExperience()
         }
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showVirtualObjectSelectionViewController))
+        let showObjectsTapGesture = UITapGestureRecognizer(target: self, action: #selector(showVirtualObjectSelectionViewController))
         // Set the delegate to ensure this gesture is only used when there are no virtual objects in the scene.
-        tapGesture.delegate = self
-        sceneView.addGestureRecognizer(tapGesture)
+        showObjectsTapGesture.delegate = self
+        sceneView.addGestureRecognizer(showObjectsTapGesture)
+        
+        let showSettingsTapGesture = UITapGestureRecognizer(target: self, action: #selector(showSettingVC))
+        showSettingsTapGesture.delegate = self
+        settingsButton.addGestureRecognizer(showSettingsTapGesture)
     }
 
 	override func viewDidAppear(_ animated: Bool) {
@@ -131,7 +138,7 @@ class MainVC: UIViewController {
         configuration.isAutoFocusEnabled = true
 		session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
 
-        statusViewController.scheduleMessage("FIND A SURFACE TO PLACE AN OBJECT", inSeconds: 7.5, messageType: .planeEstimation)
+        statusViewController.scheduleMessage("FIND A SURFACE TO PLACE AN OBJECT".localized(using: "MainVCStrings"), inSeconds: 7.5, messageType: .planeEstimation)
 	}
 
     // MARK: - Focus Square
@@ -145,7 +152,7 @@ class MainVC: UIViewController {
             focusSquare.hide()
         } else {
             focusSquare.unhide()
-            statusViewController.scheduleMessage("TRY MOVING LEFT OR RIGHT", inSeconds: 5.0, messageType: .focusSquare)
+            statusViewController.scheduleMessage("TRY MOVING LEFT OR RIGHT".localized(using: "MainVCStrings"), inSeconds: 5.0, messageType: .focusSquare)
         }
 		
         // Perform hit testing only when ARKit tracking is in a good state.
@@ -174,7 +181,7 @@ class MainVC: UIViewController {
         
         // Present an alert informing about the error that has occurred.
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let restartAction = UIAlertAction(title: "Restart Session", style: .default) { _ in
+        let restartAction = UIAlertAction(title: "Restart Session".localized(using: "MainVCStrings"), style: .default) { _ in
             alertController.dismiss(animated: true, completion: nil)
             self.blurView.isHidden = true
             self.resetTracking()

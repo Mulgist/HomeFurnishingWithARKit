@@ -10,5 +10,6 @@ target 'H.F.AR' do
   pod 'Alamofire', '~> 4.6'
   pod 'AlamofireImage', '~> 3.3'
   pod 'SwiftyJSON'
+  pod 'Localize-Swift', '~> 2.0'
 
 end

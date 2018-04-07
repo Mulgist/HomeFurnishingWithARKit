@@ -3,6 +3,7 @@
 
 import UIKit
 import ARKit
+import Localize_Swift
 
 // MARK: - ObjectCell
 
@@ -15,7 +16,12 @@ class ObjectCell: UITableViewCell {
 	
     var modelName = "" {
         didSet {
-            objectTitleLabel.text = modelName.capitalized
+            if Localize.currentLanguage() == "ko" {
+                objectTitleLabel.text = modelName.localized(using: "MainVCStrings")
+            } else {
+                objectTitleLabel.text = modelName.capitalized
+            }
+            
             objectImageView.image = UIImage(named: modelName)
         }
     }

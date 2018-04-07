@@ -48,6 +48,12 @@ extension MainVC: UIGestureRecognizerDelegate {
             self.isRestartAvailable = true
         }
     }
+    
+    // Open Setting
+    @IBAction func showSettingVC() {
+        performSegue(withIdentifier: "showSettings", sender: settingsButton)
+    }
+    
 }
 
 extension MainVC: UIPopoverPresentationControllerDelegate {

@@ -1,0 +1,43 @@
+//
+//  MainVCStrings.strings
+//  H.F.AR
+//
+//  Created by 이주원 on 2018. 4. 6..
+//  Copyright © 2018년 Apple. All rights reserved.
+//
+
+"FIND A SURFACE TO PLACE AN OBJECT" = "FIND A SURFACE TO PLACE AN OBJECT";
+
+"TRY MOVING LEFT OR RIGHT" = "TRY MOVING LEFT OR RIGHT";
+
+"SURFACE DETECTED" = "SURFACE DETECTED";
+
+"TAP + TO PLACE AN OBJECT" = "TAP + TO PLACE AN OBJECT";
+
+"The AR session failed." = "The AR session failed.";
+
+"CANNOT PLACE OBJECT\nTry moving left or right." = "CANNOT PLACE OBJECT\nTry moving left or right.";
+
+"Restart Session" = "Restart Session";
+
+"TRACKING UNAVAILABLE" = "TRACKING UNAVAILABLE";
+
+"TRACKING NORMAL" = "TRACKING NORMAL";
+
+"TRACKING LIMITED\nExcessive motion" = "TRACKING LIMITED\nExcessive motion";
+
+"TRACKING LIMITED\nLow detail" = "TRACKING LIMITED\nLow detail";
+
+"Initializing" = "Initializing";
+
+"Recovering from interruption" = "Recovering from interruption";
+
+"Try slowing down your movement, or reset the session." = "Try slowing down your movement, or reset the session.";
+
+"Try pointing at a flat surface, or reset the session." = "Try pointing at a flat surface, or reset the session.";
+
+"Return to the location where you left off or try resetting the session." = "Return to the location where you left off or try resetting the session.";
+
+// ------------------------------
+
+

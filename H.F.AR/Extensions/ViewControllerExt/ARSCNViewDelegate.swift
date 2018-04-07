@@ -33,9 +33,9 @@ extension MainVC: ARSCNViewDelegate, ARSessionDelegate {
         guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
         DispatchQueue.main.async {
             self.statusViewController.cancelScheduledMessage(for: .planeEstimation)
-            self.statusViewController.showMessage("SURFACE DETECTED")
+            self.statusViewController.showMessage("SURFACE DETECTED".localized(using: "MainVCStrings"))
             if self.virtualObjectLoader.loadedObjects.isEmpty {
-                self.statusViewController.scheduleMessage("TAP + TO PLACE AN OBJECT", inSeconds: 7.5, messageType: .contentPlacement)
+                self.statusViewController.scheduleMessage("TAP + TO PLACE AN OBJECT".localized(using: "MainVCStrings"), inSeconds: 7.5, messageType: .contentPlacement)
             }
         }
         updateQueue.async {
@@ -88,7 +88,7 @@ extension MainVC: ARSCNViewDelegate, ARSessionDelegate {
         let errorMessage = messages.compactMap({ $0 }).joined(separator: "\n")
         
         DispatchQueue.main.async {
-            self.displayErrorMessage(title: "The AR session failed.", message: errorMessage)
+            self.displayErrorMessage(title: "The AR session failed.".localized(using: "MainVCStrings"), message: errorMessage)
         }
     }
     

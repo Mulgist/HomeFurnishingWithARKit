@@ -2,18 +2,21 @@ PODS:
   - Alamofire (4.7.0)
   - AlamofireImage (3.3.0):
     - Alamofire (~> 4.5)
+  - Localize-Swift (2.0.0)
   - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.6)
   - AlamofireImage (~> 3.3)
+  - Localize-Swift (~> 2.0)
   - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
   AlamofireImage: 2e784dc5d00f04903a52c1d169181469c805c3df
+  Localize-Swift: c798ec9286494866f7068f85f7c71283ac5bdab4
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 6a808b9503720f35ed998fdf04277648f5b413cb
+PODFILE CHECKSUM: 266a3b29f6d74aa7c134eaeafa26ab6a52d22d29
 
 COCOAPODS: 1.4.0

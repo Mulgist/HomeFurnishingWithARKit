@@ -3,6 +3,7 @@
 
 import Foundation
 import ARKit
+import Localize_Swift
 
 /**
  Displayed at the top of the main interface of the app that allows users to see
@@ -138,28 +139,28 @@ extension ARCamera.TrackingState {
     var presentationString: String {
         switch self {
         case .notAvailable:
-            return "TRACKING UNAVAILABLE"
+            return "TRACKING UNAVAILABLE".localized(using: "MainVCStrings")
         case .normal:
-            return "TRACKING NORMAL"
+            return "TRACKING NORMAL".localized(using: "MainVCStrings")
         case .limited(.excessiveMotion):
-            return "TRACKING LIMITED\nExcessive motion"
+            return "TRACKING LIMITED\nExcessive motion".localized(using: "MainVCStrings")
         case .limited(.insufficientFeatures):
-            return "TRACKING LIMITED\nLow detail"
+            return "TRACKING LIMITED\nLow detail".localized(using: "MainVCStrings")
         case .limited(.initializing):
-            return "Initializing"
+            return "Initializing".localized(using: "MainVCStrings")
 		case .limited(.relocalizing):
-			return "Recovering from interruption"
+			return "Recovering from interruption".localized(using: "MainVCStrings")
         }
     }
 
     var recommendation: String? {
         switch self {
         case .limited(.excessiveMotion):
-            return "Try slowing down your movement, or reset the session."
+            return "Try slowing down your movement, or reset the session.".localized(using: "MainVCStrings")
         case .limited(.insufficientFeatures):
-            return "Try pointing at a flat surface, or reset the session."
+            return "Try pointing at a flat surface, or reset the session.".localized(using: "MainVCStrings")
 		case .limited(.relocalizing):
-			return "Return to the location where you left off or try resetting the session."
+			return "Return to the location where you left off or try resetting the session.".localized(using: "MainVCStrings")
 		default:
             return nil
         }

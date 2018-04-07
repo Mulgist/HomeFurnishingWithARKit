@@ -1,0 +1,51 @@
+//
+//  MainVCStrings.strings
+//  H.F.AR
+//
+//  Created by 이주원 on 2018. 4. 6..
+//  Copyright © 2018년 Apple. All rights reserved.
+//
+
+"FIND A SURFACE TO PLACE AN OBJECT" = "물건을 놓으려면 평면을 찾으십시오";
+
+"TRY MOVING LEFT OR RIGHT" = "왼쪽이나 오른쪽으로 움직여보십시오";
+
+"SURFACE DETECTED" = "평면 포착됨";
+
+"TAP + TO PLACE AN OBJECT" = "물건을 놓으려면 + 버튼을 누르십시오";
+
+"The AR session failed." = "AR 세션이 실패했습니다.";
+
+"CANNOT PLACE OBJECT\nTry moving left or right." = "물건을 놓을 수 없음\n왼쪽이나 오른쪽으로 움직여보십시오.";
+
+"Restart Session" = "세션 재시작";
+
+"TRACKING UNAVAILABLE" = "추적 불가능";
+
+"TRACKING NORMAL" = "정상적인 추적";
+
+"TRACKING LIMITED\nExcessive motion" = "추적 제한\n과도한 동작";
+
+"TRACKING LIMITED\nLow detail" = "추적 제한\n세부사항 부족";
+
+"Initializing" = "초기화중";
+
+"Recovering from interruption" = "복구하는 중";
+
+"Try slowing down your movement, or reset the session." = "동작 속도를 늦추거나 세션을 재시작하십시오.";
+
+"Try pointing at a flat surface, or reset the session." = "평평한 평면을 가리키거나 세션을 재시작하십시오.";
+
+"Return to the location where you left off or try resetting the session." = "떠난 위치로 돌아가거나 세션을 재시작하십시오.";
+
+// ------------------------------
+
+// OBJECTS (temp)
+"candle" = "양초";
+"chair" = "의자";
+"cup" = "컵";
+"lamp" = "램프";
+"painting" = "그림";
+"sticky note" = "스티커 메모";
+"vase" = "꽃병";
+
