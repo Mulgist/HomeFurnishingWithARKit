@@ -38,6 +38,22 @@
 
 "Return to the location where you left off or try resetting the session." = "Return to the location where you left off or try resetting the session.";
 
+"LOG IN" = "LOG IN";
+
+"Google Login" = "Google Login";
+
+"Microsoft Login" = "Microsoft Login";
+
+"> Privacy Policy" = "> Privacy Policy";
+
+"EMAIL ADDRESS" = "EMAIL ADDRESS";
+
+"FULL NAME" = "FULL NAME";
+
+"Logout" = "Logout";
+
+"ACCOUNT PROVIDER" = "ACCOUNT PROVIDER";
+
 // ------------------------------
 
 

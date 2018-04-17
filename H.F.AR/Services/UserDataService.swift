@@ -6,4 +6,40 @@
 //  Copyright © 2018년 Apple. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class UserDataService {
+    static let instance = UserDataService()
+    
+    public private(set) var id: String = ""
+    public private(set) var email: String = ""
+    public private(set) var familyName: String = ""
+    public private(set) var givenName: String = ""
+    public private(set) var fullName: String = ""
+    public private(set) var provider: String = ""
+    public private(set) var profileImage: UIImage = UIImage(named: DEFAULT_PROFILE_IMAGE_NAME)!
+    
+    func setUserData(id: String, email: String, familyName: String, givenName: String, fullName: String, provider: String, profileImage: UIImage) {
+        self.id = id
+        self.email = email
+        self.familyName = familyName
+        self.givenName = givenName
+        self.fullName = fullName
+        self.provider = provider
+        self.profileImage = profileImage
+    }
+    
+    func logoutUser() {
+        id = ""
+        email = ""
+        familyName = ""
+        givenName = ""
+        fullName = ""
+        provider = ""
+        profileImage = UIImage(named: DEFAULT_PROFILE_IMAGE_NAME)!
+        AuthService.instance.userId = "userId"
+        // 로그아웃 완료
+        AuthService.instance.isLoggedIn = false
+        NotificationCenter.default.post(name: NOTIF_USER_DATA_LOADED, object: nil)
+    }
+}

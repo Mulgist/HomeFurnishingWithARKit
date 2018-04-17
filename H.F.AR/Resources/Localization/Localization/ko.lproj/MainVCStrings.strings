@@ -38,6 +38,22 @@
 
 "Return to the location where you left off or try resetting the session." = "떠난 위치로 돌아가거나 세션을 재시작하십시오.";
 
+"LOG IN" = "로그인";
+
+"Google Login" = "Google 로그인";
+
+"Microsoft Login" = "Microsoft 로그인";
+
+"> Privacy Policy" = "> 개인정보처리방침";
+
+"EMAIL ADDRESS" = "이메일 주소";
+
+"FULL NAME" = "전체 이름";
+
+"Logout" = "로그아웃";
+
+"ACCOUNT PROVIDER" = "계정 서비스 제공자";
+
 // ------------------------------
 
 // OBJECTS (temp)

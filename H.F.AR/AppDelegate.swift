@@ -20,6 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 determine whether to show UI for launching AR experiences.
             """) // For details, see https://developer.apple.com/documentation/arkit
         }
+        
+        if AuthService.instance.isLoggedIn {
+            AuthService.instance.setAndLoadUserInfoById(completion: { (perform) in
+                NotificationCenter.default.post(name: NOTIF_USER_DATA_LOADED, object: nil)
+            })
+        }
 
         return true
     }

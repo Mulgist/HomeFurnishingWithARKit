@@ -11,13 +11,10 @@ class MainVC: UIViewController {
     // MARK: IBOutlets
     
     @IBOutlet var sceneView: VirtualObjectARView!
-    
     @IBOutlet weak var addObjectButton: UIButton!
-    
     @IBOutlet weak var settingsButton: UIButton!
-    
+    @IBOutlet weak var loginButton: CircleButton!
     @IBOutlet weak var blurView: UIVisualEffectView!
-    
     @IBOutlet weak var spinner: UIActivityIndicatorView!
 
     // MARK: - UI Elements
@@ -30,7 +27,7 @@ class MainVC: UIViewController {
     }()
 	
 	/// The view controller that displays the virtual object selection menu.
-	var objectsViewController: VirtualObjectSelectionViewController?
+	var objectsTableVC: VirtualObjectSelectionVC?
     
     // MARK: - ARKit Configuration Properties
     
@@ -75,6 +72,7 @@ class MainVC: UIViewController {
          physically based materials, so disable automatic lighting.
          */
         sceneView.automaticallyUpdatesLighting = false
+        // sceneView.autoenablesDefaultLighting = true
         if let environmentMap = UIImage(named: "Models.scnassets/sharedImages/environment_blur.exr") {
             sceneView.scene.lightingEnvironment.contents = environmentMap
         }
@@ -92,6 +90,14 @@ class MainVC: UIViewController {
         let showSettingsTapGesture = UITapGestureRecognizer(target: self, action: #selector(showSettingVC))
         showSettingsTapGesture.delegate = self
         settingsButton.addGestureRecognizer(showSettingsTapGesture)
+        
+        let showLoginTapGesture = UITapGestureRecognizer(target: self, action: #selector(showLoginVC))
+        showLoginTapGesture.delegate = self
+        loginButton.addGestureRecognizer(showLoginTapGesture)
+        
+        // Register Notification Center
+        NotificationCenter.default.addObserver(self, selector: #selector(loadUserProfileImage(_:)), name: NOTIF_USER_DATA_LOADED, object: nil)
+        
     }
 
 	override func viewDidAppear(_ animated: Bool) {
@@ -136,6 +142,7 @@ class MainVC: UIViewController {
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = [.horizontal, .vertical]
         configuration.isAutoFocusEnabled = true
+        // configuration.isLightEstimationEnabled = true
 		session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
 
         statusViewController.scheduleMessage("FIND A SURFACE TO PLACE AN OBJECT".localized(using: "MainVCStrings"), inSeconds: 7.5, messageType: .planeEstimation)
@@ -189,5 +196,4 @@ class MainVC: UIViewController {
         alertController.addAction(restartAction)
         present(alertController, animated: true, completion: nil)
     }
-
 }

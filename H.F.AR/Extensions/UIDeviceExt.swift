@@ -6,4 +6,19 @@
 //  Copyright © 2018년 Apple. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+extension UIDevice {
+    public var isiPhone: Bool {
+        if UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.phone {
+            return true
+        }
+        return false
+    }
+    public var isiPad: Bool {
+        if UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad {
+            return true
+        }
+        return false
+    }
+}
