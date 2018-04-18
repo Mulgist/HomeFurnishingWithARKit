@@ -14,7 +14,7 @@ class VirtualObjectSelectionVC: UITableViewController {
     var virtualObjects = [VirtualObject]()
     
     // The rows of the currently selected 'VirtualObject's.
-    var selectedVirtualObjectRows = IndexSet()
+    // var selectedVirtualObjectRows = IndexSet()
 	
 	// The rows of the 'VirtualObject's that are currently allowed to be placed.
 	var enabledVirtualObjectRows = Set<Int>()
@@ -40,9 +40,11 @@ class VirtualObjectSelectionVC: UITableViewController {
 				newEnabledVirtualObjectRows.insert(row)
 			}
 			// Enable row always if item is already placed, in order to allow the user to remove it.
+            /*
 			if selectedVirtualObjectRows.contains(row) {
 				newEnabledVirtualObjectRows.insert(row)
 			}
+            */
 		}
 		
 		// Only reload changed rows
@@ -60,15 +62,20 @@ class VirtualObjectSelectionVC: UITableViewController {
 		let cellIsEnabled = enabledVirtualObjectRows.contains(indexPath.row)
         guard cellIsEnabled else { return }
 		
-        let object = virtualObjects[indexPath.row]
+        // let object = virtualObjects[indexPath.row]
+        let object = VirtualObject(url: virtualObjects[indexPath.row].referenceURL)!
         
         // Check if the current row is already selected, then deselect it.
+        /*
         if selectedVirtualObjectRows.contains(indexPath.row) {
             delegate?.virtualObjectSelectionVC(self, didDeselectObject: object)
             // delegate?.virtualObjectSelectionVC(self, didSelectObject: object)
         } else {
             delegate?.virtualObjectSelectionVC(self, didSelectObject: object)
         }
+        */
+        
+        delegate?.virtualObjectSelectionVC(self, didSelectObject: object)
         
         dismiss(animated: true, completion: nil)
     }
@@ -88,6 +95,7 @@ class VirtualObjectSelectionVC: UITableViewController {
         // Cell config
         // At this time, the text and image of the cell are set.
         cell.modelName = virtualObjects[indexPath.row].modelName
+        /*
         if selectedVirtualObjectRows.contains(indexPath.row) {
             // Add checkmark
             cell.accessoryType = .checkmark
@@ -95,6 +103,7 @@ class VirtualObjectSelectionVC: UITableViewController {
             // Delete checkmark
             cell.accessoryType = .none
         }
+        */
 		
 		let cellIsEnabled = enabledVirtualObjectRows.contains(indexPath.row)
 		if cellIsEnabled {

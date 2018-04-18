@@ -57,6 +57,15 @@ class VirtualObject: SCNReferenceNode {
 	// The object's corresponding ARAnchor
 	var anchor: ARAnchor?
     
+//    init(url: URL, objectIndex: Int) {
+//        index = objectIndex
+//        super.init(url: url)!
+//    }
+//
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+    
     // Resets the object's position smoothing.
     func reset() {
         recentVirtualObjectDistances.removeAll()
@@ -193,7 +202,16 @@ extension VirtualObject {
             guard url.pathExtension == "scn" else { return nil }
             return VirtualObject(url: url)
         }
-        list.append(contentsOf: list)
+        
+        // let countsOfList = list.count
+        var newList = [VirtualObject]()
+        
+        for element in list {
+            let new = VirtualObject(url: element.referenceURL)
+            newList.append(new!)
+        }
+        list.append(contentsOf: newList)
+        
         return list
     }()
     

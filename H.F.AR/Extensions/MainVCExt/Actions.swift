@@ -109,7 +109,7 @@ extension MainVC: UIPopoverPresentationControllerDelegate {
         // Set all rows of currently placed objects to selected.
         for object in virtualObjectLoader.loadedObjects {
             guard let index = VirtualObject.availableObjects.index(of: object) else { continue }
-            objectsTableVC.selectedVirtualObjectRows.insert(index)
+            // objectsTableVC.selectedVirtualObjectRows.insert(index)
         }
     }
 	
