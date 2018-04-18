@@ -4,10 +4,7 @@
 import Foundation
 import ARKit
 
-/**
- Loads multiple `VirtualObject`s on a background queue to be able to display the
- objects quickly once they are needed.
-*/
+// Loads multiple 'VirtualObject's on a background queue to be able to display the objects quickly once they are needed.
 class VirtualObjectLoader {
 	private(set) var loadedObjects = [VirtualObject]()
     
@@ -15,10 +12,7 @@ class VirtualObjectLoader {
 	
 	// MARK: - Loading object
 
-    /**
-     Loads a `VirtualObject` on a background queue. `loadedHandler` is invoked
-     on a background queue once `object` has been loaded.
-    */
+    // Loads a 'VirtualObject' on a background queue. 'loadedHandler' is invoked on a background queue once 'object' has been loaded.
     func loadVirtualObject(_ object: VirtualObject, loadedHandler: @escaping (VirtualObject) -> Void) {
         isLoading = true
 		loadedObjects.append(object)
@@ -34,7 +28,6 @@ class VirtualObjectLoader {
 	}
     
     // MARK: - Removing Objects
-    
     func removeAllVirtualObjects() {
         // Reverse the indices so we don't trample over indices as objects are removed.
         for index in loadedObjects.indices.reversed() {

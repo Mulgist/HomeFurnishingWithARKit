@@ -15,7 +15,7 @@ extension MainVC: UIGestureRecognizerDelegate {
     
     // MARK: - Interface Actions
     
-    /// Displays the `VirtualObjectSelectionViewController` from the `addObjectButton` or in response to a tap gesture in the `sceneView`.
+    // Displays the 'VirtualObjectSelectionVC' from the 'addObjectButton' or in response to a tap gesture in the 'sceneView'.
     @IBAction func showVirtualObjectSelectionViewController() {
         // Ensure adding objects is an available action and we are not loading another object (to avoid concurrent modifications of the scene).
         guard !addObjectButton.isHidden && !virtualObjectLoader.isLoading else { return }
@@ -24,7 +24,7 @@ extension MainVC: UIGestureRecognizerDelegate {
         performSegue(withIdentifier: SegueIdentifier.showObjects.rawValue, sender: addObjectButton)
     }
     
-    /// Determines if the tap gesture for presenting the `VirtualObjectSelectionViewController` should be used.
+    // Determines if the tap gesture for presenting the 'VirtualObjectSelectionVC' should be used.
     func gestureRecognizerShouldBegin(_: UIGestureRecognizer) -> Bool {
         return virtualObjectLoader.loadedObjects.isEmpty
     }
@@ -33,7 +33,7 @@ extension MainVC: UIGestureRecognizerDelegate {
         return true
     }
     
-    /// - Tag: restartExperience
+    // - Tag: restartExperience
     func restartExperience() {
         guard isRestartAvailable, !virtualObjectLoader.isLoading else { return }
         isRestartAvailable = false
@@ -84,7 +84,6 @@ extension MainVC: UIGestureRecognizerDelegate {
 extension MainVC: UIPopoverPresentationControllerDelegate {
     
     // MARK: - UIPopoverPresentationControllerDelegate
-
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
     }
@@ -97,19 +96,20 @@ extension MainVC: UIPopoverPresentationControllerDelegate {
             popoverController.sourceRect = button.bounds
         }
         
-        guard let identifier = segue.identifier,
-              let segueIdentifer = SegueIdentifier(rawValue: identifier),
-              segueIdentifer == .showObjects else { return }
+        guard let identifier = segue.identifier, let segueIdentifer = SegueIdentifier(rawValue: identifier), segueIdentifer == .showObjects else { return }
         
-        let objectsViewController = segue.destination as! VirtualObjectSelectionVC
-        objectsViewController.virtualObjects = VirtualObject.availableObjects
-        objectsViewController.delegate = self
-		self.objectsTableVC = objectsViewController
+        let objectsTableVC = segue.destination as! VirtualObjectSelectionVC
+        // Load objects to objectsTableVC
+        objectsTableVC.virtualObjects = VirtualObject.availableObjects
+        objectsTableVC.delegate = self
+        
+        // Link to VirtualObjectSelectionVC
+		self.objectsTableVC = objectsTableVC
         
         // Set all rows of currently placed objects to selected.
         for object in virtualObjectLoader.loadedObjects {
             guard let index = VirtualObject.availableObjects.index(of: object) else { continue }
-            objectsViewController.selectedVirtualObjectRows.insert(index)
+            objectsTableVC.selectedVirtualObjectRows.insert(index)
         }
     }
 	

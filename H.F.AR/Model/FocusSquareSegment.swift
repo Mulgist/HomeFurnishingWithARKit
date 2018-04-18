@@ -45,13 +45,13 @@ extension FocusSquare {
 
         // MARK: - Configuration & Initialization
 
-        /// Thickness of the focus square lines in m.
+        // Thickness of the focus square lines in m.
         static let thickness: CGFloat = 0.018
 
-        /// Length of the focus square lines in m.
+        // Length of the focus square lines in m.
         static let length: CGFloat = 0.5  // segment length
 
-        /// Side length of the focus square segments when it is open (w.r.t. to a 1x1 square).
+        // Side length of the focus square segments when it is open (w.r.t. to a 1x1 square).
         static let openLength: CGFloat = 0.2
 
         let corner: Corner

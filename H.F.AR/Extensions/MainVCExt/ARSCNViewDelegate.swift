@@ -6,7 +6,6 @@ import ARKit
 extension MainVC: ARSCNViewDelegate, ARSessionDelegate {
     
     // MARK: - ARSCNViewDelegate
-    
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         DispatchQueue.main.async {
             self.virtualObjectInteraction.updateObjectToCurrentTrackingPosition()
@@ -84,7 +83,7 @@ extension MainVC: ARSCNViewDelegate, ARSessionDelegate {
             errorWithInfo.localizedRecoverySuggestion
         ]
         
-        // Use `flatMap(_:)` to remove optional error messages.
+        // Use 'flatMap(_:)' to remove optional error messages.
         let errorMessage = messages.compactMap({ $0 }).joined(separator: "\n")
         
         DispatchQueue.main.async {

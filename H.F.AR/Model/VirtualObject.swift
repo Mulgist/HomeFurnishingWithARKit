@@ -7,15 +7,15 @@ import ARKit
 
 class VirtualObject: SCNReferenceNode {
     
-    /// The model name derived from the `referenceURL`.
+    // The model name derived from the 'referenceURL'.
     var modelName: String {
         return referenceURL.lastPathComponent.replacingOccurrences(of: ".scn", with: "")
     }
     
-    /// Use average of recent virtual object distances to avoid rapid changes in object scale.
+    // Use average of recent virtual object distances to avoid rapid changes in object scale.
     private var recentVirtualObjectDistances = [Float]()
 	
-	/// Allowed alignments for the virtual object
+	// Allowed alignments for the virtual object
 	var allowedAlignments: [ARPlaneAnchor.Alignment] {
 		if modelName == "sticky note" {
 			return [.horizontal, .vertical]
@@ -26,14 +26,14 @@ class VirtualObject: SCNReferenceNode {
 		}
 	}
 	
-	/// Current alignment of the virtual object
+	// Current alignment of the virtual object
 	var currentAlignment: ARPlaneAnchor.Alignment = .horizontal
 	
-	/// Whether the object is currently changing alignment
+	// Whether the object is currently changing alignment
 	private var isChangingAlignment: Bool = false
 	
-	/// For correct rotation on horizontal and vertical surfaces, roate around
-	/// local y rather than world y. Therefore rotate first child note instead of self.
+	// For correct rotation on horizontal and vertical surfaces, roate around
+	// local y rather than world y. Therefore rotate first child note instead of self.
 	var objectRotation: Float {
 		get {
 			return childNodes.first!.eulerAngles.y
@@ -51,13 +51,13 @@ class VirtualObject: SCNReferenceNode {
 		}
 	}
 	
-	/// Remember the last rotation for horizontal alignment
+	// Remember the last rotation for horizontal alignment
 	var rotationWhenAlignedHorizontally: Float = 0
 	
-	/// The object's corresponding ARAnchor
+	// The object's corresponding ARAnchor
 	var anchor: ARAnchor?
     
-    /// Resets the object's position smoothing.
+    // Resets the object's position smoothing.
     func reset() {
         recentVirtualObjectDistances.removeAll()
     }
@@ -71,18 +71,10 @@ class VirtualObject: SCNReferenceNode {
 		return true
 	}
 	
-    /**
-     Set the object's position based on the provided position relative to the `cameraTransform`.
-     If `smoothMovement` is true, the new position will be averaged with previous position to
-     avoid large jumps.
+    // Set the object's position based on the provided position relative to the 'cameraTransform'. If 'smoothMovement' is true, the new position will be averaged with previous position toavoid large jumps.
      
-     - Tag: VirtualObjectSetPosition
-     */
-    func setTransform(_ newTransform: float4x4,
-                      relativeTo cameraTransform: float4x4,
-                      smoothMovement: Bool,
-                      alignment: ARPlaneAnchor.Alignment,
-                      allowAnimation: Bool) {
+    // - Tag: VirtualObjectSetPosition
+    func setTransform(_ newTransform: float4x4, relativeTo cameraTransform: float4x4, smoothMovement: Bool, alignment: ARPlaneAnchor.Alignment, allowAnimation: Bool) {
         let cameraWorldPosition = cameraTransform.translation
         var positionOffsetFromCamera = newTransform.translation - cameraWorldPosition
         
@@ -92,12 +84,7 @@ class VirtualObject: SCNReferenceNode {
             positionOffsetFromCamera *= 10
         }
         
-        /*
-         Compute the average distance of the object from the camera over the last ten
-         updates. Notice that the distance is applied to the vector from
-         the camera to the content, so it affects only the percieved distance to the
-         object. Averaging does _not_ make the content "lag".
-         */
+        // Compute the average distance of the object from the camera over the last ten updates. Notice that the distance is applied to the vector from the camera to the content, so it affects only the percieved distance to the object. Averaging does _not_ make the content "lag".
         if smoothMovement {
             let hitTestResultDistance = simd_length(positionOffsetFromCamera)
             
@@ -116,7 +103,6 @@ class VirtualObject: SCNReferenceNode {
     }
 	
 	// MARK: - Setting the object's alignment
-	
 	func updateAlignment(to newAlignment: ARPlaneAnchor.Alignment, transform: float4x4, allowAnimation: Bool) {
 		if isChangingAlignment {
 			return
@@ -135,7 +121,6 @@ class VirtualObject: SCNReferenceNode {
 		}
 		
 		currentAlignment = newAlignment
-		
 		SCNTransaction.begin()
 		SCNTransaction.animationDuration = animationDuration
 		SCNTransaction.completionBlock = {
@@ -155,7 +140,7 @@ class VirtualObject: SCNReferenceNode {
 		SCNTransaction.commit()
 	}
     
-    /// - Tag: AdjustOntoPlaneAnchor
+    // - Tag: AdjustOntoPlaneAnchor
     func adjustOntoPlaneAnchor(_ anchor: ARPlaneAnchor, using node: SCNNode) {
 		// Test if the alignment of the plane is compatible with the object's allowed placement
 		if !allowedAlignments.contains(anchor.alignment) {
@@ -197,28 +182,26 @@ class VirtualObject: SCNReferenceNode {
 
 extension VirtualObject {
     // MARK: Static Properties and Methods
-    
-    /// Loads all the model objects within `Models.scnassets`.
+    // Loads all the model objects within 'Models.scnassets'.
     static let availableObjects: [VirtualObject] = {
         let modelsURL = Bundle.main.url(forResource: "Models.scnassets", withExtension: nil)!
-
         let fileEnumerator = FileManager().enumerator(at: modelsURL, includingPropertiesForKeys: [])!
 
-        return fileEnumerator.compactMap { element in
+        // temp variation - duplicate objects list
+        var list: [VirtualObject] = fileEnumerator.compactMap { element in
             let url = element as! URL
-
             guard url.pathExtension == "scn" else { return nil }
-
             return VirtualObject(url: url)
         }
+        list.append(contentsOf: list)
+        return list
     }()
     
-    /// Returns a `VirtualObject` if one exists as an ancestor to the provided node.
+    // Returns a 'VirtualObject' if one exists as an ancestor to the provided node.
     static func existingObjectContainingNode(_ node: SCNNode) -> VirtualObject? {
         if let virtualObjectRoot = node as? VirtualObject {
             return virtualObjectRoot
         }
-        
         guard let parent = node.parent else { return nil }
         
         // Recurse up to check if the parent is a `VirtualObject`.
@@ -227,7 +210,7 @@ extension VirtualObject {
 }
 
 extension Collection where Element == Float, Index == Int {
-    /// Return the mean of a list of Floats. Used with `recentVirtualObjectDistances`.
+    // Return the mean of a list of Floats. Used with `recentVirtualObjectDistances`.
     var average: Float? {
         guard !isEmpty else {
             return nil

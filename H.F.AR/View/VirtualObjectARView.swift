@@ -1,7 +1,7 @@
 
 // Abstract: A custom 'ARSCNView' configured for the requirements of this project.
 
-import Foundation
+import UIKit
 import ARKit
 
 class VirtualObjectARView: ARSCNView {

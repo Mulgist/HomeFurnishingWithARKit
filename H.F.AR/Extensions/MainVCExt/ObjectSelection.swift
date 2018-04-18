@@ -9,9 +9,7 @@ extension MainVC: VirtualObjectSelectionVCDelegate {
      // Adds the specified virtual object to the scene, placed using the focus square's estimate of the world-space position currently corresponding to the center of the screen.
      // - Tag: PlaceVirtualObject
     func placeVirtualObject(_ virtualObject: VirtualObject) {
-        guard let cameraTransform = session.currentFrame?.camera.transform,
-			let focusSquareAlignment = focusSquare.recentFocusSquareAlignments.last,
-			focusSquare.state != .initializing else {
+        guard let cameraTransform = session.currentFrame?.camera.transform, let focusSquareAlignment = focusSquare.recentFocusSquareAlignments.last, focusSquare.state != .initializing else {
             	statusViewController.showMessage("CANNOT PLACE OBJECT\nTry moving left or right.".localized(using: "MainVCStrings"))
 				if let controller = objectsTableVC {
 					virtualObjectSelectionVC(controller, didDeselectObject: virtualObject)

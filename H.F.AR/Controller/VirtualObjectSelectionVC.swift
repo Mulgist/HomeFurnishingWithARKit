@@ -65,6 +65,7 @@ class VirtualObjectSelectionVC: UITableViewController {
         // Check if the current row is already selected, then deselect it.
         if selectedVirtualObjectRows.contains(indexPath.row) {
             delegate?.virtualObjectSelectionVC(self, didDeselectObject: object)
+            // delegate?.virtualObjectSelectionVC(self, didSelectObject: object)
         } else {
             delegate?.virtualObjectSelectionVC(self, didSelectObject: object)
         }
@@ -77,13 +78,16 @@ class VirtualObjectSelectionVC: UITableViewController {
         return virtualObjects.count
     }
     
+    // Cell configuration
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Get cell
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ObjectCell.reuseIdentifier, for: indexPath) as? ObjectCell else {
             fatalError("Expected '\(ObjectCell.self)' type for reuseIdentifier \(ObjectCell.reuseIdentifier). Check the configuration in Main.storyboard.")
         }
         
+        // Cell config
+        // At this time, the text and image of the cell are set.
         cell.modelName = virtualObjects[indexPath.row].modelName
-        
         if selectedVirtualObjectRows.contains(indexPath.row) {
             // Add checkmark
             cell.accessoryType = .checkmark

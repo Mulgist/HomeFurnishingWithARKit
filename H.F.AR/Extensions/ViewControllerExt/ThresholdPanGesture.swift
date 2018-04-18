@@ -1,20 +1,16 @@
 
-// Abstract: Contains `ThresholdPanGesture` - a custom `UIPanGestureRecognizer` to track a translation threshold for panning.
+// Abstract: Contains 'ThresholdPanGesture' - a custom 'UIPanGestureRecognizer' to track a translation threshold for panning.
 
 import UIKit.UIGestureRecognizerSubclass
 
-/**
- A custom `UIPanGestureRecognizer` to track when a translation threshold has been exceeded
- and panning should begin.
- 
- - Tag: ThresholdPanGesture
- */
+// A custom `UIPanGestureRecognizer` to track when a translation threshold has been exceeded and panning should begin.
+// - Tag: ThresholdPanGesture
 class ThresholdPanGesture: UIPanGestureRecognizer {
     
-    /// Indicates whether the currently active gesture has exceeeded the threshold.
+    // Indicates whether the currently active gesture has exceeeded the threshold.
     private(set) var isThresholdExceeded = false
     
-    /// Observe when the gesture's `state` changes to reset the threshold.
+    // Observe when the gesture's `state` changes to reset the threshold.
     override var state: UIGestureRecognizerState {
         didSet {
             switch state {
@@ -28,7 +24,7 @@ class ThresholdPanGesture: UIPanGestureRecognizer {
         }
     }
     
-    /// Returns the threshold value that should be used dependent on the number of touches.
+    // Returns the threshold value that should be used dependent on the number of touches.
     private static func threshold(forTouchCount count: Int) -> CGFloat {
         switch count {
         case 1: return 30
@@ -38,7 +34,7 @@ class ThresholdPanGesture: UIPanGestureRecognizer {
         }
     }
     
-    /// - Tag: touchesMoved
+    // - Tag: touchesMoved
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent) {
         super.touchesMoved(touches, with: event)
         
