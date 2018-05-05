@@ -4,6 +4,8 @@
 import ARKit
 import SceneKit
 import UIKit
+import Alamofire
+import SwiftyJSON
 import Localize_Swift
 
 class MainVC: UIViewController {
@@ -14,11 +16,18 @@ class MainVC: UIViewController {
     @IBOutlet weak var addObjectButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var loginButton: CircleButton!
+    @IBOutlet weak var infoButton: UIButton!
+    @IBOutlet weak var removeButton: UIButton!
     @IBOutlet weak var blurView: UIVisualEffectView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
-
-    // MARK: - UI Elements
     
+    var virtualObjects = [VirtualObject]()
+    var productIds = [String]()
+    var asciiObjectNames = [String]()
+    var enObjectNames = [String]()
+    var koObjectNames = [String]()
+    
+    // MARK: - UI Elements
     var focusSquare = FocusSquare()
     
     /// The view controller that displays the status and "restart experience" UI.
@@ -60,17 +69,14 @@ class MainVC: UIViewController {
         
         sceneView.delegate = self
         sceneView.session.delegate = self
+        
+        virtualObjects = VirtualObject.availableObjects
 
         // Set up scene content.
         setupCamera()
         sceneView.scene.rootNode.addChildNode(focusSquare)
 
-        /*
-         The `sceneView.automaticallyUpdatesLighting` option creates an
-         ambient light source and modulates its intensity. This sample app
-         instead modulates a global lighting environment map for use with
-         physically based materials, so disable automatic lighting.
-         */
+        // The 'sceneView.automaticallyUpdatesLighting' option creates an ambient light source and modulates its intensity. This sample app instead modulates a global lighting environment map for use with physically based materials, so disable automatic lighting.
         sceneView.automaticallyUpdatesLighting = false
         // sceneView.autoenablesDefaultLighting = true
         if let environmentMap = UIImage(named: "Models.scnassets/sharedImages/environment_blur.exr") {
@@ -98,23 +104,73 @@ class MainVC: UIViewController {
         // Register Notification Center
         NotificationCenter.default.addObserver(self, selector: #selector(loadUserProfileImage(_:)), name: NOTIF_USER_DATA_LOADED, object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(setInfoAndRemoveButon(_:)), name: NOTIF_SET_INFO_RM_BUTTON, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(setInfoAndRemoveButon(_:)), name: NOTIF_UNSET_INFO_RM_BUTTON, object: nil)
+        
+        // Set objects array
+        setupObjectArray()
     }
 
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		
 		// Prevent the screen from being dimmed to avoid interuppting the AR experience.
-		UIApplication.shared.isIdleTimerDisabled = true
+		// UIApplication.shared.isIdleTimerDisabled = true
 
-        // Start the `ARSession`.
+        // Start the 'ARSession'.
         resetTracking()
 	}
 	
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
-
+        
         session.pause()
 	}
+    
+    func setupObjectArray() {
+        // Web Request
+        Alamofire.request("\(BASE_URL)\(REQUEST_SUFFIX)method=\(GET_OBJECTS)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: HEADER).responseJSON { (response) in
+            if response.result.error == nil {
+                guard let data = response.data else { return }
+                let json = JSON(data)
+                var jsonElement: JSON
+                self.productIds.removeAll()
+                self.asciiObjectNames.removeAll()
+                self.enObjectNames.removeAll()
+                self.koObjectNames.removeAll()
+                
+                for i in 0..<json.count {
+                    jsonElement = json[i]
+                    self.productIds.append(jsonElement["product_id"].stringValue)
+                    self.asciiObjectNames.append(jsonElement["ascii"].stringValue)
+                    self.enObjectNames.append(jsonElement["en"].stringValue)
+                    self.koObjectNames.append(jsonElement["ko"].stringValue)
+                    // print("KO Name: \(String(describing: self.koObjectNames.last))")
+                }
+                for element in self.virtualObjects {
+                    if let index = self.asciiObjectNames.index(of: element.modelName) {
+                        element.setNames(self.enObjectNames[index], self.koObjectNames[index])
+                    }
+                }
+            }
+        }
+    }
+    
+    @IBAction func showObjectInfo(_ sender: Any) {
+        guard let productInfoVC = storyboard?.instantiateViewController(withIdentifier: "ProductInfoVC") else { return }
+        productInfoVC.modalPresentationStyle = .custom
+        presentDetial(productInfoVC)
+    }
+    
+    @IBAction func removeObject(_ sender: Any) {
+        if let selected = virtualObjectInteraction.selectedObject {
+            if let index = virtualObjectLoader.loadedObjects.index(of: selected) {
+                virtualObjectLoader.removeVirtualObject(at: index)
+                NotificationCenter.default.post(name: NOTIF_UNSET_INFO_RM_BUTTON, object: nil)
+            }
+        }
+    }
 
     // MARK: - Scene content setup
 
@@ -144,8 +200,8 @@ class MainVC: UIViewController {
         configuration.isAutoFocusEnabled = true
         // configuration.isLightEstimationEnabled = true
 		session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
-
-        statusViewController.scheduleMessage("FIND A SURFACE TO PLACE AN OBJECT".localized(using: "MainVCStrings"), inSeconds: 7.5, messageType: .planeEstimation)
+        
+        statusViewController.scheduleMessage("FIND A SURFACE TO PLACE AN OBJECT".localized(using: "MainStrings"), inSeconds: 7.5, messageType: .planeEstimation)
 	}
 
     // MARK: - Focus Square
@@ -159,7 +215,7 @@ class MainVC: UIViewController {
             focusSquare.hide()
         } else {
             focusSquare.unhide()
-            statusViewController.scheduleMessage("TRY MOVING LEFT OR RIGHT".localized(using: "MainVCStrings"), inSeconds: 5.0, messageType: .focusSquare)
+            statusViewController.scheduleMessage("TRY MOVING LEFT OR RIGHT".localized(using: "MainStrings"), inSeconds: 5.0, messageType: .focusSquare)
         }
 		
         // Perform hit testing only when ARKit tracking is in a good state.
@@ -181,14 +237,13 @@ class MainVC: UIViewController {
 	}
     
 	// MARK: - Error handling
-    
     func displayErrorMessage(title: String, message: String) {
         // Blur the background.
         blurView.isHidden = false
         
         // Present an alert informing about the error that has occurred.
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let restartAction = UIAlertAction(title: "Restart Session".localized(using: "MainVCStrings"), style: .default) { _ in
+        let restartAction = UIAlertAction(title: "Restart Session".localized(using: "MainStrings"), style: .default) { _ in
             alertController.dismiss(animated: true, completion: nil)
             self.blurView.isHidden = true
             self.resetTracking()

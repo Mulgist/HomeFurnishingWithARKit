@@ -10,7 +10,7 @@ extension MainVC: VirtualObjectSelectionVCDelegate {
      // - Tag: PlaceVirtualObject
     func placeVirtualObject(_ virtualObject: VirtualObject) {
         guard let cameraTransform = session.currentFrame?.camera.transform, let focusSquareAlignment = focusSquare.recentFocusSquareAlignments.last, focusSquare.state != .initializing else {
-            	statusViewController.showMessage("CANNOT PLACE OBJECT\nTry moving left or right.".localized(using: "MainVCStrings"))
+            	statusViewController.showMessage("CANNOT PLACE OBJECT\nTry moving left or right.".localized(using: "MainStrings"))
 				if let controller = objectsTableVC {
 					virtualObjectSelectionVC(controller, didDeselectObject: virtualObject)
 				}
@@ -30,6 +30,8 @@ extension MainVC: VirtualObjectSelectionVCDelegate {
             self.sceneView.scene.rootNode.addChildNode(virtualObject)
 			self.sceneView.addOrUpdateAnchor(for: virtualObject)
         }
+        
+        NotificationCenter.default.post(name: NOTIF_SET_INFO_RM_BUTTON, object: nil)
     }
     
     // MARK: - VirtualObjectSelectionVCDelegate

@@ -45,7 +45,9 @@ extension MainVC: UIGestureRecognizerDelegate {
         addObjectButton.setImage(#imageLiteral(resourceName: "addPressed"), for: [.highlighted])
 
         resetTracking()
-
+        
+        NotificationCenter.default.post(name: NOTIF_UNSET_INFO_RM_BUTTON, object: nil)
+        
         // Disable restart for a while in order to give the session time to restart.
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
             self.isRestartAvailable = true
@@ -79,6 +81,18 @@ extension MainVC: UIGestureRecognizerDelegate {
             loginButton.setTitle("Log In", for: .normal)
         }
     }
+    
+    // Set or Unset infoButton and removeButton
+    @objc func setInfoAndRemoveButon(_ notif: Notification) {
+        if notif.name == NOTIF_SET_INFO_RM_BUTTON {
+            infoButton.isHidden = false
+            removeButton.isHidden = false
+        } else if notif.name == NOTIF_UNSET_INFO_RM_BUTTON {
+            infoButton.isHidden = true
+            removeButton.isHidden = true
+        }
+    }
+    
 }
 
 extension MainVC: UIPopoverPresentationControllerDelegate {
@@ -100,7 +114,7 @@ extension MainVC: UIPopoverPresentationControllerDelegate {
         
         let objectsTableVC = segue.destination as! VirtualObjectSelectionVC
         // Load objects to objectsTableVC
-        objectsTableVC.virtualObjects = VirtualObject.availableObjects
+        objectsTableVC.virtualObjects = virtualObjects
         objectsTableVC.delegate = self
         
         // Link to VirtualObjectSelectionVC

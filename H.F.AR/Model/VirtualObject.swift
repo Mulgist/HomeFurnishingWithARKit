@@ -12,6 +12,8 @@ class VirtualObject: SCNReferenceNode {
         return referenceURL.lastPathComponent.replacingOccurrences(of: ".scn", with: "")
     }
     
+    var localizedName = ["en": "", "ko": ""]
+    
     // Use average of recent virtual object distances to avoid rapid changes in object scale.
     private var recentVirtualObjectDistances = [Float]()
 	
@@ -79,9 +81,13 @@ class VirtualObject: SCNReferenceNode {
 		}
 		return true
 	}
+    
+    func setNames(_ en: String, _ ko: String) {
+        localizedName["en"] = en
+        localizedName["ko"] = ko
+    }
 	
     // Set the object's position based on the provided position relative to the 'cameraTransform'. If 'smoothMovement' is true, the new position will be averaged with previous position toavoid large jumps.
-     
     // - Tag: VirtualObjectSetPosition
     func setTransform(_ newTransform: float4x4, relativeTo cameraTransform: float4x4, smoothMovement: Bool, alignment: ARPlaneAnchor.Alignment, allowAnimation: Bool) {
         let cameraWorldPosition = cameraTransform.translation
@@ -222,7 +228,7 @@ extension VirtualObject {
         }
         guard let parent = node.parent else { return nil }
         
-        // Recurse up to check if the parent is a `VirtualObject`.
+        // Recurse up to check if the parent is a 'VirtualObject'.
         return existingObjectContainingNode(parent)
     }
 }

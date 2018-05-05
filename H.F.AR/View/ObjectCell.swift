@@ -14,18 +14,13 @@ class ObjectCell: UITableViewCell {
     static let reuseIdentifier = "ObjectCell"
     
     @IBOutlet weak var objectTitleLabel: UILabel!
-    @IBOutlet weak var objectImageView: UIImageView!
+    // @IBOutlet weak var objectImageView: UIImageView!
     @IBOutlet weak var vibrancyView: UIVisualEffectView!
     
     var modelName = "" {
         didSet {
-            if Localize.currentLanguage() == "ko" {
-                objectTitleLabel.text = modelName.localized(using: "MainVCStrings")
-            } else {
-                objectTitleLabel.text = modelName.capitalized
-            }
-        
-        objectImageView.image = UIImage(named: modelName)
+            objectTitleLabel.text = modelName
+            // objectImageView.image = UIImage(named: modelName)
         }
     }
 }

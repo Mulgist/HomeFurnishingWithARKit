@@ -26,10 +26,10 @@ class AccountVC: UIViewController {
         super.viewDidLoad()
         
         // Localize
-        emailLblLbl.text = "EMAIL ADDRESS".localized(using: "MainVCStrings")
-        fullNameLblLbl.text = "FULL NAME".localized(using: "MainVCStrings")
-        logoutBtn.setTitle("Logout".localized(using: "MainVCStrings"), for: .normal)
-        accountProviderLbl.text = "ACCOUNT PROVIDER".localized(using: "MainVCStrings")
+        emailLblLbl.text = "EMAIL ADDRESS".localized(using: "MainStrings")
+        fullNameLblLbl.text = "FULL NAME".localized(using: "MainStrings")
+        logoutBtn.setTitle("Logout".localized(using: "MainStrings"), for: .normal)
+        accountProviderLbl.text = "ACCOUNT PROVIDER".localized(using: "MainStrings")
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041E6D1720922C9B00A0BCF3 /* ProductInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E6D1620922C9B00A0BCF3 /* ProductInfoVC.swift */; };
+		041F0868209DED2F00230BB4 /* ShadowAndRadiusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F0867209DED2F00230BB4 /* ShadowAndRadiusView.swift */; };
 		043D1FC62074C09200792629 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 043D1FC52074C09200792629 /* Main.storyboard */; };
-		04BA7F742077A850003216FA /* MainVCStrings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04BA7F722077A84F003216FA /* MainVCStrings.strings */; };
+		04BA7F742077A850003216FA /* MainStrings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04BA7F722077A84F003216FA /* MainStrings.strings */; };
 		04BA7F7720788024003216FA /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA7F7620788024003216FA /* SettingsVC.swift */; };
 		04BA7F792078B0D2003216FA /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA7F782078B0D2003216FA /* CircleButton.swift */; };
 		04BA7F7B2078B7B3003216FA /* SelectProviderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA7F7A2078B7B3003216FA /* SelectProviderVC.swift */; };
@@ -42,10 +44,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		041E6D1520921A1500A0BCF3 /* H.F.AR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = H.F.AR.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		041E6D1620922C9B00A0BCF3 /* ProductInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoVC.swift; sourceTree = "<group>"; };
+		041F0867209DED2F00230BB4 /* ShadowAndRadiusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowAndRadiusView.swift; sourceTree = "<group>"; };
 		043D1FC52074C09200792629 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		04918CC220859DAB0045E44C /* H.F.AR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = H.F.AR.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		04BA7F732077A84F003216FA /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = Localization/ko.lproj/MainVCStrings.strings; sourceTree = "<group>"; };
-		04BA7F752077A854003216FA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localization/en.lproj/MainVCStrings.strings; sourceTree = "<group>"; };
+		04BA7F732077A84F003216FA /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = Localization/ko.lproj/MainStrings.strings; sourceTree = "<group>"; };
+		04BA7F752077A854003216FA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localization/en.lproj/MainStrings.strings; sourceTree = "<group>"; };
 		04BA7F7620788024003216FA /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		04BA7F782078B0D2003216FA /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		04BA7F7A2078B7B3003216FA /* SelectProviderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectProviderVC.swift; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 				04BA7F7620788024003216FA /* SettingsVC.swift */,
 				C41366B81EB80DD400EC054A /* StatusVC.swift */,
 				147062631F06FA790003EE03 /* VirtualObjectSelectionVC.swift */,
+				041E6D1620922C9B00A0BCF3 /* ProductInfoVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -151,6 +156,7 @@
 				04BA7F8B20792308003216FA /* CircleImage.swift */,
 				04F386592085ECB700787988 /* ObjectCell.swift */,
 				C46356661EF9CC480080C8D9 /* VirtualObjectARView.swift */,
+				041F0867209DED2F00230BB4 /* ShadowAndRadiusView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -179,7 +185,7 @@
 		04BA7F6B2077920A003216FA /* Localization */ = {
 			isa = PBXGroup;
 			children = (
-				04BA7F722077A84F003216FA /* MainVCStrings.strings */,
+				04BA7F722077A84F003216FA /* MainStrings.strings */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -218,7 +224,7 @@
 				043D1FC12074BC3F00792629 /* H.F.AR */,
 				FA72C18594CCE813F5D77986 /* Pods */,
 				A4DC4C44E68128ED972E055B /* Frameworks */,
-				04918CC220859DAB0045E44C /* H.F.AR.app */,
+				041E6D1520921A1500A0BCF3 /* H.F.AR.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -259,7 +265,7 @@
 			);
 			name = H.F.AR;
 			productName = ARKitInteraction;
-			productReference = 04918CC220859DAB0045E44C /* H.F.AR.app */;
+			productReference = 041E6D1520921A1500A0BCF3 /* H.F.AR.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -304,7 +310,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04BA7F742077A850003216FA /* MainVCStrings.strings in Resources */,
+				04BA7F742077A850003216FA /* MainStrings.strings in Resources */,
 				3929C49F1E89EE4400E00B60 /* Models.scnassets in Resources */,
 				39D8DC1B1E8ADAE600386B05 /* LaunchScreen.storyboard in Resources */,
 				3929C4931E89EC2C00E00B60 /* Assets.xcassets in Resources */,
@@ -395,6 +401,7 @@
 				04BA7F7720788024003216FA /* SettingsVC.swift in Sources */,
 				39C0B95A1E9C6B1F003FCA0C /* Utilities.swift in Sources */,
 				147062641F06FA790003EE03 /* VirtualObjectSelectionVC.swift in Sources */,
+				041F0868209DED2F00230BB4 /* ShadowAndRadiusView.swift in Sources */,
 				04BA7F822078B8E6003216FA /* Constants.swift in Sources */,
 				C8C12A711F29277B00B011FE /* ARSCNViewDelegate.swift in Sources */,
 				C8C2AC521F3A545C00E86BA3 /* VirtualObjectInteraction.swift in Sources */,
@@ -405,19 +412,20 @@
 				3929C48C1E89EC2C00E00B60 /* AppDelegate.swift in Sources */,
 				C46356681EF9CC530080C8D9 /* VirtualObjectLoader.swift in Sources */,
 				04BA7F7B2078B7B3003216FA /* SelectProviderVC.swift in Sources */,
+				041E6D1720922C9B00A0BCF3 /* ProductInfoVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		04BA7F722077A84F003216FA /* MainVCStrings.strings */ = {
+		04BA7F722077A84F003216FA /* MainStrings.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				04BA7F732077A84F003216FA /* ko */,
 				04BA7F752077A854003216FA /* en */,
 			);
-			name = MainVCStrings.strings;
+			name = MainStrings.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

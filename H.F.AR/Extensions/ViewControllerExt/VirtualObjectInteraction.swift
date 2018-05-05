@@ -21,6 +21,7 @@ class VirtualObjectInteraction: NSObject, UIGestureRecognizerDelegate {
         didSet {
             guard trackedObject != nil else { return }
             selectedObject = trackedObject
+            NotificationCenter.default.post(name: NOTIF_SET_INFO_RM_BUTTON, object: nil)
         }
     }
     
@@ -82,7 +83,7 @@ class VirtualObjectInteraction: NSObject, UIGestureRecognizerDelegate {
         }
     }
 
-    // If a drag gesture is in progress, update the tracked object's position by converting the 2D touch location on screen ('currentTrackingPosition') to 3D world space. This method is called per frame (via `SCNSceneRendererDelegate` callbacks), allowing drag gestures to move virtual objects regardless of whether one drags a finger across the screen or moves the device through space.
+    // If a drag gesture is in progress, update the tracked object's position by converting the 2D touch location on screen ('currentTrackingPosition') to 3D world space. This method is called per frame (via 'SCNSceneRendererDelegate' callbacks), allowing drag gestures to move virtual objects regardless of whether one drags a finger across the screen or moves the device through space.
     // - Tag: updateObjectToCurrentTrackingPosition
     @objc func updateObjectToCurrentTrackingPosition() {
         guard let object = trackedObject, let position = currentTrackingPosition else { return }
@@ -104,10 +105,15 @@ class VirtualObjectInteraction: NSObject, UIGestureRecognizerDelegate {
         if let tappedObject = sceneView.virtualObject(at: touchLocation) {
             // Select a new object.
             selectedObject = tappedObject
-        } else if let object = selectedObject {
+            NotificationCenter.default.post(name: NOTIF_SET_INFO_RM_BUTTON, object: nil)
+        // 오브젝트 없는 곳 터치하면 선택 풀림 (아래 코드 실행 안함)
+        // } else if let object = selectedObject {
             // Teleport the object to whereever the user touched the screen.
-            translate(object, basedOn: touchLocation, infinitePlane: false, allowAnimation: false)
-			sceneView.addOrUpdateAnchor(for: object)
+            // translate(object, basedOn: touchLocation, infinitePlane: false, allowAnimation: false)
+            // NotificationCenter.default.post(name: NOTIF_SET_INFO_RM_BUTTON, object: nil)
+			// sceneView.addOrUpdateAnchor(for: object)
+        } else {
+            NotificationCenter.default.post(name: NOTIF_UNSET_INFO_RM_BUTTON, object: nil)
         }
     }
     

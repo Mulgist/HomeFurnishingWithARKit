@@ -65,6 +65,9 @@ class VirtualObjectSelectionVC: UITableViewController {
         // let object = virtualObjects[indexPath.row]
         let object = VirtualObject(url: virtualObjects[indexPath.row].referenceURL)!
         
+        // VirtualObject가 새로 생성되었으니 name도 다시 넣어준다.
+        object.localizedName = virtualObjects[indexPath.row].localizedName
+        
         // Check if the current row is already selected, then deselect it.
         /*
         if selectedVirtualObjectRows.contains(indexPath.row) {
@@ -94,7 +97,11 @@ class VirtualObjectSelectionVC: UITableViewController {
         
         // Cell config
         // At this time, the text and image of the cell are set.
-        cell.modelName = virtualObjects[indexPath.row].modelName
+        cell.modelName = virtualObjects[indexPath.row].localizedName[Localize.currentLanguage()]!
+        if cell.modelName == "" {
+            cell.modelName = virtualObjects[indexPath.row].localizedName["en"]!
+        }
+        
         /*
         if selectedVirtualObjectRows.contains(indexPath.row) {
             // Add checkmark
