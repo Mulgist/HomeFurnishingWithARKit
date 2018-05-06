@@ -97,10 +97,7 @@ class VirtualObjectSelectionVC: UITableViewController {
         
         // Cell config
         // At this time, the text and image of the cell are set.
-        cell.modelName = virtualObjects[indexPath.row].localizedName[Localize.currentLanguage()]!
-        if cell.modelName == "" {
-            cell.modelName = virtualObjects[indexPath.row].localizedName["en"]!
-        }
+        cell.modelName = virtualObjects[indexPath.row].getLocalizedName()
         
         /*
         if selectedVirtualObjectRows.contains(indexPath.row) {

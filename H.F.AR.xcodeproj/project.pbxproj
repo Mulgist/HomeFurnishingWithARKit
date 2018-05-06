@@ -44,7 +44,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		041E6D1520921A1500A0BCF3 /* H.F.AR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = H.F.AR.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		041E6D1520921A1500A0BCF3 /* H.F.AR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = H.F.AR.app; path = "/Users/juwon/Documents/H.F.AR/build/Debug-iphoneos/H.F.AR.app"; sourceTree = "<absolute>"; };
 		041E6D1620922C9B00A0BCF3 /* ProductInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoVC.swift; sourceTree = "<group>"; };
 		041F0867209DED2F00230BB4 /* ShadowAndRadiusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowAndRadiusView.swift; sourceTree = "<group>"; };
 		043D1FC52074C09200792629 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -224,7 +224,6 @@
 				043D1FC12074BC3F00792629 /* H.F.AR */,
 				FA72C18594CCE813F5D77986 /* Pods */,
 				A4DC4C44E68128ED972E055B /* Frameworks */,
-				041E6D1520921A1500A0BCF3 /* H.F.AR.app */,
 			);
 			sourceTree = "<group>";
 		};

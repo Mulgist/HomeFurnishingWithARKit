@@ -32,6 +32,7 @@ extension MainVC: VirtualObjectSelectionVCDelegate {
         }
         
         NotificationCenter.default.post(name: NOTIF_SET_INFO_RM_BUTTON, object: nil)
+        NotificationCenter.default.post(name: NOTIF_SHOW_MESSAGE, object: virtualObjectInteraction.selectedObject?.getLocalizedName())
     }
     
     // MARK: - VirtualObjectSelectionVCDelegate

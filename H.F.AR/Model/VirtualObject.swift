@@ -4,6 +4,7 @@
 import Foundation
 import SceneKit
 import ARKit
+import Localize_Swift
 
 class VirtualObject: SCNReferenceNode {
     
@@ -85,6 +86,17 @@ class VirtualObject: SCNReferenceNode {
     func setNames(_ en: String, _ ko: String) {
         localizedName["en"] = en
         localizedName["ko"] = ko
+    }
+    
+    func getLocalizedName() -> String {
+        var name = localizedName[Localize.currentLanguage()]!
+        if name == "" {
+            name = localizedName["en"]!
+        }
+        if name == "" {
+            name = modelName
+        }
+        return name
     }
 	
     // Set the object's position based on the provided position relative to the 'cameraTransform'. If 'smoothMovement' is true, the new position will be averaged with previous position toavoid large jumps.

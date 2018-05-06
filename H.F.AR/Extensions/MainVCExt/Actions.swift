@@ -73,12 +73,16 @@ extension MainVC: UIGestureRecognizerDelegate {
         if AuthService.instance.isLoggedIn {
             loginButton.setTitle(nil, for: .normal)
             loginButton.setImage(UserDataService.instance.profileImage, for: .normal)
-            
-            loginButton.setImage(UserDataService.instance.profileImage, for: .normal)
             loginButton.setTitle(UserDataService.instance.givenName, for: .normal)
+            
+            // Show savesButton
+            savesButton.isHidden = false
         } else {
             loginButton.setImage(nil, for: .normal)
             loginButton.setTitle("Log In", for: .normal)
+            
+            // Hide savesButtone
+            savesButton.isHidden = true
         }
     }
     
@@ -91,6 +95,11 @@ extension MainVC: UIGestureRecognizerDelegate {
             infoButton.isHidden = true
             removeButton.isHidden = true
         }
+    }
+    
+    @objc func showMessage(_ notif: Notification) {
+        let text = notif.object as! String
+        self.statusViewController.showMessage(text)
     }
     
 }

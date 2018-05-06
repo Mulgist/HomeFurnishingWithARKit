@@ -16,6 +16,7 @@ class MainVC: UIViewController {
     @IBOutlet weak var addObjectButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var loginButton: CircleButton!
+    @IBOutlet weak var savesButton: UIButton!
     @IBOutlet weak var infoButton: UIButton!
     @IBOutlet weak var removeButton: UIButton!
     @IBOutlet weak var blurView: UIVisualEffectView!
@@ -103,10 +104,9 @@ class MainVC: UIViewController {
         
         // Register Notification Center
         NotificationCenter.default.addObserver(self, selector: #selector(loadUserProfileImage(_:)), name: NOTIF_USER_DATA_LOADED, object: nil)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(setInfoAndRemoveButon(_:)), name: NOTIF_SET_INFO_RM_BUTTON, object: nil)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(setInfoAndRemoveButon(_:)), name: NOTIF_UNSET_INFO_RM_BUTTON, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showMessage(_:)), name: NOTIF_SHOW_MESSAGE, object: nil)
         
         // Set objects array
         setupObjectArray()

@@ -22,6 +22,7 @@ class VirtualObjectInteraction: NSObject, UIGestureRecognizerDelegate {
             guard trackedObject != nil else { return }
             selectedObject = trackedObject
             NotificationCenter.default.post(name: NOTIF_SET_INFO_RM_BUTTON, object: nil)
+            NotificationCenter.default.post(name: NOTIF_SHOW_MESSAGE, object: selectedObject?.getLocalizedName())
         }
     }
     
@@ -106,6 +107,7 @@ class VirtualObjectInteraction: NSObject, UIGestureRecognizerDelegate {
             // Select a new object.
             selectedObject = tappedObject
             NotificationCenter.default.post(name: NOTIF_SET_INFO_RM_BUTTON, object: nil)
+            NotificationCenter.default.post(name: NOTIF_SHOW_MESSAGE, object: selectedObject?.getLocalizedName())
         // 오브젝트 없는 곳 터치하면 선택 풀림 (아래 코드 실행 안함)
         // } else if let object = selectedObject {
             // Teleport the object to whereever the user touched the screen.
