@@ -188,6 +188,8 @@ class VirtualObject: SCNReferenceNode {
         let minZ: Float = anchor.center.z - anchor.extent.z / 2 - anchor.extent.z * tolerance
         let maxZ: Float = anchor.center.z + anchor.extent.z / 2 + anchor.extent.z * tolerance
         
+        // print("\(minX), \(maxX), \(minZ), \(maxZ)")
+        
         guard (minX...maxX).contains(planePosition.x) && (minZ...maxZ).contains(planePosition.z) else {
             return
         }

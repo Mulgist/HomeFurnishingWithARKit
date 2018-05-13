@@ -102,11 +102,16 @@ class MainVC: UIViewController {
         showLoginTapGesture.delegate = self
         loginButton.addGestureRecognizer(showLoginTapGesture)
         
+        let showSavesListTapGesture = UITapGestureRecognizer(target: self, action: #selector(showSavesList))
+        showSavesListTapGesture.delegate = self
+        savesButton.addGestureRecognizer(showSavesListTapGesture)
+        
         // Register Notification Center
         NotificationCenter.default.addObserver(self, selector: #selector(loadUserProfileImage(_:)), name: NOTIF_USER_DATA_LOADED, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(setInfoAndRemoveButon(_:)), name: NOTIF_SET_INFO_RM_BUTTON, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(setInfoAndRemoveButon(_:)), name: NOTIF_UNSET_INFO_RM_BUTTON, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showMessage(_:)), name: NOTIF_SHOW_MESSAGE, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(printSaves(_:)), name: NOTIF_SHOW_SAVES, object: nil)
         
         // Set objects array
         setupObjectArray()
@@ -130,7 +135,7 @@ class MainVC: UIViewController {
     
     func setupObjectArray() {
         // Web Request
-        Alamofire.request("\(BASE_URL)\(REQUEST_SUFFIX)method=\(GET_OBJECTS)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: HEADER).responseJSON { (response) in
+        Alamofire.request("\(BASE_URL)\(REQUEST_SUFFIX)?method=\(GET_OBJECTS)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: JSON_ENCODE_HEADER).responseJSON { (response) in
             if response.result.error == nil {
                 guard let data = response.data else { return }
                 let json = JSON(data)
@@ -171,6 +176,11 @@ class MainVC: UIViewController {
             }
         }
     }
+    
+    @IBAction func savesButtonPressed(_ sender: Any) {
+        NotificationCenter.default.post(name: NOTIF_SHOW_SAVES, object: nil)
+    }
+    
 
     // MARK: - Scene content setup
 
@@ -178,11 +188,8 @@ class MainVC: UIViewController {
         guard let camera = sceneView.pointOfView?.camera else {
             fatalError("Expected a valid `pointOfView` from the scene.")
         }
-
-        /*
-         Enable HDR camera settings for the most realistic appearance
-         with environmental lighting and physically based materials.
-         */
+        
+         // Enable HDR camera settings for the most realistic appearance with environmental lighting and physically based materials.
         camera.wantsHDR = true
         camera.exposureOffset = -1
         camera.minimumExposure = -1

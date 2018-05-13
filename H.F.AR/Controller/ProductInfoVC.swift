@@ -71,7 +71,7 @@ class ProductInfoVC: UIViewController {
         // 진짜 bounding box 크기를 구하려면 max - min 계산을 해야 한다. scn 자체로는 depth(실제 높이)가 y이다.
         let boundingBox = SCNVector3Make(newObject.boundingBox.max.x - newObject.boundingBox.min.x, newObject.boundingBox.max.y - newObject.boundingBox.min.y, newObject.boundingBox.max.z - newObject.boundingBox.min.z)
         let multiple = getScaleMultipleValue(box: boundingBox)
-        print(multiple)
+        // print(multiple)
         
         camera.position.y = boundingBox.y * 8
         
@@ -86,12 +86,12 @@ class ProductInfoVC: UIViewController {
     func getScaleMultipleValue(box: SCNVector3) -> Float {
         let stdLength: Float = 4
         
-        print("bounding x, y, z: \(box.x), \(box.y), \(box.z)")
+        // print("bounding x, y, z: \(box.x), \(box.y), \(box.z)")
         
         let maxValue = max(box.x, box.y, box.z)
         let multiple = stdLength / maxValue
         
-        print("maxValue: \(multiple)")
+        // print("maxValue: \(multiple)")
         
         return multiple
     }

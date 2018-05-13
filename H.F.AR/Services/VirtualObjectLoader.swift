@@ -25,6 +25,16 @@ class VirtualObjectLoader {
         }
 	}
     
+    func replaceVirtualObjects(_ objects: [VirtualObject]) {
+        removeAllVirtualObjects()
+        
+        for object in objects {
+            loadVirtualObject(object) { (loadedObject) in
+                loadedObject.isHidden = false
+            }
+        }
+    }
+    
     // MARK: - Removing Objects
     func removeAllVirtualObjects() {
         // Reverse the indices so we don't trample over indices as objects are removed.

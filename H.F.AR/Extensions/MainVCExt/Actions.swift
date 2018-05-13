@@ -11,6 +11,7 @@ extension MainVC: UIGestureRecognizerDelegate {
         case showSettings
         case showLogin
         case showAccount
+        case showSaves
     }
     
     // MARK: - Interface Actions
@@ -68,6 +69,11 @@ extension MainVC: UIGestureRecognizerDelegate {
         }
     }
     
+    // Open saves list
+    @IBAction func showSavesList() {
+        performSegue(withIdentifier: SegueIdentifier.showSaves.rawValue, sender: savesButton)
+    }
+    
     // Change Image of Login Button if user is logged in
     @objc func loadUserProfileImage(_ notif: Notification) {
         if AuthService.instance.isLoggedIn {
@@ -102,6 +108,34 @@ extension MainVC: UIGestureRecognizerDelegate {
         self.statusViewController.showMessage(text)
     }
     
+    @objc func printSaves(_ notif: Notification) {
+        
+        let list = virtualObjectLoader.loadedObjects
+        for element in list {
+            print(element.modelName)
+            //print("\(element.anchor!.transform.columns.0.w), \(element.anchor!.transform.columns.0.x), \(element.anchor!.transform.columns.0.y), \(element.anchor!.transform.columns.0.z)")
+            //print("\(element.anchor!.transform.columns.1.w), \(element.anchor!.transform.columns.1.x), \(element.anchor!.transform.columns.1.y), \(element.anchor!.transform.columns.1.z)")
+            //print("\(element.anchor!.transform.columns.2.w), \(element.anchor!.transform.columns.2.x), \(element.anchor!.transform.columns.2.y), \(element.anchor!.transform.columns.2.z)")
+            //print("\(element.anchor!.transform.columns.3.w), \(element.anchor!.transform.columns.3.x), \(element.anchor!.transform.columns.3.y), \(element.anchor!.transform.columns.3.z)")
+            
+            // element.objectRotation += 0.1
+            
+            print("position: \(element.position.x), \(element.position.y), \(element.position.z)")
+            print("eulerAngles: \(element.eulerAngles.x), \(element.eulerAngles.y), \(element.eulerAngles.z)")
+            print("rotations: \(element.objectRotation), \(element.rotation.y)")
+        }
+        // let box = BoxNode(position: SCNVector3Make(0.0, 0.0, 0.0), length: 0.01)
+        // sceneView.scene.rootNode.addChildNode(box)
+        
+        // print("camera")
+        // if let camera = session.currentFrame?.camera {
+        //     print("\(camera.transform.translation.x), \(camera.transform.translation.y), \(camera.transform.translation.z)")
+        // } else {
+        //     print("없음")
+        // }
+        
+        
+    }
 }
 
 extension MainVC: UIPopoverPresentationControllerDelegate {
@@ -119,10 +153,17 @@ extension MainVC: UIPopoverPresentationControllerDelegate {
             popoverController.sourceRect = button.bounds
         }
         
+        if segue.identifier == SegueIdentifier.showSaves.rawValue {
+            if let vc = segue.destination as? SavesListVC {
+                vc.loadedObjects = virtualObjectLoader.loadedObjects
+                vc.delegate = self
+            }
+        }
+        
         guard let identifier = segue.identifier, let segueIdentifer = SegueIdentifier(rawValue: identifier), segueIdentifer == .showObjects else { return }
         
-        let objectsTableVC = segue.destination as! VirtualObjectSelectionVC
         // Load objects to objectsTableVC
+        let objectsTableVC = segue.destination as! VirtualObjectSelectionVC
         objectsTableVC.virtualObjects = virtualObjects
         objectsTableVC.delegate = self
         

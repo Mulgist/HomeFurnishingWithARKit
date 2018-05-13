@@ -10,6 +10,11 @@
 		041E6D1720922C9B00A0BCF3 /* ProductInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E6D1620922C9B00A0BCF3 /* ProductInfoVC.swift */; };
 		041F0868209DED2F00230BB4 /* ShadowAndRadiusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F0867209DED2F00230BB4 /* ShadowAndRadiusView.swift */; };
 		043D1FC62074C09200792629 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 043D1FC52074C09200792629 /* Main.storyboard */; };
+		044A695120A4551E00304CC3 /* SavesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A695020A4551E00304CC3 /* SavesListCell.swift */; };
+		044A695320A456F600304CC3 /* SaveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A695220A456F600304CC3 /* SaveData.swift */; };
+		0469D0B720A417F60012434C /* SavesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0469D0B620A417F60012434C /* SavesListVC.swift */; };
+		0498458520A325270058B7C9 /* BoxNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0498458420A325260058B7C9 /* BoxNode.swift */; };
+		0498458720A3252F0058B7C9 /* SphereNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0498458620A3252F0058B7C9 /* SphereNode.swift */; };
 		04BA7F742077A850003216FA /* MainStrings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04BA7F722077A84F003216FA /* MainStrings.strings */; };
 		04BA7F7720788024003216FA /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA7F7620788024003216FA /* SettingsVC.swift */; };
 		04BA7F792078B0D2003216FA /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA7F782078B0D2003216FA /* CircleButton.swift */; };
@@ -44,10 +49,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		041E6D1520921A1500A0BCF3 /* H.F.AR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = H.F.AR.app; path = "/Users/juwon/Documents/H.F.AR/build/Debug-iphoneos/H.F.AR.app"; sourceTree = "<absolute>"; };
 		041E6D1620922C9B00A0BCF3 /* ProductInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoVC.swift; sourceTree = "<group>"; };
 		041F0867209DED2F00230BB4 /* ShadowAndRadiusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowAndRadiusView.swift; sourceTree = "<group>"; };
 		043D1FC52074C09200792629 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		044A695020A4551E00304CC3 /* SavesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavesListCell.swift; sourceTree = "<group>"; };
+		044A695220A456F600304CC3 /* SaveData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveData.swift; sourceTree = "<group>"; };
+		0469D0B620A417F60012434C /* SavesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavesListVC.swift; sourceTree = "<group>"; };
+		0498458220A31F5E0058B7C9 /* H.F.AR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = H.F.AR.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0498458420A325260058B7C9 /* BoxNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxNode.swift; sourceTree = "<group>"; };
+		0498458620A3252F0058B7C9 /* SphereNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SphereNode.swift; sourceTree = "<group>"; };
 		04BA7F732077A84F003216FA /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = Localization/ko.lproj/MainStrings.strings; sourceTree = "<group>"; };
 		04BA7F752077A854003216FA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localization/en.lproj/MainStrings.strings; sourceTree = "<group>"; };
 		04BA7F7620788024003216FA /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
@@ -120,6 +130,7 @@
 		043D1FC12074BC3F00792629 /* H.F.AR */ = {
 			isa = PBXGroup;
 			children = (
+				0498458320A3250D0058B7C9 /* Nodes */,
 				04BA7F7C2078B802003216FA /* Services */,
 				043D1FBF2074BACE00792629 /* Extensions */,
 				043D1FC32074BD1A00792629 /* View */,
@@ -145,6 +156,7 @@
 				C41366B81EB80DD400EC054A /* StatusVC.swift */,
 				147062631F06FA790003EE03 /* VirtualObjectSelectionVC.swift */,
 				041E6D1620922C9B00A0BCF3 /* ProductInfoVC.swift */,
+				0469D0B620A417F60012434C /* SavesListVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -157,6 +169,7 @@
 				04F386592085ECB700787988 /* ObjectCell.swift */,
 				C46356661EF9CC480080C8D9 /* VirtualObjectARView.swift */,
 				041F0867209DED2F00230BB4 /* ShadowAndRadiusView.swift */,
+				044A695020A4551E00304CC3 /* SavesListCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -167,7 +180,7 @@
 				C42A71BC1E9C0AF200944367 /* FocusSquare.swift */,
 				148832401EFC3B250043E0AB /* FocusSquareSegment.swift */,
 				C8D719FF1F3B7D3D0086AD64 /* VirtualObject.swift */,
-				C46356651EF9CB1A0080C8D9 /* VirtualObjectLoader.swift */,
+				044A695220A456F600304CC3 /* SaveData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -180,6 +193,15 @@
 				147D76491EFC36070000FEBF /* ObjectSelection.swift */,
 			);
 			path = MainVCExt;
+			sourceTree = "<group>";
+		};
+		0498458320A3250D0058B7C9 /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				0498458420A325260058B7C9 /* BoxNode.swift */,
+				0498458620A3252F0058B7C9 /* SphereNode.swift */,
+			);
+			path = Nodes;
 			sourceTree = "<group>";
 		};
 		04BA7F6B2077920A003216FA /* Localization */ = {
@@ -195,6 +217,7 @@
 			children = (
 				04BA7F7D2078B819003216FA /* AuthService.swift */,
 				04BA7F7F2078B827003216FA /* UserDataService.swift */,
+				C46356651EF9CB1A0080C8D9 /* VirtualObjectLoader.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -224,6 +247,7 @@
 				043D1FC12074BC3F00792629 /* H.F.AR */,
 				FA72C18594CCE813F5D77986 /* Pods */,
 				A4DC4C44E68128ED972E055B /* Frameworks */,
+				0498458220A31F5E0058B7C9 /* H.F.AR.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -264,7 +288,7 @@
 			);
 			name = H.F.AR;
 			productName = ARKitInteraction;
-			productReference = 041E6D1520921A1500A0BCF3 /* H.F.AR.app */;
+			productReference = 0498458220A31F5E0058B7C9 /* H.F.AR.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -396,7 +420,9 @@
 				C41366B91EB80DD400EC054A /* StatusVC.swift in Sources */,
 				04BA7F802078B827003216FA /* UserDataService.swift in Sources */,
 				04BA7F7E2078B819003216FA /* AuthService.swift in Sources */,
+				044A695120A4551E00304CC3 /* SavesListCell.swift in Sources */,
 				04F3865A2085ECB700787988 /* ObjectCell.swift in Sources */,
+				044A695320A456F600304CC3 /* SaveData.swift in Sources */,
 				04BA7F7720788024003216FA /* SettingsVC.swift in Sources */,
 				39C0B95A1E9C6B1F003FCA0C /* Utilities.swift in Sources */,
 				147062641F06FA790003EE03 /* VirtualObjectSelectionVC.swift in Sources */,
@@ -410,6 +436,9 @@
 				C42A71BD1E9C0AF200944367 /* FocusSquare.swift in Sources */,
 				3929C48C1E89EC2C00E00B60 /* AppDelegate.swift in Sources */,
 				C46356681EF9CC530080C8D9 /* VirtualObjectLoader.swift in Sources */,
+				0469D0B720A417F60012434C /* SavesListVC.swift in Sources */,
+				0498458720A3252F0058B7C9 /* SphereNode.swift in Sources */,
+				0498458520A325270058B7C9 /* BoxNode.swift in Sources */,
 				04BA7F7B2078B7B3003216FA /* SelectProviderVC.swift in Sources */,
 				041E6D1720922C9B00A0BCF3 /* ProductInfoVC.swift in Sources */,
 			);

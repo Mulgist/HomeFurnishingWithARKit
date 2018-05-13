@@ -4,8 +4,7 @@
 import UIKit
 import ARKit
 
-extension MainVC: VirtualObjectSelectionVCDelegate {
-    
+extension MainVC: VirtualObjectSelectionVCDelegate, SavesListVCDelegate {
      // Adds the specified virtual object to the scene, placed using the focus square's estimate of the world-space position currently corresponding to the center of the screen.
      // - Tag: PlaceVirtualObject
     func placeVirtualObject(_ virtualObject: VirtualObject) {
@@ -45,6 +44,43 @@ extension MainVC: VirtualObjectSelectionVCDelegate {
             }
         })
         displayObjectLoadingUI()
+    }
+    
+    func savesListVC(_ listVC: SavesListVC, loadObjects: [VirtualObject], objectRotations: [Float]) {
+        virtualObjectLoader.removeAllVirtualObjects()
+        
+        for index in 0..<loadObjects.count {
+            virtualObjectLoader.loadVirtualObject(loadObjects[index]) { (loadedObject) in
+                DispatchQueue.main.sync {
+                    self.hideObjectLoadingUI()
+                    // 안바뀜.
+                    print("pre position: \(loadedObject.position.x), \(loadedObject.position.y), \(loadedObject.position.z)")
+                    let position = loadedObject.position
+                    // position이 FocusSquare에 맞춰서 바뀐다.
+                    self.placeVirtualObject(loadedObject)
+                    // 바뀜
+                    print("post position: \(loadedObject.position.x), \(loadedObject.position.y), \(loadedObject.position.z)")
+                    loadedObject.position = position
+                    loadedObject.objectRotation = objectRotations[index]
+                }
+            }
+        }
+    }
+    
+    func savesListVC(_ listVC: SavesListVC, getCurrentSession: Bool) -> ARSession {
+        if getCurrentSession {
+            return session
+        } else {
+            return ARSession()
+        }
+    }
+    
+    func savesListVC(_ listVC: SavesListVC, getVirtualObjects: Bool) -> [VirtualObject] {
+        if getVirtualObjects {
+            return virtualObjects
+        } else {
+            return [VirtualObject]()
+        }
     }
     
     // Disselect and remove
