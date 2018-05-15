@@ -58,7 +58,32 @@
 
 "Product Page" = "제품 상세 페이지";
 
+"Size (approximate)" = "사이즈 (대략)";
+
+"width" = "가로";
+"height" = "세로";
+"depth" = "높이";
+
+"(Warning: After viewing the website, this app will try to recover the AR session.)" = "(주의: 웹사이트 방문 후에, 앱에서 AR 세션 복구를 시도합니다.)";
+
 "The shape and color of the item on the product page may differ from the above 3D model." = "제품 상세 페이지에 있는 물건의 모양과 색상은 위 3D 모델과 다를 수 있습니다.";
 
 "This product is not currently available for sale." = "이 제품은 현재 판매하고 있지 않습니다.";
 
+// -----------------------------
+
+"SAVE THE STATUS" = "상태 저장하기";
+
+"Edit the title." = "제목을 수정하세요.";
+
+"SAVE SUCCEED" = "저장 성공";
+
+"The status has been successfully saved." = "상태가 성공적으로 저장되었습니다.";
+
+"SAVE FAILED" = "저장 실패";
+
+"The state saving failed for some reason. Please try again." = "어떤 이유로 저장에 실패했습니다. 다시 시도해주세요.";
+
+"OK" = "승인";
+
+"Cancel" = "취소";

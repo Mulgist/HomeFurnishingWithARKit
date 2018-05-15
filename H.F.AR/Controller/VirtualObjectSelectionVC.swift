@@ -9,12 +9,8 @@ import Localize_Swift
 // MARK: - VirtualObjectSelectionVC
 // A custom table view controller to allow users to select 'VirtualObject's for placement in the scene.
 class VirtualObjectSelectionVC: UITableViewController {
-    
     // The collection of 'VirtualObject's to select from.
     var virtualObjects = [VirtualObject]()
-    
-    // The rows of the currently selected 'VirtualObject's.
-    // var selectedVirtualObjectRows = IndexSet()
 	
 	// The rows of the 'VirtualObject's that are currently allowed to be placed.
 	var enabledVirtualObjectRows = Set<Int>()
@@ -27,11 +23,6 @@ class VirtualObjectSelectionVC: UITableViewController {
         tableView.separatorEffect = UIVibrancyEffect(blurEffect: UIBlurEffect(style: .light))
     }
     
-    override func viewWillLayoutSubviews() {
-        // preferredContentSize = CGSize(width: 250, height: tableView.contentSize.height)
-        // preferredContentSize = CGSize(width: 350, height: 350)
-    }
-	
 	func updateObjectAvailability(for planeAnchor: ARPlaneAnchor?) {
 		var newEnabledVirtualObjectRows = Set<Int>()
         for (row, object) in VirtualObject.availableObjects.enumerated() {
@@ -39,12 +30,6 @@ class VirtualObjectSelectionVC: UITableViewController {
 			if object.isPlacementValid(on: planeAnchor) {
 				newEnabledVirtualObjectRows.insert(row)
 			}
-			// Enable row always if item is already placed, in order to allow the user to remove it.
-            /*
-			if selectedVirtualObjectRows.contains(row) {
-				newEnabledVirtualObjectRows.insert(row)
-			}
-            */
 		}
 		
 		// Only reload changed rows
@@ -66,20 +51,9 @@ class VirtualObjectSelectionVC: UITableViewController {
         let object = VirtualObject(url: virtualObjects[indexPath.row].referenceURL)!
         
         // VirtualObject가 새로 생성되었으니 name도 다시 넣어준다.
-        object.localizedName = virtualObjects[indexPath.row].localizedName
-        
-        // Check if the current row is already selected, then deselect it.
-        /*
-        if selectedVirtualObjectRows.contains(indexPath.row) {
-            delegate?.virtualObjectSelectionVC(self, didDeselectObject: object)
-            // delegate?.virtualObjectSelectionVC(self, didSelectObject: object)
-        } else {
-            delegate?.virtualObjectSelectionVC(self, didSelectObject: object)
-        }
-        */
+        object.setNames(virtualObjects[indexPath.row].localizedName["en"]!, virtualObjects[indexPath.row].localizedName["ko"]!)
         
         delegate?.virtualObjectSelectionVC(self, didSelectObject: object)
-        
         dismiss(animated: true, completion: nil)
     }
         
@@ -95,20 +69,9 @@ class VirtualObjectSelectionVC: UITableViewController {
             fatalError("Expected '\(ObjectCell.self)' type for reuseIdentifier \(ObjectCell.reuseIdentifier). Check the configuration in Main.storyboard.")
         }
         
-        // Cell config
         // At this time, the text and image of the cell are set.
         cell.modelName = virtualObjects[indexPath.row].getLocalizedName()
         
-        /*
-        if selectedVirtualObjectRows.contains(indexPath.row) {
-            // Add checkmark
-            cell.accessoryType = .checkmark
-        } else {
-            // Delete checkmark
-            cell.accessoryType = .none
-        }
-        */
-		
 		let cellIsEnabled = enabledVirtualObjectRows.contains(indexPath.row)
 		if cellIsEnabled {
             cell.vibrancyView.alpha = 1.0
@@ -136,8 +99,6 @@ class VirtualObjectSelectionVC: UITableViewController {
 }
 
 // MARK: - VirtualObjectSelectionVCDelegate
-// A protocol for reporting which objects have been selected.
 protocol VirtualObjectSelectionVCDelegate: class {
     func virtualObjectSelectionVC(_ selectionVC: VirtualObjectSelectionVC, didSelectObject: VirtualObject)
-    func virtualObjectSelectionVC(_ selectionVC: VirtualObjectSelectionVC, didDeselectObject: VirtualObject)
 }

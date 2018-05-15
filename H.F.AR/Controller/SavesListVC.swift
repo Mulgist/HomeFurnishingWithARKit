@@ -8,6 +8,7 @@
 
 import UIKit
 import SceneKit
+import Localize_Swift
 import Alamofire
 import SwiftyJSON
 import ARKit
@@ -26,13 +27,8 @@ class SavesListVC: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
+        loadedObjects = delegate?.savesListVC(self, getLoadedVirtualObjects: true)
         loadSaveList()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        // tableView.reloadData()
     }
     
     @IBAction func saveBtnPressed(_ sender: Any) {
@@ -47,7 +43,7 @@ class SavesListVC: UIViewController {
         let currentDateTime = "\(year)-\(String(format: "%02d", month))-\(String(format: "%02d", day)) \(String(format: "%02d", hour)):\(String(format: "%02d", minutes)):\(String(format: "%02d", seconds))"
         
         // Alert Popup (Edit name)
-        let alertController = UIAlertController(title: "SAVE THE STATUS", message: "Edit the name.", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "SAVE THE STATUS".localized(using: "MainStrings"), message: "Edit the title.".localized(using: "MainStrings"), preferredStyle: .alert)
 
         alertController.addTextField { textField in
             textField.placeholder = "Name"
@@ -57,21 +53,17 @@ class SavesListVC: UIViewController {
             textField.backgroundColor = .clear
         }
 
-        // | OK |  Cancel  |
-        let OKAction = UIAlertAction(title: "OK", style: .default) { action in
+        // |  OK  | Cancel |
+        let OKAction = UIAlertAction(title: "OK".localized(using: "MainStrings"), style: .default) { action in
             let name = alertController.textFields![0].text!
             self.saveData(currentDateTime, name)
         }
         alertController.addAction(OKAction)
 
-        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive) { action in
-            // ...
-        }
+        let cancelAction = UIAlertAction(title: "Cancel".localized(using: "MainStrings"), style: .destructive) { action in }
         alertController.addAction(cancelAction)
 
-        self.present(alertController, animated: true) {
-            // ...
-        }
+        self.present(alertController, animated: true, completion: nil)
     }
     
     func loadSaveList() {
@@ -90,7 +82,6 @@ class SavesListVC: UIViewController {
                     let data = SaveData(jsonElement["id"].stringValue, jsonElement["name"].stringValue, jsonElement["content"].stringValue)
                     self.savesList.append(data)
                 }
-                print("load succeed")
                 self.tableView.reloadData()
             }
         }
@@ -98,8 +89,6 @@ class SavesListVC: UIViewController {
     
     func saveData(_ date: String, _ name: String) {
         let dataString = serializeVirtualObjects()
-        
-        // print("\(BASE_URL)\(REQUEST_SUFFIX)?method=\(SAVE_DATA)&who=\(AuthService.instance.userId)&date=\(date)&name=\(name)&data=\(dataString)")
         
         let body: [String:Any] = [
             "method": SAVE_DATA,
@@ -111,26 +100,21 @@ class SavesListVC: UIViewController {
         
         // Web Request
         Alamofire.request("\(BASE_URL)\(REQUEST_SUFFIX)", method: .post, parameters: body, encoding: URLEncoding.default, headers: URL_ENCODE_HEADER).responseJSON { (response) in
-            print(response.result.error?.localizedDescription ?? "none error")
-            //print(response.response)
-            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
-                print("Data: \(utf8Text)")
-            }
             if response.result.error == nil {
                 guard let data = response.data else { return }
                 var json = JSON(data)
                 json = json[0]
                 
                 if json["result"].stringValue == "success" {
-                    let alertController = UIAlertController(title: "SAVE SUCCEED", message: "The status has been successfully saved.", preferredStyle: .alert)
-                    let OKAction = UIAlertAction(title: "OK", style: .default) { action in self.loadSaveList() }
+                    let alertController = UIAlertController(title: "SAVE SUCCEED".localized(using: "MainStrings"), message: "The status has been successfully saved.".localized(using: "MainStrings"), preferredStyle: .alert)
+                    let OKAction = UIAlertAction(title: "OK".localized(using: "MainStrings"), style: .default) { action in self.loadSaveList() }
                     alertController.addAction(OKAction)
-                    self.present(alertController, animated: true) { /* ... */ }
+                    self.present(alertController, animated: true, completion: nil)
                 } else {
-                    let alertController = UIAlertController(title: "SAVE FAILED", message: "The state saving failed for some reason. Please try again.", preferredStyle: .alert)
-                    let OKAction = UIAlertAction(title: "OK", style: .default) { action in /* ... */ }
+                    let alertController = UIAlertController(title: "SAVE FAILED".localized(using: "MainStrings"), message: "The state saving failed for some reason. Please try again.".localized(using: "MainStrings"), preferredStyle: .alert)
+                    let OKAction = UIAlertAction(title: "OK".localized(using: "MainStrings"), style: .default) { action in }
                     alertController.addAction(OKAction)
-                    self.present(alertController, animated: true) { /* ... */ }
+                    self.present(alertController, animated: true, completion: nil)
                 }
             }
         }
@@ -192,7 +176,6 @@ class SavesListVC: UIViewController {
             objectRotations.append(Float(components[2])!)
             objects.append(addedObject)
         }
-        print(objects.count)
         return (objects, objectRotations)
     }
 }
@@ -235,14 +218,15 @@ extension SavesListVC: UITableViewDelegate, UITableViewDataSource {
         dismiss(animated: true, completion: nil)
     }
     
-    // 오른쪽에 정보 버튼 눌렀을 때
+    // When the information button on the right of the item is pressed
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        print("detail 누름")
+        print("detail pressed")
     }
 }
 
 protocol SavesListVCDelegate: class {
     func savesListVC(_ listVC: SavesListVC, loadObjects: [VirtualObject], objectRotations: [Float])
     func savesListVC(_ listVC: SavesListVC, getCurrentSession: Bool) -> ARSession
+    func savesListVC(_ listVC: SavesListVC, getLoadedVirtualObjects: Bool) -> [VirtualObject]
     func savesListVC(_ listVC: SavesListVC, getVirtualObjects: Bool) -> [VirtualObject]
 }

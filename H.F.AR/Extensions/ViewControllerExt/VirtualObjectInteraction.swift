@@ -141,7 +141,6 @@ class VirtualObjectInteraction: NSObject, UIGestureRecognizerDelegate {
     }
     
     // MARK: - Update object position
-
     // - Tag: DragVirtualObject
 	private func translate(_ object: VirtualObject, basedOn screenPos: CGPoint, infinitePlane: Bool, allowAnimation: Bool) {
         guard let cameraTransform = sceneView.session.currentFrame?.camera.transform,

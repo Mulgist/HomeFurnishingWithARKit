@@ -9,10 +9,10 @@ extension MainVC: VirtualObjectSelectionVCDelegate, SavesListVCDelegate {
      // - Tag: PlaceVirtualObject
     func placeVirtualObject(_ virtualObject: VirtualObject) {
         guard let cameraTransform = session.currentFrame?.camera.transform, let focusSquareAlignment = focusSquare.recentFocusSquareAlignments.last, focusSquare.state != .initializing else {
-            	statusViewController.showMessage("CANNOT PLACE OBJECT\nTry moving left or right.".localized(using: "MainStrings"))
-				if let controller = objectsTableVC {
-					virtualObjectSelectionVC(controller, didDeselectObject: virtualObject)
-				}
+            statusViewController.showMessage("CANNOT PLACE OBJECT\nTry moving left or right.".localized(using: "MainStrings"))
+            if let index = virtualObjectLoader.loadedObjects.index(of: virtualObject) {
+                virtualObjectLoader.removeVirtualObject(at: index)
+            }
             return
         }
 		
@@ -35,7 +35,7 @@ extension MainVC: VirtualObjectSelectionVCDelegate, SavesListVCDelegate {
     }
     
     // MARK: - VirtualObjectSelectionVCDelegate
-    // Select and place
+    // Select a object and place
     func virtualObjectSelectionVC(_: VirtualObjectSelectionVC, didSelectObject object: VirtualObject) {
         virtualObjectLoader.loadVirtualObject(object, loadedHandler: { [unowned self] loadedObject in
             DispatchQueue.main.async {
@@ -53,12 +53,12 @@ extension MainVC: VirtualObjectSelectionVCDelegate, SavesListVCDelegate {
             virtualObjectLoader.loadVirtualObject(loadObjects[index]) { (loadedObject) in
                 DispatchQueue.main.sync {
                     self.hideObjectLoadingUI()
-                    // 안바뀜.
+                    // Not changed
                     print("pre position: \(loadedObject.position.x), \(loadedObject.position.y), \(loadedObject.position.z)")
                     let position = loadedObject.position
-                    // position이 FocusSquare에 맞춰서 바뀐다.
+                    // The position changes to match FocusSquare.
                     self.placeVirtualObject(loadedObject)
-                    // 바뀜
+                    // Changed
                     print("post position: \(loadedObject.position.x), \(loadedObject.position.y), \(loadedObject.position.z)")
                     loadedObject.position = position
                     loadedObject.objectRotation = objectRotations[index]
@@ -75,6 +75,14 @@ extension MainVC: VirtualObjectSelectionVCDelegate, SavesListVCDelegate {
         }
     }
     
+    func savesListVC(_ listVC: SavesListVC, getLoadedVirtualObjects: Bool) -> [VirtualObject] {
+        if getLoadedVirtualObjects {
+            return virtualObjectLoader.loadedObjects
+        } else {
+            return [VirtualObject]()
+        }
+    }
+    
     func savesListVC(_ listVC: SavesListVC, getVirtualObjects: Bool) -> [VirtualObject] {
         if getVirtualObjects {
             return virtualObjects
@@ -83,25 +91,12 @@ extension MainVC: VirtualObjectSelectionVCDelegate, SavesListVCDelegate {
         }
     }
     
-    // Disselect and remove
-    func virtualObjectSelectionVC(_: VirtualObjectSelectionVC, didDeselectObject object: VirtualObject) {
-        guard let objectIndex = virtualObjectLoader.loadedObjects.index(of: object) else {
-            fatalError("Programmer error: Failed to lookup virtual object in scene.")
-        }
-        virtualObjectLoader.removeVirtualObject(at: objectIndex)
-		virtualObjectInteraction.selectedObject = nil
-		if let anchor = object.anchor {
-			session.remove(anchor: anchor)
-		}
-    }
-    
     // MARK: Object Loading UI
     func displayObjectLoadingUI() {
         // Show progress indicator.
         spinner.startAnimating()
         
         addObjectButton.setImage(#imageLiteral(resourceName: "buttonring"), for: [])
-
         addObjectButton.isEnabled = false
         isRestartAvailable = false
     }
@@ -112,7 +107,6 @@ extension MainVC: VirtualObjectSelectionVCDelegate, SavesListVCDelegate {
         
         addObjectButton.setImage(#imageLiteral(resourceName: "add"), for: [])
         addObjectButton.setImage(#imageLiteral(resourceName: "addPressed"), for: [.highlighted])
-        
         addObjectButton.isEnabled = true
         isRestartAvailable = true
     }

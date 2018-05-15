@@ -19,7 +19,7 @@ class UserDataService {
     public private(set) var provider: String = ""
     public private(set) var profileImage: UIImage = UIImage(named: DEFAULT_PROFILE_IMAGE_NAME)!
     
-    func setUserData(id: String, email: String, familyName: String, givenName: String, fullName: String, provider: String, profileImage: UIImage) {
+    func setUserData(id: String, email: String, familyName: String, givenName: String, fullName: String, provider: String, profileImage: UIImage = UIImage(named: DEFAULT_PROFILE_IMAGE_NAME)!) {
         self.id = id
         self.email = email
         self.familyName = familyName
@@ -38,7 +38,7 @@ class UserDataService {
         provider = ""
         profileImage = UIImage(named: DEFAULT_PROFILE_IMAGE_NAME)!
         AuthService.instance.userId = "userId"
-        // 로그아웃 완료
+        // Log out completed
         AuthService.instance.isLoggedIn = false
         NotificationCenter.default.post(name: NOTIF_USER_DATA_LOADED, object: nil)
     }

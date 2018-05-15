@@ -33,7 +33,6 @@ extension float4x4 {
 }
 
 // MARK: - CGPoint extensions
-
 extension CGPoint {
     // Extracts the screen space point from a vector returned by SCNView.projectPoint(_:).
 	init(_ vector: SCNVector3) {
@@ -44,4 +43,13 @@ extension CGPoint {
     var length: CGFloat {
 		return sqrt(x * x + y * y)
 	}
+}
+
+// MARK: - Float extensions
+extension Float {
+    // Rounds the float to decimal places value
+    func roundToPlaces(_ places: Int) -> Float {
+        let divisor = pow(10.0, Float(places))
+        return (self * divisor).rounded() / divisor
+    }
 }

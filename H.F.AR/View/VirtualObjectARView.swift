@@ -7,7 +7,6 @@ import ARKit
 class VirtualObjectARView: ARSCNView {
 
     // MARK: Position Testing
-    
     // Hit tests against the 'sceneView' to find an object at the provided point.
     func virtualObject(at point: CGPoint) -> VirtualObject? {
         let hitTestOptions: [SCNHitTestOption: Any] = [.boundingBoxOnly: true]
@@ -18,11 +17,7 @@ class VirtualObjectARView: ARSCNView {
         }.first
     }
 	
-    func smartHitTest(_ point: CGPoint,
-                      infinitePlane: Bool = false,
-                      objectPosition: float3? = nil,
-                      allowedAlignments: [ARPlaneAnchor.Alignment] = [.horizontal, .vertical]) -> ARHitTestResult? {
-		
+    func smartHitTest(_ point: CGPoint, infinitePlane: Bool = false, objectPosition: float3? = nil, allowedAlignments: [ARPlaneAnchor.Alignment] = [.horizontal, .vertical]) -> ARHitTestResult? {
 		// Perform the hit test.
 		let results = hitTest(point, types: [.existingPlaneUsingGeometry, .estimatedVerticalPlane, .estimatedHorizontalPlane])
 		
@@ -33,7 +28,6 @@ class VirtualObjectARView: ARSCNView {
 		}
 		
 		if infinitePlane {
-			
 			// 2. Check for a result on an existing plane, assuming its dimensions are infinite.
 			//    Loop through all hits against infinite existing planes and either return the nearest one (vertical planes) or return the nearest one which is within 5 cm of the object's position.
 			let infinitePlaneResults = hitTest(point, types: .existingPlane)

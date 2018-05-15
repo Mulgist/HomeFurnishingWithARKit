@@ -15,7 +15,6 @@ extension MainVC: UIGestureRecognizerDelegate {
     }
     
     // MARK: - Interface Actions
-    
     // Displays the 'VirtualObjectSelectionVC' from the 'addObjectButton' or in response to a tap gesture in the 'sceneView'.
     @IBAction func showVirtualObjectSelectionViewController() {
         // Ensure adding objects is an available action and we are not loading another object (to avoid concurrent modifications of the scene).
@@ -47,6 +46,7 @@ extension MainVC: UIGestureRecognizerDelegate {
 
         resetTracking()
         
+        // Remove object information and delete buttons
         NotificationCenter.default.post(name: NOTIF_UNSET_INFO_RM_BUTTON, object: nil)
         
         // Disable restart for a while in order to give the session time to restart.
@@ -108,8 +108,8 @@ extension MainVC: UIGestureRecognizerDelegate {
         self.statusViewController.showMessage(text)
     }
     
+    // Codes for debuging
     @objc func printSaves(_ notif: Notification) {
-        
         let list = virtualObjectLoader.loadedObjects
         for element in list {
             print(element.modelName)
@@ -118,28 +118,18 @@ extension MainVC: UIGestureRecognizerDelegate {
             //print("\(element.anchor!.transform.columns.2.w), \(element.anchor!.transform.columns.2.x), \(element.anchor!.transform.columns.2.y), \(element.anchor!.transform.columns.2.z)")
             //print("\(element.anchor!.transform.columns.3.w), \(element.anchor!.transform.columns.3.x), \(element.anchor!.transform.columns.3.y), \(element.anchor!.transform.columns.3.z)")
             
-            // element.objectRotation += 0.1
-            
+            // print position
             print("position: \(element.position.x), \(element.position.y), \(element.position.z)")
-            print("eulerAngles: \(element.eulerAngles.x), \(element.eulerAngles.y), \(element.eulerAngles.z)")
-            print("rotations: \(element.objectRotation), \(element.rotation.y)")
+            // print("eulerAngles: \(element.eulerAngles.x), \(element.eulerAngles.y), \(element.eulerAngles.z)")
         }
+        
+        // 원점에 상자 추가
         // let box = BoxNode(position: SCNVector3Make(0.0, 0.0, 0.0), length: 0.01)
         // sceneView.scene.rootNode.addChildNode(box)
-        
-        // print("camera")
-        // if let camera = session.currentFrame?.camera {
-        //     print("\(camera.transform.translation.x), \(camera.transform.translation.y), \(camera.transform.translation.z)")
-        // } else {
-        //     print("없음")
-        // }
-        
-        
     }
 }
 
 extension MainVC: UIPopoverPresentationControllerDelegate {
-    
     // MARK: - UIPopoverPresentationControllerDelegate
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
@@ -155,25 +145,18 @@ extension MainVC: UIPopoverPresentationControllerDelegate {
         
         if segue.identifier == SegueIdentifier.showSaves.rawValue {
             if let vc = segue.destination as? SavesListVC {
-                vc.loadedObjects = virtualObjectLoader.loadedObjects
                 vc.delegate = self
             }
         }
         
-        guard let identifier = segue.identifier, let segueIdentifer = SegueIdentifier(rawValue: identifier), segueIdentifer == .showObjects else { return }
-        
-        // Load objects to objectsTableVC
-        let objectsTableVC = segue.destination as! VirtualObjectSelectionVC
-        objectsTableVC.virtualObjects = virtualObjects
-        objectsTableVC.delegate = self
-        
-        // Link to VirtualObjectSelectionVC
-		self.objectsTableVC = objectsTableVC
-        
-        // Set all rows of currently placed objects to selected.
-        for object in virtualObjectLoader.loadedObjects {
-            guard let index = VirtualObject.availableObjects.index(of: object) else { continue }
-            // objectsTableVC.selectedVirtualObjectRows.insert(index)
+        if let identifier = segue.identifier, let segueIdentifer = SegueIdentifier(rawValue: identifier), segueIdentifer == .showObjects {
+            // Load objects to objectsTableVC
+            let objectsTableVC = segue.destination as! VirtualObjectSelectionVC
+            objectsTableVC.virtualObjects = virtualObjects
+            objectsTableVC.delegate = self
+            
+            // Link to VirtualObjectSelectionVC
+            self.objectsTableVC = objectsTableVC
         }
     }
 	

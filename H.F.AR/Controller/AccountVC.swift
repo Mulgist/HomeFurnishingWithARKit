@@ -67,12 +67,7 @@ class AccountVC: UIViewController {
     }
     
     @IBAction func logoutBtnPressed(_ sender: Any) {
-        let transition = CATransition()
-        transition.duration = 0.3
-        transition.type = kCATransitionFade
-        self.view.window?.layer.add(transition, forKey: kCATransition)
-        
         UserDataService.instance.logoutUser()
-        dismiss(animated: false, completion: nil)
+        dismissDetail()
     }
 }

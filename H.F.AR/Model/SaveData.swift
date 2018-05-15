@@ -14,10 +14,8 @@ class SaveData {
     var contentString: String
     
     init(_ id: String, _ name: String, _ contentString: String) {
-        
         self.id = id
         self.name = name
         self.contentString = contentString
-        
     }
 }

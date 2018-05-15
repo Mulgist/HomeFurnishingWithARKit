@@ -11,7 +11,6 @@ import WebKit
 import Localize_Swift
 
 class SelectProviderVC: UIViewController, WKScriptMessageHandler, WKUIDelegate {
-    
     // Outlets
     @IBOutlet weak var loginLbl: UILabel!
     @IBOutlet weak var googleLoginBtn: UIButton!
@@ -52,6 +51,7 @@ class SelectProviderVC: UIViewController, WKScriptMessageHandler, WKUIDelegate {
         config.websiteDataStore = WKWebsiteDataStore.nonPersistent()
         webView = WKWebView(frame: CGRect(x: 0, y: 0, width: 350, height: 304), configuration: config)
         
+        // Customizing User Agent due to Google's restriction policy on User Agent.
         webView.customUserAgent = "Mozilla/5.0 (iPad; CPU OS 11_0_3 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Mobile/15A432 Safari/604.1.38 Version/11.2.0.0.2"
         webView.clearsContextBeforeDrawing = true
     }

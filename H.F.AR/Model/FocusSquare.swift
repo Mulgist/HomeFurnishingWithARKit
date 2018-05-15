@@ -4,18 +4,16 @@
 import Foundation
 import ARKit
 
-// An `SCNNode` which is used to provide uses with visual cues about the status of ARKit world tracking.
+// An 'SCNNode' which is used to provide uses with visual cues about the status of ARKit world tracking.
 // - Tag: FocusSquare
 class FocusSquare: SCNNode {
     // MARK: - Types
-    
     enum State: Equatable {
         case initializing
 		case detecting(hitTestResult: ARHitTestResult, camera: ARCamera?)
     }
     
     // MARK: - Configuration Properties
-    
     // Original size of the focus square in meters.
     static let size: Float = 0.17
     
@@ -154,7 +152,6 @@ class FocusSquare: SCNNode {
 	}
     
     // MARK: - Appearance
-    
     // Hides the focus square.
     func hide() {
         guard action(forKey: "hide") == nil else { return }
@@ -198,7 +195,6 @@ class FocusSquare: SCNNode {
     }
     
     // MARK: Helper Methods
-
     // Update the transform of the focus square to be aligned with the camera.
 	private func updateTransform(for position: float3, hitTestResult: ARHitTestResult, camera: ARCamera?) {
 		// Average using several most recent positions.
@@ -466,7 +462,6 @@ class FocusSquare: SCNNode {
 }
 
 // MARK: - Animations and Actions
-
 private func pulseAction() -> SCNAction {
     let pulseOutAction = SCNAction.fadeOpacity(to: 0.4, duration: 0.5)
     let pulseInAction = SCNAction.fadeOpacity(to: 1.0, duration: 0.5)

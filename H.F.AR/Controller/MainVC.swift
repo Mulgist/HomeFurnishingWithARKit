@@ -10,8 +10,7 @@ import Localize_Swift
 
 class MainVC: UIViewController {
     
-    // MARK: IBOutlets
-    
+    // Outlets
     @IBOutlet var sceneView: VirtualObjectARView!
     @IBOutlet weak var addObjectButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
@@ -31,26 +30,25 @@ class MainVC: UIViewController {
     // MARK: - UI Elements
     var focusSquare = FocusSquare()
     
-    /// The view controller that displays the status and "restart experience" UI.
+    // The view controller that displays the status and "restart experience" UI.
     lazy var statusViewController: StatusVC = {
         return childViewControllers.lazy.flatMap({ $0 as? StatusVC }).first!
     }()
 	
-	/// The view controller that displays the virtual object selection menu.
+	// The view controller that displays the virtual object selection menu.
 	var objectsTableVC: VirtualObjectSelectionVC?
     
     // MARK: - ARKit Configuration Properties
-    
-    /// A type which manages gesture manipulation of virtual content in the scene.
+    // A type which manages gesture manipulation of virtual content in the scene.
     lazy var virtualObjectInteraction = VirtualObjectInteraction(sceneView: sceneView)
     
-    /// Coordinates the loading and unloading of reference nodes for virtual objects.
+    // Coordinates the loading and unloading of reference nodes for virtual objects.
     let virtualObjectLoader = VirtualObjectLoader()
     
-    /// Marks if the AR experience is available for restart.
+    // Marks if the AR experience is available for restart.
     var isRestartAvailable = true
     
-    /// A serial queue used to coordinate adding or removing nodes from the scene.
+    // A serial queue used to coordinate adding or removing nodes from the scene.
     let updateQueue = DispatchQueue(label: "com.example.apple-samplecode.arkitexample.serialSceneKitQueue")
     
     var screenCenter: CGPoint {
@@ -58,19 +56,16 @@ class MainVC: UIViewController {
         return CGPoint(x: bounds.midX, y: bounds.midY)
     }
     
-    /// Convenience accessor for the session owned by ARSCNView.
+    // Convenience accessor for the session owned by ARSCNView.
     var session: ARSession {
         return sceneView.session
     }
     
     // MARK: - View Controller Life Cycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         sceneView.delegate = self
         sceneView.session.delegate = self
-        
         virtualObjects = VirtualObject.availableObjects
 
         // Set up scene content.
@@ -122,7 +117,7 @@ class MainVC: UIViewController {
 		
 		// Prevent the screen from being dimmed to avoid interuppting the AR experience.
 		// UIApplication.shared.isIdleTimerDisabled = true
-
+        
         // Start the 'ARSession'.
         resetTracking()
 	}
@@ -151,7 +146,6 @@ class MainVC: UIViewController {
                     self.asciiObjectNames.append(jsonElement["ascii"].stringValue)
                     self.enObjectNames.append(jsonElement["en"].stringValue)
                     self.koObjectNames.append(jsonElement["ko"].stringValue)
-                    // print("KO Name: \(String(describing: self.koObjectNames.last))")
                 }
                 for element in self.virtualObjects {
                     if let index = self.asciiObjectNames.index(of: element.modelName) {
@@ -181,9 +175,7 @@ class MainVC: UIViewController {
         NotificationCenter.default.post(name: NOTIF_SHOW_SAVES, object: nil)
     }
     
-
     // MARK: - Scene content setup
-
     func setupCamera() {
         guard let camera = sceneView.pointOfView?.camera else {
             fatalError("Expected a valid `pointOfView` from the scene.")
@@ -197,8 +189,7 @@ class MainVC: UIViewController {
     }
 
     // MARK: - Session management
-    
-    /// Creates a new AR configuration to run on the `session`.
+    // Creates a new AR configuration to run on the `session`.
 	func resetTracking() {
 		virtualObjectInteraction.selectedObject = nil
 		
@@ -212,7 +203,6 @@ class MainVC: UIViewController {
 	}
 
     // MARK: - Focus Square
-
 	func updateFocusSquare() {
         let isObjectVisible = virtualObjectLoader.loadedObjects.contains { object in
             return sceneView.isNode(object, insideFrustumOf: sceneView.pointOfView!)

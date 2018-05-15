@@ -41,7 +41,6 @@ class StatusVC: UIViewController {
     private var timers: [MessageType: Timer] = [:]
     
     // MARK: - Message Handling
-	
 	func showMessage(_ text: String, autoHide: Bool = true) {
         // Cancel any previous hide timer.
         messageHideTimer?.invalidate()

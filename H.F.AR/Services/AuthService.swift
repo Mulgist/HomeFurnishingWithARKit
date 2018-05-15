@@ -34,13 +34,14 @@ class AuthService {
     
     func setAndLoadUserInfoById(completion: @escaping CompletionHandler) {
         // Web Request
+        print("\(BASE_URL)\(REQUEST_SUFFIX)?method=\(GET_USER_INFO)&user_id=\(userId)")
         Alamofire.request("\(BASE_URL)\(REQUEST_SUFFIX)?method=\(GET_USER_INFO)&user_id=\(userId)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
             if response.result.error == nil {
                 guard let data = response.data else { return }
                 var json = JSON(data)
-                // response 특성상 처리
+                // Due to the response characteristic
                 json = json[0]
-                // 공통 사용자 정보 저장
+                // Store common user information
                 let id = json["id"].stringValue
                 let email = json["email"].stringValue
                 let familyName = json["family_name"].stringValue
@@ -48,7 +49,7 @@ class AuthService {
                 let fullName = json["full_name"].stringValue
                 let provider = json["provider"].stringValue
                 var profileImageLink = ""
-                // provider별 사용자 정보 저장
+                // Store user information by provider
                 if json["provider"].stringValue == "Google" {
                     profileImageLink = json["google_picture_link"].stringValue
                 } else if json["provider"].stringValue == "Microsoft" {
@@ -57,54 +58,20 @@ class AuthService {
                     completion(false)
                     return
                 }
-                // print("image request: \(profileImageLink)")
-                // 프로필 이미지 가져오기
+                // Get profile image
                 Alamofire.request(profileImageLink).responseImage(completionHandler: { (response) in
-                    guard let profileImage = response.result.value else {
-                        completion(false)
-                        return
+                    if let profileImage = response.result.value {
+                        // Setting User Data when there is profile picture
+                        UserDataService.instance.setUserData(id: id, email: email, familyName: familyName, givenName: givenName, fullName: fullName, provider: provider, profileImage: profileImage)
+                    } else {
+                        // Setting User Data when there is NO profile picture
+                        UserDataService.instance.setUserData(id: id, email: email, familyName: familyName, givenName: givenName, fullName: fullName, provider: provider)
                     }
-                    // User Data 세팅
-                    UserDataService.instance.setUserData(id: id, email: email, familyName: familyName, givenName: givenName, fullName: fullName, provider: provider, profileImage: profileImage)
                     self.isLoggedIn = true
                     NotificationCenter.default.post(name: NOTIF_USER_DATA_LOADED, object: nil)
                     completion(true)
                 })
             }
         }
-    }
-    
-    func setUsreInfo(data: Data, completion: @escaping CompletionHandler) {
-        var json = JSON(data)
-        // response 특성상 처리
-        json = json[0]
-        // 공통 사용자 정보 저장
-        let id = json["id"].stringValue
-        let email = json["email"].stringValue
-        let familyName = json["family_name"].stringValue
-        let givenName = json["given_name"].stringValue
-        let fullName = json["full_name"].stringValue
-        let provider = json["provider"].stringValue
-        var profileImageLink = ""
-        // provider별 사용자 정보 저장
-        if json["provider"].stringValue == "Google" {
-            profileImageLink = json["google_picture_link"].stringValue
-        } else if json["provider"].stringValue == "Microsoft" {
-            profileImageLink = "\(MICROSOFT_PROFILE_IMAGE_BASE_REQUEST_URL_PREFIX)\(json["id"])\(MICROSOFT_PROFILE_IMAGE_BASE_REQUEST_URL_SUFFIX)"
-        } else {
-            completion(false)
-            return
-        }
-        // print("image request: \(profileImageLink)")
-        // 프로필 이미지 가져오기
-        Alamofire.request(profileImageLink).responseImage(completionHandler: { (response) in
-            guard let profileImage = response.result.value else {
-                completion(false)
-                return
-            }
-            // User Data 세팅
-            UserDataService.instance.setUserData(id: id, email: email, familyName: familyName, givenName: givenName, fullName: fullName, provider: provider, profileImage: profileImage)
-            completion(true)
-        })
     }
 }

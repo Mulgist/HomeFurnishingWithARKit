@@ -30,7 +30,7 @@
 		11BD822A1F09D750003F11C8 /* ObjectSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147D76491EFC36070000FEBF /* ObjectSelection.swift */; };
 		147062641F06FA790003EE03 /* VirtualObjectSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147062631F06FA790003EE03 /* VirtualObjectSelectionVC.swift */; };
 		1488323F1EFC378A0043E0AB /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1488323E1EFC378A0043E0AB /* Actions.swift */; };
-		148832411EFC3B250043E0AB /* FocusSquareSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148832401EFC3B250043E0AB /* FocusSquareSegment.swift */; };
+		148832411EFC3B250043E0AB /* FocusSquareExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148832401EFC3B250043E0AB /* FocusSquareExt.swift */; };
 		3929C48C1E89EC2C00E00B60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3929C48B1E89EC2C00E00B60 /* AppDelegate.swift */; };
 		3929C48E1E89EC2C00E00B60 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3929C48D1E89EC2C00E00B60 /* MainVC.swift */; };
 		3929C4931E89EC2C00E00B60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3929C4921E89EC2C00E00B60 /* Assets.xcassets */; };
@@ -74,7 +74,7 @@
 		147062631F06FA790003EE03 /* VirtualObjectSelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualObjectSelectionVC.swift; sourceTree = "<group>"; };
 		147D76491EFC36070000FEBF /* ObjectSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectSelection.swift; sourceTree = "<group>"; };
 		1488323E1EFC378A0043E0AB /* Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
-		148832401EFC3B250043E0AB /* FocusSquareSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusSquareSegment.swift; sourceTree = "<group>"; };
+		148832401EFC3B250043E0AB /* FocusSquareExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusSquareExt.swift; sourceTree = "<group>"; };
 		3929C48B1E89EC2C00E00B60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3929C48D1E89EC2C00E00B60 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		3929C4921E89EC2C00E00B60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -113,6 +113,7 @@
 				04918CC32085ADFB0045E44C /* MainVCExt */,
 				043D1FC02074BAE300792629 /* ViewControllerExt */,
 				04BA7F892078FF4E003216FA /* UIDeviceExt.swift */,
+				148832401EFC3B250043E0AB /* FocusSquareExt.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -178,7 +179,6 @@
 			isa = PBXGroup;
 			children = (
 				C42A71BC1E9C0AF200944367 /* FocusSquare.swift */,
-				148832401EFC3B250043E0AB /* FocusSquareSegment.swift */,
 				C8D719FF1F3B7D3D0086AD64 /* VirtualObject.swift */,
 				044A695220A456F600304CC3 /* SaveData.swift */,
 			);
@@ -431,7 +431,7 @@
 				C8C12A711F29277B00B011FE /* ARSCNViewDelegate.swift in Sources */,
 				C8C2AC521F3A545C00E86BA3 /* VirtualObjectInteraction.swift in Sources */,
 				C46356671EF9CC500080C8D9 /* VirtualObjectARView.swift in Sources */,
-				148832411EFC3B250043E0AB /* FocusSquareSegment.swift in Sources */,
+				148832411EFC3B250043E0AB /* FocusSquareExt.swift in Sources */,
 				C8D71A001F3B7D3D0086AD64 /* VirtualObject.swift in Sources */,
 				C42A71BD1E9C0AF200944367 /* FocusSquare.swift in Sources */,
 				3929C48C1E89EC2C00E00B60 /* AppDelegate.swift in Sources */,

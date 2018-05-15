@@ -13,20 +13,23 @@ class VirtualObject: SCNReferenceNode {
         return referenceURL.lastPathComponent.replacingOccurrences(of: ".scn", with: "")
     }
     
-    var localizedName = ["en": "", "ko": ""]
+    private(set) var localizedName = ["en": "", "ko": ""]
     
     // Use average of recent virtual object distances to avoid rapid changes in object scale.
     private var recentVirtualObjectDistances = [Float]()
 	
 	// Allowed alignments for the virtual object
 	var allowedAlignments: [ARPlaneAnchor.Alignment] {
-		if modelName == "sticky note" {
+        /*
+		if modelName == "a" {
 			return [.horizontal, .vertical]
-		} else if modelName == "painting" {
+		} else if modelName == "b" {
 			return [.vertical]
 		} else {
 			return [.horizontal]
 		}
+        */
+        return [.horizontal]
 	}
 	
 	// Current alignment of the virtual object
@@ -35,8 +38,7 @@ class VirtualObject: SCNReferenceNode {
 	// Whether the object is currently changing alignment
 	private var isChangingAlignment: Bool = false
 	
-	// For correct rotation on horizontal and vertical surfaces, roate around
-	// local y rather than world y. Therefore rotate first child note instead of self.
+	// For correct rotation on horizontal and vertical surfaces, roate around local y rather than world y. Therefore rotate first child note instead of self.
 	var objectRotation: Float {
 		get {
 			return childNodes.first!.eulerAngles.y
@@ -60,22 +62,12 @@ class VirtualObject: SCNReferenceNode {
 	// The object's corresponding ARAnchor
 	var anchor: ARAnchor?
     
-//    init(url: URL, objectIndex: Int) {
-//        index = objectIndex
-//        super.init(url: url)!
-//    }
-//
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-    
     // Resets the object's position smoothing.
     func reset() {
         recentVirtualObjectDistances.removeAll()
     }
 	
 	// MARK: - Helper methods to determine supported placement options
-	
 	func isPlacementValid(on planeAnchor: ARPlaneAnchor?) -> Bool {
 		if let anchor = planeAnchor {
 			return allowedAlignments.contains(anchor.alignment)
@@ -253,7 +245,6 @@ extension Collection where Element == Float, Index == Int {
         guard !isEmpty else {
             return nil
         }
-
         let sum = reduce(Float(0)) { current, next -> Float in
             return current + next
         }

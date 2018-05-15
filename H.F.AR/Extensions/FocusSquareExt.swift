@@ -4,7 +4,6 @@
 import SceneKit
 
 extension FocusSquare {
-
     /*
     The focus square consists of eight segments as follows, which can be individually animated.
 
@@ -42,9 +41,7 @@ extension FocusSquare {
     }
 
     class Segment: SCNNode {
-
         // MARK: - Configuration & Initialization
-
         // Thickness of the focus square lines in m.
         static let thickness: CGFloat = 0.018
 
@@ -85,7 +82,6 @@ extension FocusSquare {
         }
 
         // MARK: - Animating Open/Closed
-
         var openDirection: Direction {
             switch (corner, alignment) {
                 case (.topLeft,     .horizontal):   return .left

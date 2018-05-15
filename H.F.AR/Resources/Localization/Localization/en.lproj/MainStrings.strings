@@ -58,6 +58,32 @@
 
 "Product Page" = "Product Page";
 
+"Size (approximate)" = "Size (approximate)";
+
+"width" = "width";
+"height" = "height";
+"depth" = "depth";
+
+"(Warning: After viewing the website, this app will try to recover the AR session.)" = "(주의: 웹사이트 방문 후에, 앱에서 AR 세션 복구를 시도합니다.)";
+
 "The shape and color of the item on the product page may differ from the above 3D model." = "The shape and color of the item on the product page may differ from the above 3D model.";
 
 "This product is not currently available for sale." = "This product is not currently available for sale.";
+
+// -----------------------------
+
+"SAVE THE STATUS" = "SAVE THE STATUS";
+
+"Edit the title." = "Edit the title.";
+
+"SAVE SUCCEED" = "SAVE SUCCEED";
+
+"The status has been successfully saved." = "The status has been successfully saved.";
+
+"SAVE FAILED" = "SAVE FAILED";
+
+"The state saving failed for some reason. Please try again." = "The state saving failed for some reason. Please try again.";
+
+"OK" = "OK";
+
+"Cancel" = "Cancel";

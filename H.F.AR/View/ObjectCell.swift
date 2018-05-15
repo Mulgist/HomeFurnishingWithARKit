@@ -14,13 +14,11 @@ class ObjectCell: UITableViewCell {
     static let reuseIdentifier = "ObjectCell"
     
     @IBOutlet weak var objectTitleLabel: UILabel!
-    // @IBOutlet weak var objectImageView: UIImageView!
     @IBOutlet weak var vibrancyView: UIVisualEffectView!
     
     var modelName = "" {
         didSet {
             objectTitleLabel.text = modelName
-            // objectImageView.image = UIImage(named: modelName)
         }
     }
 }
