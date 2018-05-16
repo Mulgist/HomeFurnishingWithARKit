@@ -27,6 +27,9 @@ xcuserdata/
 *.xcuserstate
 *.xcscmblueprint
 
+## Secret files
+Constants.swift
+
 ## Obj-C/Swift specific
 *.hmap
 *.ipa

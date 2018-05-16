@@ -4,20 +4,16 @@
 import Foundation
 import ARKit
 
-/**
- An `SCNNode` which is used to provide uses with visual cues about the status of ARKit world tracking.
- - Tag: FocusSquare
- */
+// An 'SCNNode' which is used to provide uses with visual cues about the status of ARKit world tracking.
+// - Tag: FocusSquare
 class FocusSquare: SCNNode {
     // MARK: - Types
-    
     enum State: Equatable {
         case initializing
 		case detecting(hitTestResult: ARHitTestResult, camera: ARCamera?)
     }
     
     // MARK: - Configuration Properties
-    
     // Original size of the focus square in meters.
     static let size: Float = 0.17
     
@@ -40,7 +36,7 @@ class FocusSquare: SCNNode {
     
     // MARK: - Properties
     
-    /// The most recent position of the focus square based on the current state.
+    // The most recent position of the focus square based on the current state.
     var lastPosition: float3? {
         switch state {
         case .initializing: return nil
@@ -68,38 +64,37 @@ class FocusSquare: SCNNode {
         }
     }
     
-    /// Indicates whether the segments of the focus square are disconnected.
+    // Indicates whether the segments of the focus square are disconnected.
     private var isOpen = false
     
-    /// Indicates if the square is currently being animated.
+    // Indicates if the square is currently being animated.
     private var isAnimating = false
 	
-	/// Indicates if the square is currently changing its alignment.
+	// Indicates if the square is currently changing its alignment.
 	private var isChangingAlignment = false
 	
-	/// The focus square's current alignment.
+	// The focus square's current alignment.
 	private var currentAlignment: ARPlaneAnchor.Alignment?
 	
-	/// The current plane anchor if the focus square is on a plane.
+	// The current plane anchor if the focus square is on a plane.
 	private(set) var currentPlaneAnchor: ARPlaneAnchor?
     
-    /// The focus square's most recent positions.
+    // The focus square's most recent positions.
     private var recentFocusSquarePositions: [float3] = []
 	
-	/// The focus square's most recent alignments.
+	// The focus square's most recent alignments.
 	private(set) var recentFocusSquareAlignments: [ARPlaneAnchor.Alignment] = []
     
-    /// Previously visited plane anchors.
+    // Previously visited plane anchors.
     private var anchorsOfVisitedPlanes: Set<ARAnchor> = []
     
-    /// List of the segments in the focus square.
+    // List of the segments in the focus square.
     private var segments: [FocusSquare.Segment] = []
     
-    /// The primary node that controls the position of other `FocusSquare` nodes.
+    // The primary node that controls the position of other `FocusSquare` nodes.
     private let positioningNode = SCNNode()
     
     // MARK: - Initialization
-    
 	override init() {
 		super.init()
 		opacity = 0.0
@@ -157,8 +152,7 @@ class FocusSquare: SCNNode {
 	}
     
     // MARK: - Appearance
-    
-    /// Hides the focus square.
+    // Hides the focus square.
     func hide() {
         guard action(forKey: "hide") == nil else { return }
         
@@ -166,7 +160,7 @@ class FocusSquare: SCNNode {
         runAction(.fadeOut(duration: 0.5), forKey: "hide")
     }
     
-    /// Unhides the focus square.
+    // Unhides the focus square.
     func unhide() {
         guard action(forKey: "unhide") == nil else { return }
         
@@ -174,7 +168,7 @@ class FocusSquare: SCNNode {
         runAction(.fadeIn(duration: 0.5), forKey: "unhide")
     }
     
-    /// Displays the focus square parallel to the camera plane.
+    // Displays the focus square parallel to the camera plane.
     private func displayAsBillboard() {
 		simdTransform = matrix_identity_float4x4
 		eulerAngles.x = .pi / 2
@@ -183,7 +177,7 @@ class FocusSquare: SCNNode {
         performOpenAnimation()
     }
 
-    /// Called when a surface has been detected.
+    // Called when a surface has been detected.
     private func displayAsOpen(for hitTestResult: ARHitTestResult, camera: ARCamera?) {
         performOpenAnimation()
 		let position = hitTestResult.worldTransform.translation
@@ -191,7 +185,7 @@ class FocusSquare: SCNNode {
 		updateTransform(for: position, hitTestResult: hitTestResult, camera: camera)
     }
     
-    /// Called when a plane has been detected.
+    // Called when a plane has been detected.
 	private func displayAsClosed(for hitTestResult: ARHitTestResult, planeAnchor: ARPlaneAnchor, camera: ARCamera?) {
         performCloseAnimation(flash: !anchorsOfVisitedPlanes.contains(planeAnchor))
         anchorsOfVisitedPlanes.insert(planeAnchor)
@@ -201,8 +195,7 @@ class FocusSquare: SCNNode {
     }
     
     // MARK: Helper Methods
-
-    /// Update the transform of the focus square to be aligned with the camera.
+    // Update the transform of the focus square to be aligned with the camera.
 	private func updateTransform(for position: float3, hitTestResult: ARHitTestResult, camera: ARCamera?) {
 		// Average using several most recent positions.
         recentFocusSquarePositions = Array(recentFocusSquarePositions.suffix(10))
@@ -311,13 +304,8 @@ class FocusSquare: SCNNode {
 		return normalized
 	}
 
-    /**
-     Reduce visual size change with distance by scaling up when close and down when far away.
-     
-     These adjustments result in a scale of 1.0x for a distance of 0.7 m or less
-     (estimated distance when looking at a table), and a scale of 1.2x
-     for a distance 1.5 m distance (estimated distance when looking at the floor).
-     */
+    // Reduce visual size change with distance by scaling up when close and down when far away.
+    // These adjustments result in a scale of 1.0x for a distance of 0.7 m or less (estimated distance when looking at a table), and a scale of 1.2x for a distance 1.5 m distance (estimated distance when looking at the floor).
 	private func scaleBasedOnDistance(camera: ARCamera?) -> Float {
         guard let camera = camera else { return 1.0 }
 
@@ -330,7 +318,6 @@ class FocusSquare: SCNNode {
 	}
     
     // MARK: Animations
-    
 	private func performOpenAnimation() {
 		guard !isOpen, !isAnimating else { return }
         isOpen = true
@@ -415,7 +402,6 @@ class FocusSquare: SCNNode {
 	}
     
     // MARK: Convenience Methods
-    
     private func scaleAnimation(for keyPath: String) -> CAKeyframeAnimation {
         let scaleAnimation = CAKeyframeAnimation(keyPath: keyPath)
         
@@ -437,7 +423,7 @@ class FocusSquare: SCNNode {
         return scaleAnimation
     }
     
-    /// Sets the rendering order of the `positioningNode` to show on top or under other scene content.
+    // Sets the rendering order of the `positioningNode` to show on top or under other scene content.
     func displayNodeHierarchyOnTop(_ isOnTop: Bool) {
         // Recursivley traverses the node's children to update the rendering order depending on the `isOnTop` parameter.
         func updateRenderOrder(for node: SCNNode) {
@@ -476,7 +462,6 @@ class FocusSquare: SCNNode {
 }
 
 // MARK: - Animations and Actions
-
 private func pulseAction() -> SCNAction {
     let pulseOutAction = SCNAction.fadeOpacity(to: 0.4, duration: 0.5)
     let pulseInAction = SCNAction.fadeOpacity(to: 1.0, duration: 0.5)

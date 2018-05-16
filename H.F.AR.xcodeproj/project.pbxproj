@@ -7,11 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041E6D1720922C9B00A0BCF3 /* ProductInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E6D1620922C9B00A0BCF3 /* ProductInfoVC.swift */; };
+		041F0868209DED2F00230BB4 /* ShadowAndRadiusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F0867209DED2F00230BB4 /* ShadowAndRadiusView.swift */; };
 		043D1FC62074C09200792629 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 043D1FC52074C09200792629 /* Main.storyboard */; };
+		044A695120A4551E00304CC3 /* SavesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A695020A4551E00304CC3 /* SavesListCell.swift */; };
+		044A695320A456F600304CC3 /* SaveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A695220A456F600304CC3 /* SaveData.swift */; };
+		0469D0B720A417F60012434C /* SavesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0469D0B620A417F60012434C /* SavesListVC.swift */; };
+		0498458520A325270058B7C9 /* BoxNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0498458420A325260058B7C9 /* BoxNode.swift */; };
+		0498458720A3252F0058B7C9 /* SphereNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0498458620A3252F0058B7C9 /* SphereNode.swift */; };
+		04BA7F742077A850003216FA /* MainStrings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04BA7F722077A84F003216FA /* MainStrings.strings */; };
+		04BA7F7720788024003216FA /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA7F7620788024003216FA /* SettingsVC.swift */; };
+		04BA7F792078B0D2003216FA /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA7F782078B0D2003216FA /* CircleButton.swift */; };
+		04BA7F7B2078B7B3003216FA /* SelectProviderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA7F7A2078B7B3003216FA /* SelectProviderVC.swift */; };
+		04BA7F7E2078B819003216FA /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA7F7D2078B819003216FA /* AuthService.swift */; };
+		04BA7F802078B827003216FA /* UserDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA7F7F2078B827003216FA /* UserDataService.swift */; };
+		04BA7F822078B8E6003216FA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA7F812078B8E6003216FA /* Constants.swift */; };
+		04BA7F842078BAEE003216FA /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA7F832078BAEE003216FA /* AccountVC.swift */; };
+		04BA7F882078FF1A003216FA /* Navigate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA7F872078FF1A003216FA /* Navigate.swift */; };
+		04BA7F8A2078FF4E003216FA /* UIDeviceExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA7F892078FF4E003216FA /* UIDeviceExt.swift */; };
+		04BA7F8C20792308003216FA /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA7F8B20792308003216FA /* CircleImage.swift */; };
+		04F3865A2085ECB700787988 /* ObjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F386592085ECB700787988 /* ObjectCell.swift */; };
 		11BD822A1F09D750003F11C8 /* ObjectSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147D76491EFC36070000FEBF /* ObjectSelection.swift */; };
-		147062641F06FA790003EE03 /* VirtualObjectSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147062631F06FA790003EE03 /* VirtualObjectSelectionCell.swift */; };
+		147062641F06FA790003EE03 /* VirtualObjectSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147062631F06FA790003EE03 /* VirtualObjectSelectionVC.swift */; };
 		1488323F1EFC378A0043E0AB /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1488323E1EFC378A0043E0AB /* Actions.swift */; };
-		148832411EFC3B250043E0AB /* FocusSquareSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148832401EFC3B250043E0AB /* FocusSquareSegment.swift */; };
+		148832411EFC3B250043E0AB /* FocusSquareExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148832401EFC3B250043E0AB /* FocusSquareExt.swift */; };
 		3929C48C1E89EC2C00E00B60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3929C48B1E89EC2C00E00B60 /* AppDelegate.swift */; };
 		3929C48E1E89EC2C00E00B60 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3929C48D1E89EC2C00E00B60 /* MainVC.swift */; };
 		3929C4931E89EC2C00E00B60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3929C4921E89EC2C00E00B60 /* Assets.xcassets */; };
@@ -30,12 +49,32 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		041E6D1620922C9B00A0BCF3 /* ProductInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoVC.swift; sourceTree = "<group>"; };
+		041F0867209DED2F00230BB4 /* ShadowAndRadiusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowAndRadiusView.swift; sourceTree = "<group>"; };
 		043D1FC52074C09200792629 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		147062631F06FA790003EE03 /* VirtualObjectSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualObjectSelectionCell.swift; sourceTree = "<group>"; };
+		044A695020A4551E00304CC3 /* SavesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavesListCell.swift; sourceTree = "<group>"; };
+		044A695220A456F600304CC3 /* SaveData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveData.swift; sourceTree = "<group>"; };
+		0469D0B620A417F60012434C /* SavesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavesListVC.swift; sourceTree = "<group>"; };
+		0498458220A31F5E0058B7C9 /* H.F.AR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = H.F.AR.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0498458420A325260058B7C9 /* BoxNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxNode.swift; sourceTree = "<group>"; };
+		0498458620A3252F0058B7C9 /* SphereNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SphereNode.swift; sourceTree = "<group>"; };
+		04BA7F732077A84F003216FA /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = Localization/ko.lproj/MainStrings.strings; sourceTree = "<group>"; };
+		04BA7F752077A854003216FA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localization/en.lproj/MainStrings.strings; sourceTree = "<group>"; };
+		04BA7F7620788024003216FA /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		04BA7F782078B0D2003216FA /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		04BA7F7A2078B7B3003216FA /* SelectProviderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectProviderVC.swift; sourceTree = "<group>"; };
+		04BA7F7D2078B819003216FA /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		04BA7F7F2078B827003216FA /* UserDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataService.swift; sourceTree = "<group>"; };
+		04BA7F812078B8E6003216FA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		04BA7F832078BAEE003216FA /* AccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
+		04BA7F872078FF1A003216FA /* Navigate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigate.swift; sourceTree = "<group>"; };
+		04BA7F892078FF4E003216FA /* UIDeviceExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExt.swift; sourceTree = "<group>"; };
+		04BA7F8B20792308003216FA /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
+		04F386592085ECB700787988 /* ObjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCell.swift; sourceTree = "<group>"; };
+		147062631F06FA790003EE03 /* VirtualObjectSelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualObjectSelectionVC.swift; sourceTree = "<group>"; };
 		147D76491EFC36070000FEBF /* ObjectSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectSelection.swift; sourceTree = "<group>"; };
 		1488323E1EFC378A0043E0AB /* Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
-		148832401EFC3B250043E0AB /* FocusSquareSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusSquareSegment.swift; sourceTree = "<group>"; };
-		3929C4881E89EC2C00E00B60 /* H.F.AR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = H.F.AR.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		148832401EFC3B250043E0AB /* FocusSquareExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusSquareExt.swift; sourceTree = "<group>"; };
 		3929C48B1E89EC2C00E00B60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3929C48D1E89EC2C00E00B60 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		3929C4921E89EC2C00E00B60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -71,7 +110,10 @@
 		043D1FBF2074BACE00792629 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				04918CC32085ADFB0045E44C /* MainVCExt */,
 				043D1FC02074BAE300792629 /* ViewControllerExt */,
+				04BA7F892078FF4E003216FA /* UIDeviceExt.swift */,
+				148832401EFC3B250043E0AB /* FocusSquareExt.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -79,12 +121,9 @@
 		043D1FC02074BAE300792629 /* ViewControllerExt */ = {
 			isa = PBXGroup;
 			children = (
-				C8C12A701F29277B00B011FE /* ARSCNViewDelegate.swift */,
-				1488323E1EFC378A0043E0AB /* Actions.swift */,
-				147D76491EFC36070000FEBF /* ObjectSelection.swift */,
-				C8C2AC511F3A545C00E86BA3 /* VirtualObjectInteraction.swift */,
+				04BA7F872078FF1A003216FA /* Navigate.swift */,
 				C812D8671F47628300344E73 /* ThresholdPanGesture.swift */,
-				C46356661EF9CC480080C8D9 /* VirtualObjectARView.swift */,
+				C8C2AC511F3A545C00E86BA3 /* VirtualObjectInteraction.swift */,
 			);
 			path = ViewControllerExt;
 			sourceTree = "<group>";
@@ -92,6 +131,8 @@
 		043D1FC12074BC3F00792629 /* H.F.AR */ = {
 			isa = PBXGroup;
 			children = (
+				0498458320A3250D0058B7C9 /* Nodes */,
+				04BA7F7C2078B802003216FA /* Services */,
 				043D1FBF2074BACE00792629 /* Extensions */,
 				043D1FC32074BD1A00792629 /* View */,
 				043D1FC22074BCC500792629 /* Controller */,
@@ -102,7 +143,6 @@
 				3929C4971E89EC2C00E00B60 /* Info.plist */,
 				043D1FC52074C09200792629 /* Main.storyboard */,
 				39D8DC1A1E8ADAE600386B05 /* LaunchScreen.storyboard */,
-				3929C4891E89EC2C00E00B60 /* Products */,
 			);
 			path = H.F.AR;
 			sourceTree = "<group>";
@@ -110,8 +150,14 @@
 		043D1FC22074BCC500792629 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				04BA7F832078BAEE003216FA /* AccountVC.swift */,
 				3929C48D1E89EC2C00E00B60 /* MainVC.swift */,
+				04BA7F7A2078B7B3003216FA /* SelectProviderVC.swift */,
+				04BA7F7620788024003216FA /* SettingsVC.swift */,
 				C41366B81EB80DD400EC054A /* StatusVC.swift */,
+				147062631F06FA790003EE03 /* VirtualObjectSelectionVC.swift */,
+				041E6D1620922C9B00A0BCF3 /* ProductInfoVC.swift */,
+				0469D0B620A417F60012434C /* SavesListVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -119,7 +165,12 @@
 		043D1FC32074BD1A00792629 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				147062631F06FA790003EE03 /* VirtualObjectSelectionCell.swift */,
+				04BA7F782078B0D2003216FA /* CircleButton.swift */,
+				04BA7F8B20792308003216FA /* CircleImage.swift */,
+				04F386592085ECB700787988 /* ObjectCell.swift */,
+				C46356661EF9CC480080C8D9 /* VirtualObjectARView.swift */,
+				041F0867209DED2F00230BB4 /* ShadowAndRadiusView.swift */,
+				044A695020A4551E00304CC3 /* SavesListCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -127,18 +178,55 @@
 		043D1FC42074BEDB00792629 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C8D719FF1F3B7D3D0086AD64 /* VirtualObject.swift */,
-				C46356651EF9CB1A0080C8D9 /* VirtualObjectLoader.swift */,
 				C42A71BC1E9C0AF200944367 /* FocusSquare.swift */,
-				148832401EFC3B250043E0AB /* FocusSquareSegment.swift */,
+				C8D719FF1F3B7D3D0086AD64 /* VirtualObject.swift */,
+				044A695220A456F600304CC3 /* SaveData.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		04918CC32085ADFB0045E44C /* MainVCExt */ = {
+			isa = PBXGroup;
+			children = (
+				1488323E1EFC378A0043E0AB /* Actions.swift */,
+				C8C12A701F29277B00B011FE /* ARSCNViewDelegate.swift */,
+				147D76491EFC36070000FEBF /* ObjectSelection.swift */,
+			);
+			path = MainVCExt;
+			sourceTree = "<group>";
+		};
+		0498458320A3250D0058B7C9 /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				0498458420A325260058B7C9 /* BoxNode.swift */,
+				0498458620A3252F0058B7C9 /* SphereNode.swift */,
+			);
+			path = Nodes;
+			sourceTree = "<group>";
+		};
+		04BA7F6B2077920A003216FA /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				04BA7F722077A84F003216FA /* MainStrings.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		04BA7F7C2078B802003216FA /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				04BA7F7D2078B819003216FA /* AuthService.swift */,
+				04BA7F7F2078B827003216FA /* UserDataService.swift */,
+				C46356651EF9CB1A0080C8D9 /* VirtualObjectLoader.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		1488324A1EFC3E9C0043E0AB /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
 				39C0B9581E9C6B1F003FCA0C /* Utilities.swift */,
+				04BA7F812078B8E6003216FA /* Constants.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -146,6 +234,7 @@
 		1488324C1EFC3ED00043E0AB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				04BA7F6B2077920A003216FA /* Localization */,
 				3929C49E1E89EE4400E00B60 /* Models.scnassets */,
 				3929C4921E89EC2C00E00B60 /* Assets.xcassets */,
 			);
@@ -158,16 +247,8 @@
 				043D1FC12074BC3F00792629 /* H.F.AR */,
 				FA72C18594CCE813F5D77986 /* Pods */,
 				A4DC4C44E68128ED972E055B /* Frameworks */,
+				0498458220A31F5E0058B7C9 /* H.F.AR.app */,
 			);
-			sourceTree = "<group>";
-		};
-		3929C4891E89EC2C00E00B60 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				3929C4881E89EC2C00E00B60 /* H.F.AR.app */,
-			);
-			name = Products;
-			path = ..;
 			sourceTree = "<group>";
 		};
 		A4DC4C44E68128ED972E055B /* Frameworks */ = {
@@ -207,7 +288,7 @@
 			);
 			name = H.F.AR;
 			productName = ARKitInteraction;
-			productReference = 3929C4881E89EC2C00E00B60 /* H.F.AR.app */;
+			productReference = 0498458220A31F5E0058B7C9 /* H.F.AR.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -235,9 +316,10 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = 3929C47F1E89EC2C00E00B60;
-			productRefGroup = 3929C4891E89EC2C00E00B60 /* Products */;
+			productRefGroup = 3929C47F1E89EC2C00E00B60;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -251,6 +333,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04BA7F742077A850003216FA /* MainStrings.strings in Resources */,
 				3929C49F1E89EE4400E00B60 /* Models.scnassets in Resources */,
 				39D8DC1B1E8ADAE600386B05 /* LaunchScreen.storyboard in Resources */,
 				3929C4931E89EC2C00E00B60 /* Assets.xcassets in Resources */,
@@ -288,12 +371,14 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-H.F.AR/Pods-H.F.AR-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Localize-Swift/Localize_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Localize_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,25 +408,55 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04BA7F882078FF1A003216FA /* Navigate.swift in Sources */,
+				04BA7F842078BAEE003216FA /* AccountVC.swift in Sources */,
 				C812D8681F47628300344E73 /* ThresholdPanGesture.swift in Sources */,
+				04BA7F8C20792308003216FA /* CircleImage.swift in Sources */,
+				04BA7F8A2078FF4E003216FA /* UIDeviceExt.swift in Sources */,
 				11BD822A1F09D750003F11C8 /* ObjectSelection.swift in Sources */,
+				04BA7F792078B0D2003216FA /* CircleButton.swift in Sources */,
 				1488323F1EFC378A0043E0AB /* Actions.swift in Sources */,
 				3929C48E1E89EC2C00E00B60 /* MainVC.swift in Sources */,
 				C41366B91EB80DD400EC054A /* StatusVC.swift in Sources */,
+				04BA7F802078B827003216FA /* UserDataService.swift in Sources */,
+				04BA7F7E2078B819003216FA /* AuthService.swift in Sources */,
+				044A695120A4551E00304CC3 /* SavesListCell.swift in Sources */,
+				04F3865A2085ECB700787988 /* ObjectCell.swift in Sources */,
+				044A695320A456F600304CC3 /* SaveData.swift in Sources */,
+				04BA7F7720788024003216FA /* SettingsVC.swift in Sources */,
 				39C0B95A1E9C6B1F003FCA0C /* Utilities.swift in Sources */,
-				147062641F06FA790003EE03 /* VirtualObjectSelectionCell.swift in Sources */,
+				147062641F06FA790003EE03 /* VirtualObjectSelectionVC.swift in Sources */,
+				041F0868209DED2F00230BB4 /* ShadowAndRadiusView.swift in Sources */,
+				04BA7F822078B8E6003216FA /* Constants.swift in Sources */,
 				C8C12A711F29277B00B011FE /* ARSCNViewDelegate.swift in Sources */,
 				C8C2AC521F3A545C00E86BA3 /* VirtualObjectInteraction.swift in Sources */,
 				C46356671EF9CC500080C8D9 /* VirtualObjectARView.swift in Sources */,
-				148832411EFC3B250043E0AB /* FocusSquareSegment.swift in Sources */,
+				148832411EFC3B250043E0AB /* FocusSquareExt.swift in Sources */,
 				C8D71A001F3B7D3D0086AD64 /* VirtualObject.swift in Sources */,
 				C42A71BD1E9C0AF200944367 /* FocusSquare.swift in Sources */,
 				3929C48C1E89EC2C00E00B60 /* AppDelegate.swift in Sources */,
 				C46356681EF9CC530080C8D9 /* VirtualObjectLoader.swift in Sources */,
+				0469D0B720A417F60012434C /* SavesListVC.swift in Sources */,
+				0498458720A3252F0058B7C9 /* SphereNode.swift in Sources */,
+				0498458520A325270058B7C9 /* BoxNode.swift in Sources */,
+				04BA7F7B2078B7B3003216FA /* SelectProviderVC.swift in Sources */,
+				041E6D1720922C9B00A0BCF3 /* ProductInfoVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		04BA7F722077A84F003216FA /* MainStrings.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04BA7F732077A84F003216FA /* ko */,
+				04BA7F752077A854003216FA /* en */,
+			);
+			name = MainStrings.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		3929C4981E89EC2C00E00B60 /* Debug */ = {

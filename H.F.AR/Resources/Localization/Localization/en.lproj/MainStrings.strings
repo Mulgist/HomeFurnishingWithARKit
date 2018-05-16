@@ -1,0 +1,89 @@
+//
+//  MainVCStrings.strings
+//  H.F.AR
+//
+//  Created by 이주원 on 2018. 4. 6..
+//  Copyright © 2018년 Apple. All rights reserved.
+//
+
+"FIND A SURFACE TO PLACE AN OBJECT" = "FIND A SURFACE TO PLACE AN OBJECT";
+
+"TRY MOVING LEFT OR RIGHT" = "TRY MOVING LEFT OR RIGHT";
+
+"SURFACE DETECTED" = "SURFACE DETECTED";
+
+"TAP + TO PLACE AN OBJECT" = "TAP + TO PLACE AN OBJECT";
+
+"The AR session failed." = "The AR session failed.";
+
+"CANNOT PLACE OBJECT\nTry moving left or right." = "CANNOT PLACE OBJECT\nTry moving left or right.";
+
+"Restart Session" = "Restart Session";
+
+"TRACKING UNAVAILABLE" = "TRACKING UNAVAILABLE";
+
+"TRACKING NORMAL" = "TRACKING NORMAL";
+
+"TRACKING LIMITED\nExcessive motion" = "TRACKING LIMITED\nExcessive motion";
+
+"TRACKING LIMITED\nLow detail" = "TRACKING LIMITED\nLow detail";
+
+"Initializing" = "Initializing";
+
+"Recovering from interruption" = "Recovering from interruption";
+
+"Try slowing down your movement, or reset the session." = "Try slowing down your movement, or reset the session.";
+
+"Try pointing at a flat surface, or reset the session." = "Try pointing at a flat surface, or reset the session.";
+
+"Return to the location where you left off or try resetting the session." = "Return to the location where you left off or try resetting the session.";
+
+"LOG IN" = "LOG IN";
+
+"Google Login" = "Google Login";
+
+"Microsoft Login" = "Microsoft Login";
+
+"> Privacy Policy" = "> Privacy Policy";
+
+"EMAIL ADDRESS" = "EMAIL ADDRESS";
+
+"FULL NAME" = "FULL NAME";
+
+"Logout" = "Logout";
+
+"ACCOUNT PROVIDER" = "ACCOUNT PROVIDER";
+
+// ------------------------------
+
+"Product Page" = "Product Page";
+
+"Size (approximate)" = "Size (approximate)";
+
+"width" = "width";
+"height" = "height";
+"depth" = "depth";
+
+"(Warning: After viewing the website, this app will try to recover the AR session.)" = "(주의: 웹사이트 방문 후에, 앱에서 AR 세션 복구를 시도합니다.)";
+
+"The shape and color of the item on the product page may differ from the above 3D model." = "The shape and color of the item on the product page may differ from the above 3D model.";
+
+"This product is not currently available for sale." = "This product is not currently available for sale.";
+
+// -----------------------------
+
+"SAVE THE STATUS" = "SAVE THE STATUS";
+
+"Edit the title." = "Edit the title.";
+
+"SAVE SUCCEED" = "SAVE SUCCEED";
+
+"The status has been successfully saved." = "The status has been successfully saved.";
+
+"SAVE FAILED" = "SAVE FAILED";
+
+"The state saving failed for some reason. Please try again." = "The state saving failed for some reason. Please try again.";
+
+"OK" = "OK";
+
+"Cancel" = "Cancel";

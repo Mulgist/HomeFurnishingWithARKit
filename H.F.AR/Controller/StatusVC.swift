@@ -3,16 +3,12 @@
 
 import Foundation
 import ARKit
+import Localize_Swift
 
-/**
- Displayed at the top of the main interface of the app that allows users to see
- the status of the AR experience, as well as the ability to control restarting
- the experience altogether.
- - Tag: StatusVC
-*/
+// Displayed at the top of the main interface of the app that allows users to see the status of the AR experience, as well as the ability to control restarting the experience altogether.
+// - Tag: StatusVC
 class StatusVC: UIViewController {
     // MARK: - Types
-
     enum MessageType {
         case trackingStateEscalation
         case planeEstimation
@@ -28,19 +24,15 @@ class StatusVC: UIViewController {
     }
 
     // MARK: - IBOutlets
-
     @IBOutlet weak private var messagePanel: UIVisualEffectView!
-    
     @IBOutlet weak private var messageLabel: UILabel!
-    
     @IBOutlet weak private var restartExperienceButton: UIButton!
 
     // MARK: - Properties
-    
-    /// Trigerred when the "Restart Experience" button is tapped.
+    // Trigerred when the "Restart Experience" button is tapped.
     var restartExperienceHandler: () -> Void = {}
     
-    /// Seconds before the timer message should fade out. Adjust if the app needs longer transient messages.
+    // Seconds before the timer message should fade out. Adjust if the app needs longer transient messages.
     private let displayDuration: TimeInterval = 6
     
     // Timer for hiding messages.
@@ -49,11 +41,9 @@ class StatusVC: UIViewController {
     private var timers: [MessageType: Timer] = [:]
     
     // MARK: - Message Handling
-	
 	func showMessage(_ text: String, autoHide: Bool = true) {
         // Cancel any previous hide timer.
         messageHideTimer?.invalidate()
-
         messageLabel.text = text
 
         // Make sure status is showing.
@@ -73,7 +63,6 @@ class StatusVC: UIViewController {
             self?.showMessage(text)
             timer.invalidate()
 		})
-
         timers[messageType] = timer
 	}
     
@@ -89,7 +78,6 @@ class StatusVC: UIViewController {
     }
     
     // MARK: - ARKit
-    
 	func showTrackingQualityInfo(for trackingState: ARCamera.TrackingState, autoHide: Bool) {
 		showMessage(trackingState.presentationString, autoHide: autoHide)
 	}
@@ -107,18 +95,15 @@ class StatusVC: UIViewController {
 
             self.showMessage(message, autoHide: false)
 		})
-
         timers[.trackingStateEscalation] = timer
     }
     
     // MARK: - IBActions
-    
     @IBAction private func restartExperience(_ sender: UIButton) {
         restartExperienceHandler()
     }
 	
 	// MARK: - Panel Visibility
-    
 	private func setMessageHidden(_ hide: Bool, animated: Bool) {
         // The panel starts out hidden, so show it before animating opacity.
         messagePanel.isHidden = false
@@ -138,28 +123,28 @@ extension ARCamera.TrackingState {
     var presentationString: String {
         switch self {
         case .notAvailable:
-            return "TRACKING UNAVAILABLE"
+            return "TRACKING UNAVAILABLE".localized(using: "MainStrings")
         case .normal:
-            return "TRACKING NORMAL"
+            return "TRACKING NORMAL".localized(using: "MainStrings")
         case .limited(.excessiveMotion):
-            return "TRACKING LIMITED\nExcessive motion"
+            return "TRACKING LIMITED\nExcessive motion".localized(using: "MainStrings")
         case .limited(.insufficientFeatures):
-            return "TRACKING LIMITED\nLow detail"
+            return "TRACKING LIMITED\nLow detail".localized(using: "MainStrings")
         case .limited(.initializing):
-            return "Initializing"
+            return "Initializing".localized(using: "MainStrings")
 		case .limited(.relocalizing):
-			return "Recovering from interruption"
+			return "Recovering from interruption".localized(using: "MainStrings")
         }
     }
 
     var recommendation: String? {
         switch self {
         case .limited(.excessiveMotion):
-            return "Try slowing down your movement, or reset the session."
+            return "Try slowing down your movement, or reset the session.".localized(using: "MainStrings")
         case .limited(.insufficientFeatures):
-            return "Try pointing at a flat surface, or reset the session."
+            return "Try pointing at a flat surface, or reset the session.".localized(using: "MainStrings")
 		case .limited(.relocalizing):
-			return "Return to the location where you left off or try resetting the session."
+			return "Return to the location where you left off or try resetting the session.".localized(using: "MainStrings")
 		default:
             return nil
         }

@@ -1,0 +1,89 @@
+//
+//  MainVCStrings.strings
+//  H.F.AR
+//
+//  Created by 이주원 on 2018. 4. 6..
+//  Copyright © 2018년 Apple. All rights reserved.
+//
+
+"FIND A SURFACE TO PLACE AN OBJECT" = "물건을 놓으려면 평면을 찾으십시오";
+
+"TRY MOVING LEFT OR RIGHT" = "왼쪽이나 오른쪽으로 움직여보십시오";
+
+"SURFACE DETECTED" = "평면 포착됨";
+
+"TAP + TO PLACE AN OBJECT" = "물건을 놓으려면 + 버튼을 누르십시오";
+
+"The AR session failed." = "AR 세션이 실패했습니다.";
+
+"CANNOT PLACE OBJECT\nTry moving left or right." = "물건을 놓을 수 없음\n왼쪽이나 오른쪽으로 움직여보십시오.";
+
+"Restart Session" = "세션 재시작";
+
+"TRACKING UNAVAILABLE" = "추적 불가능";
+
+"TRACKING NORMAL" = "정상적인 추적";
+
+"TRACKING LIMITED\nExcessive motion" = "추적 제한\n과도한 동작";
+
+"TRACKING LIMITED\nLow detail" = "추적 제한\n세부사항 부족";
+
+"Initializing" = "초기화중";
+
+"Recovering from interruption" = "복구하는 중";
+
+"Try slowing down your movement, or reset the session." = "동작 속도를 늦추거나 세션을 재시작하십시오.";
+
+"Try pointing at a flat surface, or reset the session." = "평평한 평면을 가리키거나 세션을 재시작하십시오.";
+
+"Return to the location where you left off or try resetting the session." = "떠난 위치로 돌아가거나 세션을 재시작하십시오.";
+
+"LOG IN" = "로그인";
+
+"Google Login" = "Google 로그인";
+
+"Microsoft Login" = "Microsoft 로그인";
+
+"> Privacy Policy" = "> 개인정보처리방침";
+
+"EMAIL ADDRESS" = "이메일 주소";
+
+"FULL NAME" = "전체 이름";
+
+"Logout" = "로그아웃";
+
+"ACCOUNT PROVIDER" = "계정 서비스 제공자";
+
+// ------------------------------
+
+"Product Page" = "제품 상세 페이지";
+
+"Size (approximate)" = "사이즈 (대략)";
+
+"width" = "가로";
+"height" = "세로";
+"depth" = "높이";
+
+"(Warning: After viewing the website, this app will try to recover the AR session.)" = "(주의: 웹사이트 방문 후에, 앱에서 AR 세션 복구를 시도합니다.)";
+
+"The shape and color of the item on the product page may differ from the above 3D model." = "제품 상세 페이지에 있는 물건의 모양과 색상은 위 3D 모델과 다를 수 있습니다.";
+
+"This product is not currently available for sale." = "이 제품은 현재 판매하고 있지 않습니다.";
+
+// -----------------------------
+
+"SAVE THE STATUS" = "상태 저장하기";
+
+"Edit the title." = "제목을 수정하세요.";
+
+"SAVE SUCCEED" = "저장 성공";
+
+"The status has been successfully saved." = "상태가 성공적으로 저장되었습니다.";
+
+"SAVE FAILED" = "저장 실패";
+
+"The state saving failed for some reason. Please try again." = "어떤 이유로 저장에 실패했습니다. 다시 시도해주세요.";
+
+"OK" = "승인";
+
+"Cancel" = "취소";
