@@ -27,10 +27,10 @@ class SelectProviderVC: UIViewController, WKScriptMessageHandler, WKUIDelegate {
         super.viewDidLoad()
         
         // Localization
-        loginLbl.text = "LOG IN".localized(using: "MainStrings")
-        googleLoginBtn.setTitle("Google Login".localized(using: "MainStrings"), for: .normal)
-        MicrosoftLoginBtn.setTitle("Microsoft Login".localized(using: "MainStrings"), for: .normal)
-        policyBtn.setTitle("> Privacy Policy".localized(using: "MainStrings"), for: .normal)
+        loginLbl.text = "LOG IN".localized()
+        googleLoginBtn.setTitle("Google Login".localized(), for: .normal)
+        MicrosoftLoginBtn.setTitle("Microsoft Login".localized(), for: .normal)
+        policyBtn.setTitle("> Privacy Policy".localized(), for: .normal)
         
         setupWebView()
         webView.uiDelegate = self

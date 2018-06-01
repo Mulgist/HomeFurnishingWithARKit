@@ -16,10 +16,16 @@ import ARKit
 class SavesListVC: UIViewController {
     // Outlets
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var anchorView: UIView!
+    
+    enum SegueIdentifier: String {
+        case showDataDetail
+    }
     
     weak var delegate: SavesListVCDelegate?
     var loadedObjects: [VirtualObject]?
     var savesList = [SaveData]()
+    var selectedIndexforDetail: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +49,7 @@ class SavesListVC: UIViewController {
         let currentDateTime = "\(year)-\(String(format: "%02d", month))-\(String(format: "%02d", day)) \(String(format: "%02d", hour)):\(String(format: "%02d", minutes)):\(String(format: "%02d", seconds))"
         
         // Alert Popup (Edit name)
-        let alertController = UIAlertController(title: "SAVE THE STATUS".localized(using: "MainStrings"), message: "Edit the title.".localized(using: "MainStrings"), preferredStyle: .alert)
+        let alertController = UIAlertController(title: "SAVE THE STATUS".localized(), message: "Edit the title.".localized(), preferredStyle: .alert)
 
         alertController.addTextField { textField in
             textField.placeholder = "Name"
@@ -54,13 +60,13 @@ class SavesListVC: UIViewController {
         }
 
         // |  OK  | Cancel |
-        let OKAction = UIAlertAction(title: "OK".localized(using: "MainStrings"), style: .default) { action in
+        let OKAction = UIAlertAction(title: "OK".localized(), style: .default) { action in
             let name = alertController.textFields![0].text!
             self.saveData(currentDateTime, name)
         }
         alertController.addAction(OKAction)
 
-        let cancelAction = UIAlertAction(title: "Cancel".localized(using: "MainStrings"), style: .destructive) { action in }
+        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .destructive) { action in }
         alertController.addAction(cancelAction)
 
         self.present(alertController, animated: true, completion: nil)
@@ -106,13 +112,13 @@ class SavesListVC: UIViewController {
                 json = json[0]
                 
                 if json["result"].stringValue == "success" {
-                    let alertController = UIAlertController(title: "SAVE SUCCEED".localized(using: "MainStrings"), message: "The status has been successfully saved.".localized(using: "MainStrings"), preferredStyle: .alert)
-                    let OKAction = UIAlertAction(title: "OK".localized(using: "MainStrings"), style: .default) { action in self.loadSaveList() }
+                    let alertController = UIAlertController(title: "SAVE SUCCEED".localized(), message: "The status has been successfully saved.".localized(), preferredStyle: .alert)
+                    let OKAction = UIAlertAction(title: "OK".localized(), style: .default) { action in self.loadSaveList() }
                     alertController.addAction(OKAction)
                     self.present(alertController, animated: true, completion: nil)
                 } else {
-                    let alertController = UIAlertController(title: "SAVE FAILED".localized(using: "MainStrings"), message: "The state saving failed for some reason. Please try again.".localized(using: "MainStrings"), preferredStyle: .alert)
-                    let OKAction = UIAlertAction(title: "OK".localized(using: "MainStrings"), style: .default) { action in }
+                    let alertController = UIAlertController(title: "SAVE FAILED".localized(), message: "The state saving failed for some reason. Please try again.".localized(), preferredStyle: .alert)
+                    let OKAction = UIAlertAction(title: "OK".localized(), style: .default) { action in }
                     alertController.addAction(OKAction)
                     self.present(alertController, animated: true, completion: nil)
                 }
@@ -170,7 +176,8 @@ class SavesListVC: UIViewController {
             let savedZ = Float(positions[2])!
             let currentCameraPosition = delegate!.savesListVC(self, getCurrentSession: true).currentFrame!.camera.transform.translation
             let newPosition = SCNVector3Make(savedX + (0.0 - currentCameraPosition.x), savedY + (0.0 - currentCameraPosition.y), savedZ + (0.0 - currentCameraPosition.z))
-            addedObject.position = newPosition
+            // addedObject.position = newPosition
+            addedObject.position = SCNVector3Make(savedX, savedY, savedZ)
             
             // objectRotation
             objectRotations.append(Float(components[2])!)
@@ -220,7 +227,41 @@ extension SavesListVC: UITableViewDelegate, UITableViewDataSource {
     
     // When the information button on the right of the item is pressed
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        print("detail pressed")
+        selectedIndexforDetail = indexPath.row
+        performSegue(withIdentifier: SegueIdentifier.showDataDetail.rawValue, sender: anchorView)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == SegueIdentifier.showDataDetail.rawValue {
+            if let vc = segue.destination as? SaveDataInfoVC {
+                if let index = selectedIndexforDetail {
+                    // for UIPopoverArrowDirection
+                    vc.popoverPresentationController!.delegate = self
+                    vc.delegate = self
+                    vc.delegate2 = delegate as? SaveDataInfoVCDelegate2
+                    vc.saveData = savesList[index]
+                }
+            }
+        }
+    }
+}
+
+extension SavesListVC: SaveDataInfoVCDelegate, UIPopoverPresentationControllerDelegate {
+    func saveDataInfoVC(_ infoVC: SaveDataInfoVC, deserializeData: String) -> [VirtualObject] {
+        return deserializeDataString(deserializeData).0
+    }
+    
+    func saveDataInfoVC(_ infoVC: SaveDataInfoVC, reloadTableData: Bool) {
+        loadSaveList()
+    }
+    
+    // When the device is iPad, the popover arrow direction is left and when the device is iPhone, the popover arrow direction is down.
+    func prepareForPopoverPresentation(_ popoverPresentationController: UIPopoverPresentationController) {
+        if UIDevice.current.isiPad {
+            popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirection.left
+        } else if UIDevice.current.isiPhone {
+            popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirection.down
+        }
     }
 }
 

@@ -94,7 +94,7 @@ extension FocusSquare {
                 case (.bottomRight, .vertical):     return .down
             }
         }
-
+        
         func open() {
             if alignment == .horizontal {
                 plane.width = Segment.openLength

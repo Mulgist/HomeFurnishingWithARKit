@@ -4,12 +4,12 @@
 import UIKit
 import ARKit
 
-extension MainVC: VirtualObjectSelectionVCDelegate, SavesListVCDelegate {
+extension MainVC: VirtualObjectSelectionVCDelegate, SavesListVCDelegate, SaveDataInfoVCDelegate2 {
      // Adds the specified virtual object to the scene, placed using the focus square's estimate of the world-space position currently corresponding to the center of the screen.
      // - Tag: PlaceVirtualObject
     func placeVirtualObject(_ virtualObject: VirtualObject) {
         guard let cameraTransform = session.currentFrame?.camera.transform, let focusSquareAlignment = focusSquare.recentFocusSquareAlignments.last, focusSquare.state != .initializing else {
-            statusViewController.showMessage("CANNOT PLACE OBJECT\nTry moving left or right.".localized(using: "MainStrings"))
+            statusViewController.showMessage("CANNOT PLACE OBJECT\nTry moving left or right.".localized())
             if let index = virtualObjectLoader.loadedObjects.index(of: virtualObject) {
                 virtualObjectLoader.removeVirtualObject(at: index)
             }
@@ -88,6 +88,14 @@ extension MainVC: VirtualObjectSelectionVCDelegate, SavesListVCDelegate {
             return virtualObjects
         } else {
             return [VirtualObject]()
+        }
+    }
+    
+    func saveDataInfoVC(_ infoVC: SaveDataInfoVC, pureVirtualObjects: [VirtualObject]) {
+        for object in pureVirtualObjects {
+            if let index = self.asciiObjectNames.index(of: object.modelName) {
+                object.setNames(self.enObjectNames[index], self.koObjectNames[index])
+            }
         }
     }
     

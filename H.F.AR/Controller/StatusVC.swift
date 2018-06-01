@@ -92,7 +92,6 @@ class StatusVC: UIViewController {
             if let recommendation = trackingState.recommendation {
                 message.append(": \(recommendation)")
             }
-
             self.showMessage(message, autoHide: false)
 		})
         timers[.trackingStateEscalation] = timer
@@ -123,28 +122,28 @@ extension ARCamera.TrackingState {
     var presentationString: String {
         switch self {
         case .notAvailable:
-            return "TRACKING UNAVAILABLE".localized(using: "MainStrings")
+            return "TRACKING UNAVAILABLE".localized()
         case .normal:
-            return "TRACKING NORMAL".localized(using: "MainStrings")
+            return "TRACKING NORMAL".localized()
         case .limited(.excessiveMotion):
-            return "TRACKING LIMITED\nExcessive motion".localized(using: "MainStrings")
+            return "TRACKING LIMITED\nExcessive motion".localized()
         case .limited(.insufficientFeatures):
-            return "TRACKING LIMITED\nLow detail".localized(using: "MainStrings")
+            return "TRACKING LIMITED\nLow detail".localized()
         case .limited(.initializing):
-            return "Initializing".localized(using: "MainStrings")
+            return "Initializing".localized()
 		case .limited(.relocalizing):
-			return "Recovering from interruption".localized(using: "MainStrings")
+			return "Recovering from interruption".localized()
         }
     }
 
     var recommendation: String? {
         switch self {
         case .limited(.excessiveMotion):
-            return "Try slowing down your movement, or reset the session.".localized(using: "MainStrings")
+            return "Try slowing down your movement, or reset the session.".localized()
         case .limited(.insufficientFeatures):
-            return "Try pointing at a flat surface, or reset the session.".localized(using: "MainStrings")
+            return "Try pointing at a flat surface, or reset the session.".localized()
 		case .limited(.relocalizing):
-			return "Return to the location where you left off or try resetting the session.".localized(using: "MainStrings")
+			return "Return to the location where you left off or try resetting the session.".localized()
 		default:
             return nil
         }
