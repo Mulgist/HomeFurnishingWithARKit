@@ -14,6 +14,7 @@ class MainVC: UIViewController {
     @IBOutlet var sceneView: VirtualObjectARView!
     @IBOutlet weak var addObjectButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
+    @IBOutlet weak var screenshotButton: UIButton!
     @IBOutlet weak var loginButton: CircleButton!
     @IBOutlet weak var savesButton: UIButton!
     @IBOutlet weak var infoButton: UIButton!
@@ -93,6 +94,10 @@ class MainVC: UIViewController {
         showSettingsTapGesture.delegate = self
         settingsButton.addGestureRecognizer(showSettingsTapGesture)
         
+        let saveScreenshotTapGesture = UITapGestureRecognizer(target: self, action: #selector(saveScreenshot))
+        saveScreenshotTapGesture.delegate = self
+        screenshotButton.addGestureRecognizer(saveScreenshotTapGesture)
+        
         let showLoginTapGesture = UITapGestureRecognizer(target: self, action: #selector(showLoginVC))
         showLoginTapGesture.delegate = self
         loginButton.addGestureRecognizer(showLoginTapGesture)
@@ -156,25 +161,6 @@ class MainVC: UIViewController {
         }
     }
     
-    @IBAction func showObjectInfo(_ sender: Any) {
-        guard let productInfoVC = storyboard?.instantiateViewController(withIdentifier: "ProductInfoVC") else { return }
-        productInfoVC.modalPresentationStyle = .custom
-        presentDetial(productInfoVC)
-    }
-    
-    @IBAction func removeObject(_ sender: Any) {
-        if let selected = virtualObjectInteraction.selectedObject {
-            if let index = virtualObjectLoader.loadedObjects.index(of: selected) {
-                virtualObjectLoader.removeVirtualObject(at: index)
-                NotificationCenter.default.post(name: NOTIF_UNSET_INFO_RM_BUTTON, object: nil)
-            }
-        }
-    }
-    
-    @IBAction func savesButtonPressed(_ sender: Any) {
-        NotificationCenter.default.post(name: NOTIF_SHOW_SAVES, object: nil)
-    }
-    
     // MARK: - Scene content setup
     func setupCamera() {
         guard let camera = sceneView.pointOfView?.camera else {
@@ -195,11 +181,13 @@ class MainVC: UIViewController {
 		
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = [.horizontal, .vertical]
+        // supportedVideoFormats (iPad): [(1920.0, 1080.0), (1280.0, 720.0)]
+        configuration.videoFormat = ARWorldTrackingConfiguration.supportedVideoFormats[0]
         configuration.isAutoFocusEnabled = true
         // configuration.isLightEstimationEnabled = true
 		session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
         
-        statusViewController.scheduleMessage("FIND A SURFACE TO PLACE AN OBJECT".localized(using: "MainStrings"), inSeconds: 7.5, messageType: .planeEstimation)
+        statusViewController.scheduleMessage("FIND A SURFACE TO PLACE AN OBJECT".localized(), inSeconds: 7.5, messageType: .planeEstimation)
 	}
 
     // MARK: - Focus Square
@@ -212,7 +200,7 @@ class MainVC: UIViewController {
             focusSquare.hide()
         } else {
             focusSquare.unhide()
-            statusViewController.scheduleMessage("TRY MOVING LEFT OR RIGHT".localized(using: "MainStrings"), inSeconds: 5.0, messageType: .focusSquare)
+            statusViewController.scheduleMessage("TRY MOVING LEFT OR RIGHT".localized(), inSeconds: 5.0, messageType: .focusSquare)
         }
 		
         // Perform hit testing only when ARKit tracking is in a good state.
@@ -240,7 +228,7 @@ class MainVC: UIViewController {
         
         // Present an alert informing about the error that has occurred.
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let restartAction = UIAlertAction(title: "Restart Session".localized(using: "MainStrings"), style: .default) { _ in
+        let restartAction = UIAlertAction(title: "Restart Session".localized(), style: .default) { _ in
             alertController.dismiss(animated: true, completion: nil)
             self.blurView.isHidden = true
             self.resetTracking()

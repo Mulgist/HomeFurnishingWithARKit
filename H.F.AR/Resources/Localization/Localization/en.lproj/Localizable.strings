@@ -64,7 +64,7 @@
 "height" = "height";
 "depth" = "depth";
 
-"(Warning: After viewing the website, this app will try to recover the AR session.)" = "(주의: 웹사이트 방문 후에, 앱에서 AR 세션 복구를 시도합니다.)";
+"(Warning: After viewing the website, this app will try to recover the AR session.)" = "(Warning: After viewing the website, this app will try to recover the AR session.)";
 
 "The shape and color of the item on the product page may differ from the above 3D model." = "The shape and color of the item on the product page may differ from the above 3D model.";
 
@@ -87,3 +87,9 @@
 "OK" = "OK";
 
 "Cancel" = "Cancel";
+
+// ------------------------------
+
+"Saving Screenshot is FAILED. Please try again." = "Saving Screenshot is FAILED. Please try again.";
+
+"Saving Screenshot is COMPLETED." = "Saving Screenshot is COMPLETED.";

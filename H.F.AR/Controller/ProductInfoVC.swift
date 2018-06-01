@@ -32,10 +32,10 @@ class ProductInfoVC: UIViewController {
         super.viewDidLoad()
         
         manufacturerLogoImage.image = UIImage(named: "IKEA_logo_white_background")
-        sizeLbl.text = "Size (approximate)".localized(using: "MainStrings")
-        productPageLbl.text = "Product Page".localized(using: "MainStrings")
-        pageWarningLbl.text = "(Warning: After viewing the website, this app will try to recover the AR session.)".localized(using: "MainStrings")
-        noticeLbl.text = "The shape and color of the item on the product page may differ from the above 3D model.".localized(using: "MainStrings")
+        sizeLbl.text = "Size (approximate)".localized()
+        productPageLbl.text = "Product Page".localized()
+        pageWarningLbl.text = "(Warning: After viewing the website, this app will try to recover the AR session.)".localized()
+        noticeLbl.text = "The shape and color of the item on the product page may differ from the above 3D model.".localized()
         
         let previousVC = self.presentingViewController as! MainVC
         selectedObject = previousVC.virtualObjectInteraction.selectedObject
@@ -57,12 +57,12 @@ class ProductInfoVC: UIViewController {
             let height = (boundingBox.z * 100).roundToPlaces(1) // z
             let depth = (boundingBox.y * 100).roundToPlaces(1) // y
             
-            widthLbl.text = "\("width".localized(using: "MainStrings")): \(width)cm"
-            heightLbl.text = "\("height".localized(using: "MainStrings")): \(height)cm"
-            depthLbl.text = "\("depth".localized(using: "MainStrings")): \(depth)cm"
+            widthLbl.text = "\("width".localized()): \(width)cm"
+            heightLbl.text = "\("height".localized()): \(height)cm"
+            depthLbl.text = "\("depth".localized()): \(depth)cm"
             
             if productId == "" {
-                pageLinkBtn.setTitle("This product is not currently available for sale.".localized(using: "MainStrings"), for: .normal)
+                pageLinkBtn.setTitle("This product is not currently available for sale.".localized(), for: .normal)
             } else {
                 pageLinkBtn.setTitle("\(IKEA_KOREA_BASE_URL)\(Localize.currentLanguage())/\(IKEA_PRODUCT_PREFIX)\(productId)", for: .normal)
             }

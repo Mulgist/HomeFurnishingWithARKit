@@ -26,23 +26,25 @@ class AccountVC: UIViewController {
         super.viewDidLoad()
         
         // Localize
-        emailLblLbl.text = "EMAIL ADDRESS".localized(using: "MainStrings")
-        fullNameLblLbl.text = "FULL NAME".localized(using: "MainStrings")
-        logoutBtn.setTitle("Logout".localized(using: "MainStrings"), for: .normal)
-        accountProviderLbl.text = "ACCOUNT PROVIDER".localized(using: "MainStrings")
+        emailLblLbl.text = "EMAIL ADDRESS".localized()
+        fullNameLblLbl.text = "FULL NAME".localized()
+        logoutBtn.setTitle("Logout".localized(), for: .normal)
+        accountProviderLbl.text = "ACCOUNT PROVIDER".localized()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         loadUserInfo()
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         loadUserInfo()
     }
     
     func loadUserInfo() {
         if UserDataService.instance.fullName == "" {
-            self.nameLbl.text = "...로드하는 중..."
+            self.nameLbl.text = "...Loading..."
         } else {
             if Localize.currentLanguage() == "en" {
                 self.nameLbl.text = "Welcome Back, \(UserDataService.instance.familyName)!"

@@ -87,3 +87,9 @@
 "OK" = "승인";
 
 "Cancel" = "취소";
+
+// ---------------------------
+
+"Saving Screenshot is FAILED. Please try again." = "스크린샷 저장에 실패했습니다. 다시 시도애 주십시오.";
+
+"Saving Screenshot is COMPLETED." = "스크린샷 저장이 완료되었습니다.";

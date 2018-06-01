@@ -60,6 +60,12 @@ extension MainVC: UIGestureRecognizerDelegate {
         performSegue(withIdentifier: SegueIdentifier.showSettings.rawValue, sender: settingsButton)
     }
     
+    // Save the Screenshot
+    @IBAction func saveScreenshot() {
+        let image = sceneView.snapshot()
+        ARSnapshotsPhotoAlbumService.instance.saveImage(image: image)
+    }
+    
     // Open Login
     @IBAction func showLoginVC() {
         if AuthService.instance.isLoggedIn {
@@ -72,6 +78,28 @@ extension MainVC: UIGestureRecognizerDelegate {
     // Open saves list
     @IBAction func showSavesList() {
         performSegue(withIdentifier: SegueIdentifier.showSaves.rawValue, sender: savesButton)
+    }
+    
+    // Open object info page
+    @IBAction func showObjectInfo(_ sender: Any) {
+        guard let productInfoVC = storyboard?.instantiateViewController(withIdentifier: "ProductInfoVC") else { return }
+        productInfoVC.modalPresentationStyle = .custom
+        presentDetial(productInfoVC)
+    }
+    
+    // Remove selected object
+    @IBAction func removeObject(_ sender: Any) {
+        if let selected = virtualObjectInteraction.selectedObject {
+            if let index = virtualObjectLoader.loadedObjects.index(of: selected) {
+                virtualObjectLoader.removeVirtualObject(at: index)
+                NotificationCenter.default.post(name: NOTIF_UNSET_INFO_RM_BUTTON, object: nil)
+            }
+        }
+    }
+    
+    // For Debuging
+    @IBAction func savesButtonPressed(_ sender: Any) {
+        NotificationCenter.default.post(name: NOTIF_SHOW_SAVES, object: nil)
     }
     
     // Change Image of Login Button if user is logged in
