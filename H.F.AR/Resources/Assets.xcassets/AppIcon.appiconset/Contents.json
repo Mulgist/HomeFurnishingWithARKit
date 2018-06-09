@@ -3,49 +3,49 @@
     {
       "size" : "20x20",
       "idiom" : "iphone",
-      "filename" : "AR_icon_3D copy-2.png",
+      "filename" : "HFAR_icon_01_iphone_20x20@2x.png",
       "scale" : "2x"
     },
     {
       "size" : "20x20",
       "idiom" : "iphone",
-      "filename" : "AR_icon_3D copy-3.png",
+      "filename" : "HFAR_icon_02_iphone_20x20@3x.png",
       "scale" : "3x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "AR_icon_3D copy-6.png",
+      "filename" : "HFAR_icon_03_iphone_29x29@2x.png",
       "scale" : "2x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "AR_icon_3D copy-8.png",
+      "filename" : "HFAR_icon_04_iphone_29x29@3x.png",
       "scale" : "3x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "AR_icon_3D copy.png",
+      "filename" : "HFAR_icon_05_iphone_40x40@2x.png",
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "AR_icon_3D copy-5.png",
+      "filename" : "HFAR_icon_06_iphone_40x40@3x.png",
       "scale" : "3x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "AR_icon_3D copy-4.png",
+      "filename" : "HFAR_icon_07_iphone_60x60@2x.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "AR_icon_3D copy-9.png",
+      "filename" : "HFAR_icon_08_iphone_60x60@3x.png",
       "scale" : "3x"
     },
     {
@@ -56,7 +56,7 @@
     {
       "size" : "20x20",
       "idiom" : "ipad",
-      "filename" : "AR_icon_3D copy-10.png",
+      "filename" : "HFAR_icon_09_ipad_20x20@2x.png",
       "scale" : "2x"
     },
     {
@@ -67,7 +67,7 @@
     {
       "size" : "29x29",
       "idiom" : "ipad",
-      "filename" : "AR_icon_3D copy-7.png",
+      "filename" : "HFAR_icon_10_ipad_29x29@2x.png",
       "scale" : "2x"
     },
     {
@@ -78,31 +78,31 @@
     {
       "size" : "40x40",
       "idiom" : "ipad",
-      "filename" : "AR_icon_3D copy-1.png",
+      "filename" : "HFAR_icon_11_ipad_40x40@2x.png",
       "scale" : "2x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "AR_icon_3D copy-11.png",
+      "filename" : "HFAR_icon_12_ipad_76x76.png",
       "scale" : "1x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "AR_icon_3D copy-12.png",
+      "filename" : "HFAR_icon_13_ipad_76x76@2x.png",
       "scale" : "2x"
     },
     {
       "size" : "83.5x83.5",
       "idiom" : "ipad",
-      "filename" : "AR_icon_3D copy-13.png",
+      "filename" : "HFAR_icon_14_ipad_83.5x83.5@2x.png",
       "scale" : "2x"
     },
     {
       "size" : "1024x1024",
       "idiom" : "ios-marketing",
-      "filename" : "AR_icon_3D.png",
+      "filename" : "HFAR_icon_15_ios-marketing_1024x1024.png",
       "scale" : "1x"
     }
   ],

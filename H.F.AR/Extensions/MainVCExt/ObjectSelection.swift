@@ -7,7 +7,7 @@ import ARKit
 extension MainVC: VirtualObjectSelectionVCDelegate, SavesListVCDelegate, SaveDataInfoVCDelegate2 {
      // Adds the specified virtual object to the scene, placed using the focus square's estimate of the world-space position currently corresponding to the center of the screen.
      // - Tag: PlaceVirtualObject
-    func placeVirtualObject(_ virtualObject: VirtualObject) {
+    func placeVirtualObject(_ virtualObject: VirtualObject, _ position: SCNVector3?, _ rotation: Float?) {
         guard let cameraTransform = session.currentFrame?.camera.transform, let focusSquareAlignment = focusSquare.recentFocusSquareAlignments.last, focusSquare.state != .initializing else {
             statusViewController.showMessage("CANNOT PLACE OBJECT\nTry moving left or right.".localized())
             if let index = virtualObjectLoader.loadedObjects.index(of: virtualObject) {
@@ -27,7 +27,14 @@ extension MainVC: VirtualObjectSelectionVCDelegate, SavesListVCDelegate, SaveDat
         updateQueue.async {
             // Substantial addition
             self.sceneView.scene.rootNode.addChildNode(virtualObject)
-			self.sceneView.addOrUpdateAnchor(for: virtualObject)
+            
+            if let position = position, let rotate = rotation {
+                virtualObject.position = position
+                virtualObject.objectRotation = rotate
+            } else {
+                // If use this function, the position will be returned to FocusSquare again.
+                self.sceneView.addOrUpdateAnchor(for: virtualObject)
+            }
         }
         
         NotificationCenter.default.post(name: NOTIF_SET_INFO_RM_BUTTON, object: nil)
@@ -35,36 +42,32 @@ extension MainVC: VirtualObjectSelectionVCDelegate, SavesListVCDelegate, SaveDat
     }
     
     // MARK: - VirtualObjectSelectionVCDelegate
-    // Select a object and place
+    // Select a new object and place
     func virtualObjectSelectionVC(_: VirtualObjectSelectionVC, didSelectObject object: VirtualObject) {
         virtualObjectLoader.loadVirtualObject(object, loadedHandler: { [unowned self] loadedObject in
             DispatchQueue.main.async {
                 self.hideObjectLoadingUI()
-                self.placeVirtualObject(loadedObject)
+                self.placeVirtualObject(loadedObject, nil, nil)
             }
         })
         displayObjectLoadingUI()
     }
     
-    func savesListVC(_ listVC: SavesListVC, loadObjects: [VirtualObject], objectRotations: [Float]) {
+    // Replace objects of the saved data
+    func savesListVC(_ listVC: SavesListVC, loadObjects: [VirtualObject], objectPositions: [SCNVector3], objectRotations: [Float]) {
         virtualObjectLoader.removeAllVirtualObjects()
         
         for index in 0..<loadObjects.count {
             virtualObjectLoader.loadVirtualObject(loadObjects[index]) { (loadedObject) in
                 DispatchQueue.main.sync {
                     self.hideObjectLoadingUI()
-                    // Not changed
-                    print("pre position: \(loadedObject.position.x), \(loadedObject.position.y), \(loadedObject.position.z)")
-                    let position = loadedObject.position
                     // The position changes to match FocusSquare.
-                    self.placeVirtualObject(loadedObject)
-                    // Changed
-                    print("post position: \(loadedObject.position.x), \(loadedObject.position.y), \(loadedObject.position.z)")
-                    loadedObject.position = position
-                    loadedObject.objectRotation = objectRotations[index]
+                    self.placeVirtualObject(loadedObject, objectPositions[index], objectRotations[index])
                 }
             }
         }
+        
+        displayObjectLoadingUI()
     }
     
     func savesListVC(_ listVC: SavesListVC, getCurrentSession: Bool) -> ARSession {

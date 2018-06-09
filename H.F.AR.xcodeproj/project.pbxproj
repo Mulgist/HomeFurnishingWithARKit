@@ -10,9 +10,7 @@
 		041E6D1720922C9B00A0BCF3 /* ProductInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E6D1620922C9B00A0BCF3 /* ProductInfoVC.swift */; };
 		041F0868209DED2F00230BB4 /* ShadowAndRadiusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F0867209DED2F00230BB4 /* ShadowAndRadiusView.swift */; };
 		043D1FC62074C09200792629 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 043D1FC52074C09200792629 /* Main.storyboard */; };
-		043DBF7120AFFC9E00C0FDCE /* SavedObjectsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043DBF7020AFFC9E00C0FDCE /* SavedObjectsCell.swift */; };
 		04499D7820C139410068F484 /* ARSnapshotsPhotoAlbumService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04499D7720C139410068F484 /* ARSnapshotsPhotoAlbumService.swift */; };
-		044A695120A4551E00304CC3 /* SavesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A695020A4551E00304CC3 /* SavesListCell.swift */; };
 		044A695320A456F600304CC3 /* SaveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A695220A456F600304CC3 /* SaveData.swift */; };
 		0469D0B720A417F60012434C /* SavesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0469D0B620A417F60012434C /* SavesListVC.swift */; };
 		047A7C6F20AB0568004C2C8C /* SaveDataInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A7C6E20AB0568004C2C8C /* SaveDataInfoVC.swift */; };
@@ -30,6 +28,7 @@
 		04BA7F882078FF1A003216FA /* Navigate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA7F872078FF1A003216FA /* Navigate.swift */; };
 		04BA7F8A2078FF4E003216FA /* UIDeviceExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA7F892078FF4E003216FA /* UIDeviceExt.swift */; };
 		04BA7F8C20792308003216FA /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA7F8B20792308003216FA /* CircleImage.swift */; };
+		04ED264720CBD75800312486 /* OneLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ED264620CBD75800312486 /* OneLabelCell.swift */; };
 		04F3865A2085ECB700787988 /* ObjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F386592085ECB700787988 /* ObjectCell.swift */; };
 		11BD822A1F09D750003F11C8 /* ObjectSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147D76491EFC36070000FEBF /* ObjectSelection.swift */; };
 		147062641F06FA790003EE03 /* VirtualObjectSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147062631F06FA790003EE03 /* VirtualObjectSelectionVC.swift */; };
@@ -56,14 +55,12 @@
 		041E6D1620922C9B00A0BCF3 /* ProductInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoVC.swift; sourceTree = "<group>"; };
 		041F0867209DED2F00230BB4 /* ShadowAndRadiusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowAndRadiusView.swift; sourceTree = "<group>"; };
 		043D1FC52074C09200792629 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		043DBF7020AFFC9E00C0FDCE /* SavedObjectsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedObjectsCell.swift; sourceTree = "<group>"; };
 		04499D7720C139410068F484 /* ARSnapshotsPhotoAlbumService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARSnapshotsPhotoAlbumService.swift; sourceTree = "<group>"; };
-		044A695020A4551E00304CC3 /* SavesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavesListCell.swift; sourceTree = "<group>"; };
 		044A695220A456F600304CC3 /* SaveData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveData.swift; sourceTree = "<group>"; };
 		0469D0B620A417F60012434C /* SavesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavesListVC.swift; sourceTree = "<group>"; };
 		047A7C6E20AB0568004C2C8C /* SaveDataInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveDataInfoVC.swift; sourceTree = "<group>"; };
 		047A7C7020AB0B3A004C2C8C /* ExtraSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraSegue.swift; sourceTree = "<group>"; };
-		0498458220A31F5E0058B7C9 /* H.F.AR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = H.F.AR.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		047B57ED20C7D4CE0069EF87 /* H.F.AR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = H.F.AR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0498458420A325260058B7C9 /* BoxNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxNode.swift; sourceTree = "<group>"; };
 		0498458620A3252F0058B7C9 /* SphereNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SphereNode.swift; sourceTree = "<group>"; };
 		04BA7F732077A84F003216FA /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = Localization/ko.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -78,6 +75,7 @@
 		04BA7F872078FF1A003216FA /* Navigate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigate.swift; sourceTree = "<group>"; };
 		04BA7F892078FF4E003216FA /* UIDeviceExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExt.swift; sourceTree = "<group>"; };
 		04BA7F8B20792308003216FA /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
+		04ED264620CBD75800312486 /* OneLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneLabelCell.swift; sourceTree = "<group>"; };
 		04F386592085ECB700787988 /* ObjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCell.swift; sourceTree = "<group>"; };
 		147062631F06FA790003EE03 /* VirtualObjectSelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualObjectSelectionVC.swift; sourceTree = "<group>"; };
 		147D76491EFC36070000FEBF /* ObjectSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectSelection.swift; sourceTree = "<group>"; };
@@ -179,8 +177,7 @@
 				04F386592085ECB700787988 /* ObjectCell.swift */,
 				C46356661EF9CC480080C8D9 /* VirtualObjectARView.swift */,
 				041F0867209DED2F00230BB4 /* ShadowAndRadiusView.swift */,
-				044A695020A4551E00304CC3 /* SavesListCell.swift */,
-				043DBF7020AFFC9E00C0FDCE /* SavedObjectsCell.swift */,
+				04ED264620CBD75800312486 /* OneLabelCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -259,7 +256,7 @@
 				043D1FC12074BC3F00792629 /* H.F.AR */,
 				FA72C18594CCE813F5D77986 /* Pods */,
 				A4DC4C44E68128ED972E055B /* Frameworks */,
-				0498458220A31F5E0058B7C9 /* H.F.AR.app */,
+				047B57ED20C7D4CE0069EF87 /* H.F.AR.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -300,7 +297,7 @@
 			);
 			name = H.F.AR;
 			productName = ARKitInteraction;
-			productReference = 0498458220A31F5E0058B7C9 /* H.F.AR.app */;
+			productReference = 047B57ED20C7D4CE0069EF87 /* H.F.AR.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -421,8 +418,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				04BA7F882078FF1A003216FA /* Navigate.swift in Sources */,
+				04ED264720CBD75800312486 /* OneLabelCell.swift in Sources */,
 				04BA7F842078BAEE003216FA /* AccountVC.swift in Sources */,
-				043DBF7120AFFC9E00C0FDCE /* SavedObjectsCell.swift in Sources */,
 				C812D8681F47628300344E73 /* ThresholdPanGesture.swift in Sources */,
 				04BA7F8C20792308003216FA /* CircleImage.swift in Sources */,
 				04BA7F8A2078FF4E003216FA /* UIDeviceExt.swift in Sources */,
@@ -433,7 +430,6 @@
 				C41366B91EB80DD400EC054A /* StatusVC.swift in Sources */,
 				04BA7F802078B827003216FA /* UserDataService.swift in Sources */,
 				04BA7F7E2078B819003216FA /* AuthService.swift in Sources */,
-				044A695120A4551E00304CC3 /* SavesListCell.swift in Sources */,
 				04F3865A2085ECB700787988 /* ObjectCell.swift in Sources */,
 				044A695320A456F600304CC3 /* SaveData.swift in Sources */,
 				047A7C6F20AB0568004C2C8C /* SaveDataInfoVC.swift in Sources */,
@@ -599,6 +595,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -619,6 +616,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

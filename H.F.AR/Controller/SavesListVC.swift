@@ -136,7 +136,7 @@ class SavesListVC: UIViewController {
                 // position (calculated)
                 let originalPosition = object.position
                 let currentCameraPosition = delegate!.savesListVC(self, getCurrentSession: true).currentFrame!.camera.transform.translation
-                let newPosition = SCNVector3Make(originalPosition.x + (0.0 - currentCameraPosition.x), originalPosition.y + (0.0 - currentCameraPosition.y), originalPosition.z + (0.0 - currentCameraPosition.z))
+                let newPosition = SCNVector3Make(originalPosition.x - currentCameraPosition.x, originalPosition.y - currentCameraPosition.y, originalPosition.z - currentCameraPosition.z)
                 dataString += "\(newPosition.x),\(newPosition.y),\(newPosition.z)"
                 dataString += "^"
                 // objectRotation
@@ -150,8 +150,9 @@ class SavesListVC: UIViewController {
         return dataString
     }
     
-    func deserializeDataString(_ data: String) -> ([VirtualObject], [Float]) {
+    func deserializeDataString(_ data: String) -> ([VirtualObject], [SCNVector3], [Float]) {
         var objects = [VirtualObject]()
+        var objectPositions = [SCNVector3]()
         var objectRotations = [Float]()
         let mainObjects = delegate!.savesListVC(self, getVirtualObjects: true)
         let objectStrings = data.components(separatedBy: "*")
@@ -166,8 +167,8 @@ class SavesListVC: UIViewController {
             let components = eachString.components(separatedBy: "^")
             
             // modelName (ascii)
-            guard let index = modelNames.index(of: components[0]) else { return (objects, objectRotations) }
-            guard let addedObject = VirtualObject(url: mainObjects[index].referenceURL) else { return (objects, objectRotations) }
+            guard let index = modelNames.index(of: components[0]) else { return (objects, objectPositions, objectRotations) }
+            guard let addedObject = VirtualObject(url: mainObjects[index].referenceURL) else { return (objects, objectPositions, objectRotations) }
             
             // position (calculated)
             let positions = components[1].components(separatedBy: ",")
@@ -175,15 +176,16 @@ class SavesListVC: UIViewController {
             let savedY = Float(positions[1])!
             let savedZ = Float(positions[2])!
             let currentCameraPosition = delegate!.savesListVC(self, getCurrentSession: true).currentFrame!.camera.transform.translation
-            let newPosition = SCNVector3Make(savedX + (0.0 - currentCameraPosition.x), savedY + (0.0 - currentCameraPosition.y), savedZ + (0.0 - currentCameraPosition.z))
-            // addedObject.position = newPosition
-            addedObject.position = SCNVector3Make(savedX, savedY, savedZ)
+            let newPosition = SCNVector3Make(savedX + currentCameraPosition.x, savedY + currentCameraPosition.y, savedZ + currentCameraPosition.z)
+            addedObject.position = newPosition
+            // addedObject.position = SCNVector3Make(savedX, savedY, savedZ)
             
+            objectPositions.append(newPosition)
             // objectRotation
             objectRotations.append(Float(components[2])!)
             objects.append(addedObject)
         }
-        return (objects, objectRotations)
+        return (objects, objectPositions, objectRotations)
     }
 }
 
@@ -197,9 +199,9 @@ extension SavesListVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "savedDataCell") as? SavesListCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "savedDataCell") as? OneLabelCell else { return UITableViewCell() }
         let saveData = savesList[indexPath.row]
-        cell.configureCell(data: saveData)
+        cell.configureCell(data: saveData.name)
         cell.accessoryType = .detailDisclosureButton
         return cell
     }
@@ -218,9 +220,10 @@ extension SavesListVC: UITableViewDelegate, UITableViewDataSource {
         let selectedSave = savesList[indexPath.row]
         let deserializeResult = deserializeDataString(selectedSave.contentString)
         let objects = deserializeResult.0
-        let rotations = deserializeResult.1
+        let positions = deserializeResult.1
+        let rotations = deserializeResult.2
         
-        delegate?.savesListVC(self, loadObjects: objects, objectRotations: rotations)
+        delegate?.savesListVC(self, loadObjects: objects, objectPositions: positions, objectRotations: rotations)
         
         dismiss(animated: true, completion: nil)
     }
@@ -266,7 +269,7 @@ extension SavesListVC: SaveDataInfoVCDelegate, UIPopoverPresentationControllerDe
 }
 
 protocol SavesListVCDelegate: class {
-    func savesListVC(_ listVC: SavesListVC, loadObjects: [VirtualObject], objectRotations: [Float])
+    func savesListVC(_ listVC: SavesListVC, loadObjects: [VirtualObject], objectPositions: [SCNVector3], objectRotations: [Float])
     func savesListVC(_ listVC: SavesListVC, getCurrentSession: Bool) -> ARSession
     func savesListVC(_ listVC: SavesListVC, getLoadedVirtualObjects: Bool) -> [VirtualObject]
     func savesListVC(_ listVC: SavesListVC, getVirtualObjects: Bool) -> [VirtualObject]

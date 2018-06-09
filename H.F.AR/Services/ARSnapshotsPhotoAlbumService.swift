@@ -31,7 +31,6 @@ class ARSnapshotsPhotoAlbumService {
     }
     
     func fetchAssetCollectionForAlbum() -> PHAssetCollection! {
-        
         let fetchOptions = PHFetchOptions()
         fetchOptions.predicate = NSPredicate(format: "title = %@", ARSnapshotsPhotoAlbumService.albumName)
         let collection = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: fetchOptions)
@@ -56,5 +55,8 @@ class ARSnapshotsPhotoAlbumService {
             albumChangeRequest?.addAssets([assetPlaceholder ?? PHObjectPlaceholder()] as NSArray)
         }, completionHandler: nil)
         NotificationCenter.default.post(name: NOTIF_SHOW_MESSAGE, object: "Saving Screenshot is COMPLETED.".localized())
+        
+        // Play shutter sound
+        AudioServicesPlaySystemSoundWithCompletion(SystemSoundID(1108), nil)
     }
 }
