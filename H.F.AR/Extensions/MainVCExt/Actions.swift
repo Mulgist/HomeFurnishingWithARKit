@@ -150,7 +150,7 @@ extension MainVC: UIGestureRecognizerDelegate {
             print("position: \(element.position.x), \(element.position.y), \(element.position.z)")
             // print("eulerAngles: \(element.eulerAngles.x), \(element.eulerAngles.y), \(element.eulerAngles.z)")
         }
-        
+        print("current camera: \(session.currentFrame!.camera.transform.translation.x), \(session.currentFrame!.camera.transform.translation.y), \(session.currentFrame!.camera.transform.translation.z)")
         // 원점에 상자 추가
         // let box = BoxNode(position: SCNVector3Make(0.0, 0.0, 0.0), length: 0.01)
         // sceneView.scene.rootNode.addChildNode(box)

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="ipad10_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,9 +19,68 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HFAR_icon_origin" translatesAutoresizingMaskIntoConstraints="NO" id="oK2-rZ-jco">
+                                <rect key="frame" x="257" y="200" width="320" height="320"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="WP5-Vt-9Ms">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="320"/>
+                                    </constraint>
+                                    <constraint firstAttribute="height" constant="200" id="a0S-Rc-neF">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="320"/>
+                                    </constraint>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home Furnishing AR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MfK-1L-8BL">
+                                <rect key="frame" x="50" y="544" width="734" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="6Qm-ti-yAp">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="36"/>
+                                    </constraint>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="30"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© 2018. TEAM 1013 with Computer Capstone Design all rights reserved." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fkf-uT-GKN">
+                                <rect key="frame" x="38" y="1050" width="758" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="5MQ-Wq-O5Q">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="30"/>
+                                    </constraint>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
+                                </variation>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="MfK-1L-8BL" secondAttribute="trailing" constant="30" id="5OL-g5-Peh"/>
+                            <constraint firstItem="MfK-1L-8BL" firstAttribute="centerX" secondItem="oK2-rZ-jco" secondAttribute="centerX" id="9Ws-7p-TgI"/>
+                            <constraint firstItem="oK2-rZ-jco" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="70" id="CWE-5v-Yxq">
+                                <variation key="heightClass=regular-widthClass=regular" constant="180"/>
+                            </constraint>
+                            <constraint firstItem="MfK-1L-8BL" firstAttribute="top" secondItem="oK2-rZ-jco" secondAttribute="bottom" constant="16" id="QMP-ll-r4J">
+                                <variation key="heightClass=regular-widthClass=regular" constant="24"/>
+                            </constraint>
+                            <constraint firstItem="oK2-rZ-jco" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="RRA-lO-QSM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fkf-uT-GKN" secondAttribute="trailing" constant="18" id="Ul9-IM-7N6"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="fkf-uT-GKN" secondAttribute="bottom" constant="16" id="ebS-wj-ZPg">
+                                <variation key="heightClass=regular-widthClass=regular" constant="32"/>
+                            </constraint>
+                            <constraint firstItem="MfK-1L-8BL" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="30" id="gph-Yl-nyA"/>
+                            <constraint firstItem="fkf-uT-GKN" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="18" id="q3G-LC-27C"/>
+                            <constraint firstItem="fkf-uT-GKN" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="uHx-pJ-Mnl"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -27,4 +88,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="HFAR_icon_origin" width="600" height="600"/>
+    </resources>
 </document>

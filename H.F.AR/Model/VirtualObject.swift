@@ -220,6 +220,9 @@ extension VirtualObject {
         
         for element in list {
             let new = VirtualObject(url: element.referenceURL)
+            if new?.modelName == "background" {
+                continue
+            }
             newList.append(new!)
         }
         list.append(contentsOf: newList)

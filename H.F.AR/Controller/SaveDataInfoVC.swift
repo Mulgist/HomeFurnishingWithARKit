@@ -75,7 +75,7 @@ extension SaveDataInfoVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SavedObjectsCell") as? SavedObjectsCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SavedObjectsCell") as? OneLabelCell else { return UITableViewCell() }
         let object = savedObjects[indexPath.row]
         cell.configureCell(data: object.getLocalizedName())
         return cell
