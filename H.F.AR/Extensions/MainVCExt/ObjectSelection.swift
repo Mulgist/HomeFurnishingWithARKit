@@ -57,7 +57,12 @@ extension MainVC: VirtualObjectSelectionVCDelegate, SavesListVCDelegate, SaveDat
     func savesListVC(_ listVC: SavesListVC, loadObjects: [VirtualObject], objectPositions: [SCNVector3], objectRotations: [Float]) {
         virtualObjectLoader.removeAllVirtualObjects()
         
+        // localize
         for index in 0..<loadObjects.count {
+            if let langIndex = self.asciiObjectNames.index(of: loadObjects[index].modelName) {
+                loadObjects[index].setNames(self.enObjectNames[langIndex], self.koObjectNames[langIndex])
+            }
+            
             virtualObjectLoader.loadVirtualObject(loadObjects[index]) { (loadedObject) in
                 DispatchQueue.main.sync {
                     self.hideObjectLoadingUI()

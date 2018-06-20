@@ -33,9 +33,13 @@ class AuthService {
     }
     
     func setAndLoadUserInfoById(completion: @escaping CompletionHandler) {
+        let body: [String:Any] = [
+            "method": GET_USER_INFO,
+            "user_id": userId
+        ]
+        
         // Web Request
-        print("\(BASE_URL)\(REQUEST_SUFFIX)?method=\(GET_USER_INFO)&user_id=\(userId)")
-        Alamofire.request("\(BASE_URL)\(REQUEST_SUFFIX)?method=\(GET_USER_INFO)&user_id=\(userId)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+        Alamofire.request("\(BASE_URL)\(REQUEST_SUFFIX)", method: .post, parameters: body, encoding: URLEncoding.default, headers: URL_ENCODE_HEADER).responseJSON { (response) in
             if response.result.error == nil {
                 guard let data = response.data else { return }
                 var json = JSON(data)
