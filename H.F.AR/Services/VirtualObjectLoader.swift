@@ -1,7 +1,7 @@
 
 // Abstract: A type which loads and tracks virtual objects.
 
-import Foundation
+import UIKit
 import ARKit
 
 // Loads multiple 'VirtualObject's on a background queue to be able to display the objects quickly once they are needed.
@@ -24,16 +24,6 @@ class VirtualObjectLoader {
             loadedHandler(object)
         }
 	}
-    
-//    func replaceVirtualObjects(_ objects: [VirtualObject]) {
-//        removeAllVirtualObjects()
-//
-//        for object in objects {
-//            loadVirtualObject(object) { (loadedObject) in
-//                // loadedObject.isHidden = false
-//            }
-//        }
-//    }
     
     // MARK: - Removing Objects
     func removeAllVirtualObjects() {

@@ -84,19 +84,49 @@
 
 "The state saving failed for some reason. Please try again." = "어떤 이유로 저장에 실패했습니다. 다시 시도해주세요.";
 
+"REMOVE THE STATUS" = "상태 삭제하기";
+
+"Do you want to remove the status?" = "상태를 삭제하시겠습니까?";
+
 "OK" = "승인";
 
 "Cancel" = "취소";
 
-// ---------------------------
+"EDIT ACCOUNT" = "계정 수정하기";
+
+"Do you want to edit your account?" = "정말로 계정을 수정하시겠습니까?";
+
+"DELETE ACCOUNT" = "계정 삭제하기";
+
+"Do you want to delete your account? All saved states are also removed." = "정말로 계정을 삭제하시겠습니까? 저장된 모든 상태들도 삭제됩니다.";
+
+"EDIT SUCCEED" = "수정 성공";
+
+"Your account has been successfully edited." = "계정 수정이 성공하였습니다.";
+
+"EDIT FAILED" = "수정 실패";
+
+"Your account editing failed for some reason. Please try again." = "계정 수정에 실패했습니다. 다시 한 번 시도해 주십시오.";
+
+"DELETE SUCCEED" = "삭제 성공";
+
+"Your account has been successfully deleted." = "계정 삭제가 성공하였습니다.";
+
+"DELETE FAILED" = "삭제 실패";
+
+"Your account deleting failed for some reason. Please try again." = "계정 삭제에 실패했습니다. 다시 한 번 시도해 주십시오.";
+
+// ------------------------------
 
 "Saving Screenshot is FAILED. Please try again." = "스크린샷 저장에 실패했습니다. 다시 시도애 주십시오.";
 
 "Saving Screenshot is COMPLETED." = "스크린샷 저장이 완료되었습니다.";
 
-// --------------------------
+// ------------------------------
 
 "Home Furnishing AR App Info" = "Home Furnishing AR 앱 정보";
+
+"Edit Account Info" = "계정정보 수정하기";
 
 // ------------------------------
 
@@ -107,3 +137,15 @@
 "Jongsu Kim" = "김종수";
 
 "Juwon Lee" = "이주원";
+
+// ------------------------------
+
+"Email: " = "이메일: ";
+
+"Family Name" = "성";
+
+"Given Name" = "이름";
+
+"Full Name" = "풀네임";
+
+"* The account information of the account provider is NOT modified. *" = "* 계정 서비스 제공자의 계정정보는 수정되지 않습니다. *";
