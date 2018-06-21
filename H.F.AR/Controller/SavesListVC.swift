@@ -73,8 +73,13 @@ class SavesListVC: UIViewController {
     }
     
     func loadSaveList() {
+        let body: [String:Any] = [
+            "method": GET_USER_SAVES,
+            "who": AuthService.instance.userId
+        ]
+        
         // Web Request
-        Alamofire.request("\(BASE_URL)\(REQUEST_SUFFIX)?method=\(GET_USER_SAVES)&who=\(AuthService.instance.userId)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: JSON_ENCODE_HEADER).responseJSON { (response) in
+        Alamofire.request("\(BASE_URL)\(REQUEST_SUFFIX)", method: .post, parameters: body, encoding: URLEncoding.default, headers: URL_ENCODE_HEADER).responseJSON { (response) in
             if response.result.error == nil {
                 guard let data = response.data else { return }
                 let json = JSON(data)

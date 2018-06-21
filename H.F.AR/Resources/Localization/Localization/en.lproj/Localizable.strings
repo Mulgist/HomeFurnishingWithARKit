@@ -84,9 +84,37 @@
 
 "The state saving failed for some reason. Please try again." = "The state saving failed for some reason. Please try again.";
 
+"REMOVE THE STATUS" = "REMOVE THE STATUS";
+
+"Do you want to remove the status?" = "Do you want to remove the status?";
+
 "OK" = "OK";
 
 "Cancel" = "Cancel";
+
+"EDIT ACCOUNT" = "EDIT ACCOUNT";
+
+"Do you want to edit your account?" = "Do you want to edit your account?";
+
+"DELETE ACCOUNT" = "DELETE ACCOUNT";
+
+"Do you want to delete your account? All saved states are also removed." = "Do you want to delete your account? All saved states are also removed.";
+
+"EDIT SUCCEED" = "EDIT SUCCEED";
+
+"Your account has been successfully edited." = "Your account has been successfully edited.";
+
+"EDIT FAILED" = "EDIT FAILED";
+
+"Your account editing failed for some reason. Please try again." = "Your account editing failed for some reason. Please try again.";
+
+"DELETE SUCCEED" = "DELETE SUCCEED";
+
+"Your account has been successfully deleted." = "Your account has been successfully deleted.";
+
+"DELETE FAILED" = "DELETE FAILED";
+
+"Your account deleting failed for some reason. Please try again." = "Your account deleting failed for some reason. Please try again.";
 
 // ------------------------------
 
@@ -98,6 +126,8 @@
 
 "Home Furnishing AR App Info" = "Home Furnishing AR App Info";
 
+"Edit Account Info" = "Edit Account Info";
+
 // ------------------------------
 
 "Version" = "Version";
@@ -107,3 +137,16 @@
 "Jongsu Kim" = "Jongsu Kim";
 
 "Juwon Lee" = "Juwon Lee";
+
+// ------------------------------
+
+"Email: " = "Email: ";
+
+"Family Name" = "Family Name";
+
+"Given Name" = "Given Name";
+
+"Full Name" = "Full Name";
+
+"* The account information of the account provider is NOT modified. *" = "* The account information of the account provider is NOT modified. *";
+

@@ -58,12 +58,12 @@ class SelectProviderVC: UIViewController, WKScriptMessageHandler, WKUIDelegate {
     
     @IBAction func googleLoginBtnPressed(_ sender: Any) {
         showWebView.isHidden = false
-        goUrl(urlString: GOOGLE_LOGIN_URL)
+        goUrl(urlString: "\(BASE_URL)login/\(Localize.currentLanguage())/google/\(LOGIN_URL)")
     }
     
     @IBAction func microsoftLoginBtnPressed(_ sender: Any) {
         showWebView.isHidden = false
-        goUrl(urlString: MICROSOFT_LOGIN_URL)
+        goUrl(urlString: "\(BASE_URL)login/\(Localize.currentLanguage())/microsoft/\(LOGIN_URL)")
     }
     
     @IBAction func backBtnPressed(_ sender: Any) {

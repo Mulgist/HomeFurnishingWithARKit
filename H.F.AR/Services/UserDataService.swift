@@ -29,6 +29,12 @@ class UserDataService {
         self.profileImage = profileImage
     }
     
+    func editUserData(familyName: String, givenName: String, fullName: String) {
+        self.familyName = familyName
+        self.givenName = givenName
+        self.fullName = fullName
+    }
+    
     func logoutUser() {
         id = ""
         email = ""
