@@ -45,13 +45,11 @@ Home Furnishing AR을 이용해 iOS 디바이스를 가지고 언제 어디서�
 **[이 프로젝트는 2018 한양대학교 ERICA캠퍼스 컴퓨터 캡스톤 디자인을 위한 과제 프로젝트입니다.]**
 
 ## Screenshots
-<img src="https://raw.githubusercontent.com/Mulgist/HomeFurnishingWithARKit/juwon/Screenshots/IMG_0149.PNG"  width="375" height="500" title="IMG_0149"/>
-<img src="https://raw.githubusercontent.com/Mulgist/HomeFurnishingWithARKit/juwon/Screenshots/IMG_0151.PNG"  width="375" height="500" title="IMG_0151"/>
-<img src="https://raw.githubusercontent.com/Mulgist/HomeFurnishingWithARKit/juwon/Screenshots/IMG_0152.PNG"  width="375" height="500" title="IMG_0152"/>
-<img src="https://raw.githubusercontent.com/Mulgist/HomeFurnishingWithARKit/juwon/Screenshots/IMG_0153.PNG"  width="375" height="500" title="IMG_0153"/>
-<img src="https://raw.githubusercontent.com/Mulgist/HomeFurnishingWithARKit/juwon/Screenshots/IMG_0154.PNG"  width="375" height="500" title="IMG_0154"/>
-<img src="https://raw.githubusercontent.com/Mulgist/HomeFurnishingWithARKit/juwon/Screenshots/IMG_0155.PNG"  width="375" height="500" title="IMG_0155"/>
-<img src="https://raw.githubusercontent.com/Mulgist/HomeFurnishingWithARKit/juwon/Screenshots/IMG_0156.PNG"  width="375" height="500" title="IMG_0156"/>
-<img src="https://raw.githubusercontent.com/Mulgist/HomeFurnishingWithARKit/juwon/Screenshots/IMG_0157.PNG"  width="375" height="500" title="IMG_0157"/>
-<img src="https://raw.githubusercontent.com/Mulgist/HomeFurnishingWithARKit/juwon/Screenshots/IMG_0158.PNG"  width="375" height="500" title="IMG_0158"/>
-<img src="https://raw.githubusercontent.com/Mulgist/HomeFurnishingWithARKit/juwon/Screenshots/IMG_0160.PNG"  width="375" height="500" title="IMG_0160"/>
+<img src="https://raw.githubusercontent.com/Mulgist/HomeFurnishingWithARKit/juwon/Screenshots/IMG_0149.PNG" width="375" height="500" title="IMG_0149"/> <img src="https://raw.githubusercontent.com/Mulgist/HomeFurnishingWithARKit/juwon/Screenshots/IMG_0151.PNG" width="375" height="500" title="IMG_0151"/>
+<img src="https://raw.githubusercontent.com/Mulgist/HomeFurnishingWithARKit/juwon/Screenshots/IMG_0152.PNG" width="375" height="500" title="IMG_0152"/> <img src="https://raw.githubusercontent.com/Mulgist/HomeFurnishingWithARKit/juwon/Screenshots/IMG_0153.PNG" width="375" height="500" title="IMG_0153"/>
+<img src="https://raw.githubusercontent.com/Mulgist/HomeFurnishingWithARKit/juwon/Screenshots/IMG_0154.PNG" width="375" height="500" title="IMG_0154"/>
+<img src="https://raw.githubusercontent.com/Mulgist/HomeFurnishingWithARKit/juwon/Screenshots/IMG_0155.PNG" width="375" height="500" title="IMG_0155"/>
+<img src="https://raw.githubusercontent.com/Mulgist/HomeFurnishingWithARKit/juwon/Screenshots/IMG_0156.PNG" width="375" height="500" title="IMG_0156"/>
+<img src="https://raw.githubusercontent.com/Mulgist/HomeFurnishingWithARKit/juwon/Screenshots/IMG_0157.PNG" width="375" height="500" title="IMG_0157"/>
+<img src="https://raw.githubusercontent.com/Mulgist/HomeFurnishingWithARKit/juwon/Screenshots/IMG_0158.PNG" width="375" height="500" title="IMG_0158"/>
+<img src="https://raw.githubusercontent.com/Mulgist/HomeFurnishingWithARKit/juwon/Screenshots/IMG_0160.PNG" width="375" height="500" title="IMG_0160"/>
